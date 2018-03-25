@@ -19,3 +19,8 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+///// packages installed
+//// create-react-app      axios      react-router-dom    react-redux    dotenv    express    massive    cors  body-parser
