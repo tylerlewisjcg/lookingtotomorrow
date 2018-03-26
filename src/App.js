@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './reset.css';
-import './App.css';
+import './stylesheets/reset.css';
+import './stylesheets/sass/App.css';
 import routes from './router/routes';
 import { connect } from 'react-redux';
 import axios from 'axios';
