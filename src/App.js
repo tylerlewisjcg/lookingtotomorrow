@@ -4,8 +4,7 @@ import './App.css';
 import routes from './router/routes';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
-
+import NotFound from './components/NotFound';
 class App extends Component {
   constructor() {
     super();
@@ -15,7 +14,7 @@ class App extends Component {
     return ( 
     <div>
 
-
+      <NotFound/>
 
     </div> 
     )
