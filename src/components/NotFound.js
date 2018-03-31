@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginPage from './LoginPage';
+import LoginPage from './notLoggedIn/LoginPage';
 export default function NotFound()  {
     return (
         <div>

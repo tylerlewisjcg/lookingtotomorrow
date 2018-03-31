@@ -4,8 +4,7 @@ import './stylesheets/sass/App.css';
 import routes from './router/routes';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import LoginPage from './components/LoginPage';
-import SubscribePage from './components/SubscribePage';
+import LoginPage from './components/notLoggedIn/LoginPage';
 
 
 
