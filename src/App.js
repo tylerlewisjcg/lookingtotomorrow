@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import "./stylesheets/reset.css";
-import "./stylesheets/sass/App.css";
 import { connect } from "react-redux";
 import axios from "axios";
 import Home from "./components/Home";
