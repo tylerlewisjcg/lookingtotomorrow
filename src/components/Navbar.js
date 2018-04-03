@@ -22,14 +22,17 @@ class Navbar extends Component {
             </a>
           </div>
         ) : (
+          <div>
+          <h2>LookingToTomorrow.com</h2>
           <a href={process.env.REACT_APP_LOGIN}>    
         <button>Login</button>
       </a>
+      </div>
         );
     
         return (
           <div>
-            Navbar Component
+           
             {userDataJSX}
       
           </div>

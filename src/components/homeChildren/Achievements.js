@@ -9,8 +9,13 @@ class Achievements extends Component {
     render() { 
         return ( <div>
             <Navbar/>
-            
-            Achievements Component
+            <h1>Achieved Skills</h1>
+            <div>
+                skills listed by user on CurrentGoals page will render here
+            </div>
+            <div>
+                skills marked as complete will render here with date stamp for completion date.
+            </div>
         </div> )
     }
 }

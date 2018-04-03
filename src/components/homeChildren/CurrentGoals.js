@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './../Navbar';
-
+import SkillsWorkingOn from './currentGoalsChildren/SkillsWorkingOn';
+import CurrentSkills from './currentGoalsChildren/CurrentSkills';
 class CurrentGoals extends Component {
     constructor(props) {
         super(props);
@@ -9,8 +10,9 @@ class CurrentGoals extends Component {
     render() { 
         return ( <div>
             <Navbar/>
-            
-            CurrentGoals Component
+            <CurrentSkills/>
+            <button>Add Skill to Work on</button>
+            <SkillsWorkingOn/>
         </div> )
     }
 }
