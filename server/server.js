@@ -77,7 +77,7 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000", ////where do they need to re-direct???
+    successRedirect: "http://localhost:3000/#/home", ////where do they need to re-direct???
     failureRedirect: "http://localhost:3000"
   })
 );

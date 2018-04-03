@@ -7,7 +7,7 @@ const LoginPage = () => {
         <button>Login</button>
       </a>
       <Navbar/>
-    </div>
+      </div>
   );
 };
 

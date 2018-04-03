@@ -11,4 +11,4 @@ class Education extends Component {
     }
 }
  
-export default EducationDisplay;
+export default Education;
