@@ -1,5 +1,5 @@
 @import './partials/reset.scss';
-@import './partials/globals.scss';
+@import './partials/globals.scss';    //// why do we need a globals file? saw in missy's demo project
 
 
 
@@ -16,20 +16,20 @@
 @import './modules/mixins.scss';
 
 
-// ===== COMPONENTS ===== //
+// ===== COMPONENTS ===== //   /////do i need a stylesheet for every single component?
 
-@import './partials/components/Achievements.scss';
-@import './partials/components/AdditionalResources.scss';
-@import './partials/components/CareerHistory.scss';
-@import './partials/components/CareerSnapshot.scss';
-@import './partials/components/CurrentGoals.scss';
-@import './partials/components/CurrentSkill.scss';
-@import './partials/components/Education.scss';
-@import './partials/components/FormButtons.scss';
-@import './partials/components/Home.scss';
-@import './partials/components/Motivations.scss';
-@import './partials/components/Navbar.scss';
-@import './partials/components/NotFound.scss';
-@import './partials/components/SkillsWorkingOn.scss';
+@import './partials/componentStyles/Achievements.scss';
+@import './partials/componentStyles/AdditionalResources.scss';
+@import './partials/componentStyles/CareerHistory.scss';
+@import './partials/componentStyles/CareerSnapshot.scss';
+@import './partials/componentStyles/CurrentGoals.scss';
+@import './partials/componentStyles/CurrentSkill.scss';
+@import './partials/componentStyles/Education.scss';
+@import './partials/componentStyles/FormButtons.scss';
+@import './partials/componentStyles/Home.scss';
+@import './partials/componentStyles/Motivations.scss';
+@import './partials/componentStyles/Navbar.scss';
+@import './partials/componentStyles/NotFound.scss';
+@import './partials/componentStyles/SkillsWorkingOn.scss';
 
 
