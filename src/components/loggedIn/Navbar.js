@@ -27,6 +27,7 @@ class Navbar extends Component {
     
         return (
           <div>
+            Navbar Component
             {userDataJSX}
       
           </div>

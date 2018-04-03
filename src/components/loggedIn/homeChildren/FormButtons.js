@@ -6,6 +6,7 @@ class FormButtons extends Component {
     }
     render() { 
         return ( <div>
+            FormButtons Component
             <button>Delete</button>
             <button>Add New</button>
             <button>Edit</button>

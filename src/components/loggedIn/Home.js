@@ -10,6 +10,11 @@ class Home extends Component {
     super(props);
     this.state = {  }
   }
+
+  ///// only thing i can think of to get rid of the login button when user is logged in is to create state loggedIn:false
+  /////// if (this.props.user_name){this.setState({loggedIn: True})} then another if statement that says if this.state.loggedIn === true, then 
+  ///// use a ternary function to hide the login button
+  
   componentDidMount() {
     this.props.getUserInfo();
   }
