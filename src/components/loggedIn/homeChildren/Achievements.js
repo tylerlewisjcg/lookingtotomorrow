@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Navbar from './../Navbar';
+
 class Achievements extends Component {
     constructor(props) {
         super(props);
@@ -6,6 +8,8 @@ class Achievements extends Component {
     }
     render() { 
         return ( <div>
+            <Navbar/>
+            
             Achievements Component
         </div> )
     }

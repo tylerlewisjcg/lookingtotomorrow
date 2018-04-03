@@ -6,7 +6,6 @@ const LoginPage = () => {
        <a href={process.env.REACT_APP_LOGIN}>
         <button>Login</button>
       </a>
-      <Navbar/>
       </div>
   );
 };

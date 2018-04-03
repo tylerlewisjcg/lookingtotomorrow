@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Navbar from './../Navbar';
+
 class Motivations extends Component {
     constructor(props) {
         super(props);
@@ -6,6 +8,8 @@ class Motivations extends Component {
     }
     render() { 
         return ( <div>
+            <Navbar/>
+            
             Motivations Component
         </div> )
     }
