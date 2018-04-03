@@ -22,7 +22,9 @@ class Navbar extends Component {
             </a>
           </div>
         ) : (
-          <p>Not Logged In</p>
+          <a href={process.env.REACT_APP_LOGIN}>    
+        <button>Login</button>
+      </a>
         );
     
         return (

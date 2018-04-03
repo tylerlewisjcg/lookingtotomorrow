@@ -77,8 +77,8 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/home", ////where do they need to re-direct???
-    failureRedirect: "http://localhost:3000"
+    successRedirect: "http://localhost:3000/#",
+    failureRedirect: "http://localhost:3000/#"
   })
 );
 app.get("/auth/me", function(req, res) {
@@ -91,7 +91,7 @@ app.get("/auth/me", function(req, res) {
 
 app.get("/auth/logout", (req, res) => {
   req.logOut();
-  res.redirect("http://localhost:3000/"); //// can just change to '/' exact path route
+  res.redirect("http://localhost:3000/#");
 });
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
