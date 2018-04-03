@@ -1,20 +1,35 @@
-@import './partials/_reset.scss';
-@import './partials/_globals.scss';
+@import './partials/reset.scss';
+@import './partials/globals.scss';
 
 
 
 // ===== VARIABLES ===== //
 
-@import './modules/_variables.scss';
+@import './modules/variables.scss';
 
 
 // ===== FUNCTIONS ===== //
-@import './modules/_functions.scss';
+@import './modules/functions.scss';
 
 
 // ===== MIXINS ===== //
-@import './modules/_mixins.scss';
+@import './modules/mixins.scss';
 
 
 // ===== COMPONENTS ===== //
+
+@import './partials/components/Achievements.scss';
+@import './partials/components/AdditionalResources.scss';
+@import './partials/components/CareerHistory.scss';
+@import './partials/components/CareerSnapshot.scss';
+@import './partials/components/CurrentGoals.scss';
+@import './partials/components/CurrentSkill.scss';
+@import './partials/components/Education.scss';
+@import './partials/components/FormButtons.scss';
+@import './partials/components/Home.scss';
+@import './partials/components/Motivations.scss';
+@import './partials/components/Navbar.scss';
+@import './partials/components/NotFound.scss';
+@import './partials/components/SkillsWorkingOn.scss';
+
 
