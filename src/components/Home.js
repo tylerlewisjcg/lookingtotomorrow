@@ -7,7 +7,7 @@ import CareerHistory from './homeChildren/CareerHistory';
 import CurrentGoals from './homeChildren/CurrentGoals';
 import Education from './homeChildren/Education';
 import Motivations from './homeChildren/Motivations';
-import { getUserInfo } from "./../../ducks/userReducer";
+import { getUserInfo } from './../ducks/userReducer';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 class Home extends Component {
@@ -15,11 +15,6 @@ class Home extends Component {
     super(props);
     this.state = {};
   }
-
-  ///// only thing i can think of to get rid of the login button when user is logged in is to create state loggedIn:false
-  /////// if (this.props.user_name){this.setState({loggedIn: True})} then another if statement that says if this.state.loggedIn === true, then
-  ///// use a ternary function to hide the login button /// probably will need to go in the navbar and just conditionally display login or logout buttons
-
 
   componentDidMount() {
     this.props.getUserInfo();
