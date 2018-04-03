@@ -7,5 +7,5 @@ CREATE TABLE work_history (
     job_responsibilities VARCHAR(1000),
     notable_achievements VARCHAR(1000),
     salary INTEGER,
-    user_id INTEGER REFERENCES users
+    user_id INTEGER REFERENCES users (id)
     );

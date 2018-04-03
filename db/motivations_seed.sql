@@ -5,5 +5,5 @@ CREATE TABLE motivations (
     job_priorities VARCHAR(1000),
     favorite_thing VARCHAR(1000),
     least_favorite_thing VARCHAR(1000),
-    user_id INTEGER REFERENCES users
+    user_id INTEGER REFERENCES users (id)
     );
