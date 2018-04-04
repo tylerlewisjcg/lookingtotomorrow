@@ -19,13 +19,28 @@ class Education extends Component {
             this button will call a ternary lightswitch "isButtonPressed" in state and will either display the form or not
             </div>
            
+         
             <form>
-                <input value='Institution'/>
-                <input value='Start Date'/>
-                <input value='End Date'/>
-                <input value='Degree/Certificate'/>
-                <input value='Field of Study/Major'/>
-                <input value='Notable Achievements/Extracurricular'/>
+                <span>Institution</span>
+                <input/>
+                <br/>
+                <span>Start Date</span>                
+                <input/>
+                <br/>
+                <span>End Date</span>                                
+                <input/>
+                <br/>   
+                <span>Degree/Certificate</span>                                             
+                <input/>
+                <br/>
+                <span>Field of Study/Major</span>                                
+                <input/>
+                <br/>
+                <span>Notable Achievements/Extracurricular</span>                                
+                <input/>
+              
+                <br/>
+                <button>Submit</button>
             </form>
         </div> )
     }

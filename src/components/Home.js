@@ -10,6 +10,7 @@ import Motivations from './homeChildren/Motivations';
 import { getUserInfo } from './../ducks/userReducer';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 class Home extends Component {
   constructor(props) {
     super(props);
