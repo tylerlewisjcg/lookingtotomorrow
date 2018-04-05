@@ -6,5 +6,5 @@ CREATE TABLE education (
     end_date DATE,
     field_of_study VARCHAR(1000),
     accomplishments VARCHAR(1000),
-    user_id INTEGER REFERENCES users
+    id INTEGER REFERENCES users
     );

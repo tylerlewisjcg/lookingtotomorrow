@@ -5,7 +5,8 @@ const express = require("express"),
   massive = require("massive"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-
+//// need to find out how to move auth0 stuff to controller
+////  need to change auth0 stuff to use user_id instead of id
 const {
   SERVER_PORT,
   SESSION_SECRET,

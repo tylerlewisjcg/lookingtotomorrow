@@ -1,5 +1,5 @@
 insert into
 current_skills
-(current_skill, user_id)
+(current_skill, id)
 values
 ($1, $2);

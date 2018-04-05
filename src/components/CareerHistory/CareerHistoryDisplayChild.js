@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CareerForm from './CareerForm';
+import { getWorkHistory } from './../../ducks/workHistoryReducer';
+
+
 class CareerHistoryDisplayChild extends Component {
     constructor(props) {
         super(props);
@@ -8,14 +12,9 @@ class CareerHistoryDisplayChild extends Component {
          }
     }
     
-    componentDidMount(){ 
-        axios.get( '/api/get_work_history' )
-        .then( response => {
-            this.setState({
-                jobs: response.data
-            })
-        } )
-        }
+    componentDidMount(){
+        this.props.getWorkHistory();
+    }
 
     render() { 
         return ( 

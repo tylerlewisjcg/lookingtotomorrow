@@ -5,5 +5,5 @@ CREATE TABLE skills (
     start_date DATE,
     completion_date DATE,
     due_date DATE,
-    user_id INTEGER REFERENCES users
+    id INTEGER REFERENCES users
     );

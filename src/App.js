@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import Home from "./components/Home";
+import Home from './components/Home/Home';
 import { Switch, Route } from "react-router-dom";
 import Achievements from './components/Achievements/Achievements';
 import CareerHistory from './components/CareerHistory/CareerHistory';

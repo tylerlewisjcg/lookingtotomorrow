@@ -20,24 +20,24 @@ import axios from "axios";
   const ADD_WORK_HISTORY_ITEM = "ADD_WORK_HISTORY_ITEM";
 const DELETE_WORK_HISTORY_ITEM = "DELETE_WORK_HISTORY_ITEM";
 const HANDLE_CHANGE = "HANDLE_CHANGE";
+const GET_WORK_HISTORY = "GET_WORK_HISTORY";
 
 
 
 
-
-export function handleAddNewWorkHistory() {
-    return { 
-      type: ADD_WORK_HISTORY_ITEM,
-      payload: ////?????????    company: this.state.company,
-      // job_title: this.state.job_title,
-      // start_date: this.state.start_date,
-      // end_date: this.state.end_date,
-      // job_responsibilities: this.state.job_responsibilities,
-      // notable_achievements: this.state.notable_achievements,
-      // salary: this.state.salary
-      //// need to add a case statement to reducer function for this
-    };
-  }
+// export function handleAddNewWorkHistory() {
+//     return { 
+//       type: ADD_WORK_HISTORY_ITEM,
+//       payload: ////?????????    company: this.state.company,
+//       // job_title: this.state.job_title,
+//       // start_date: this.state.start_date,
+//       // end_date: this.state.end_date,
+//       // job_responsibilities: this.state.job_responsibilities,
+//       // notable_achievements: this.state.notable_achievements,
+//       // salary: this.state.salary
+//       //// need to add a case statement to reducer function for this
+//     };
+//   }
   
 
   // export function deleteWorkHistoryItem( id ) {
@@ -53,26 +53,27 @@ export function handleAddNewWorkHistory() {
 
 
 export function getWorkHistory() {
-    axios.get( '/api/get_work_history' )
+    const workData = axios.get( '/api/get_work_history' )
         .then( response => {
-            console.log( response.data );
-            this.setState({
-                jobs: response.data
+           return response.data
             });
-        } );
-  } ///// i think this will work
+            return {
+              type: GET_WORK_HISTORY,
+              payload: workData
+            }
+          } 
 
 
 
 
   
 
-export function handleChange(e) {
-    return {
-      type: HANDLE_CHANGE,
-      payload: { [e.target.name]: e.target.value }
-    }
-   } 
+// export function handleChange(e) {
+//     return {
+//       type: HANDLE_CHANGE,
+//       payload: { [e.target.name]: e.target.value }
+//     }
+//    } 
    
 
 
@@ -82,14 +83,16 @@ export function handleChange(e) {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
   
-        case ADD_WORK_HISTORY_ITEM:
-        return Object.assign({}, state, {addNewButtonIsPressed: true} );
+        case GET_WORK_HISTORY:
+        return Object.assign({}, state, {})
+        // case ADD_WORK_HISTORY_ITEM:
+        // return Object.assign({}, state, {addNewButtonIsPressed: true} );
         
-        case DELETE_WORK_HISTORY_ITEM:
-        return Object.assign({}, state, { workHistoryItems: action.payload });
+        // case DELETE_WORK_HISTORY_ITEM:
+        // return Object.assign({}, state, { workHistoryItems: action.payload });
   
-        case HANDLE_CHANGE:
-        return Object.assign({}, state, {?????????: action.payload})
+        // case HANDLE_CHANGE:
+        // return Object.assign({}, state, {?????????: action.payload})
   
       default:
         return state;
