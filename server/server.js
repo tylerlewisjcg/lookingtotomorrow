@@ -5,8 +5,7 @@ const express = require("express"),
   massive = require("massive"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-//// need to find out how to move auth0 stuff to controller
-////  need to change auth0 stuff to use user_id instead of id
+
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -22,8 +21,11 @@ const app = express();
 app.use(bodyParser.json());
 
 massive(CONNECTION_STRING).then(db => {
-  app.set("db", db);
-});
+  app.set("db", db)
+  console.log('Database Connection Established');
+})
+.catch(err => console.log(err));
+
 
 app.use(
   session({
@@ -47,10 +49,9 @@ passport.use(
     function(accessToken, refreshToken, extraParams, profile, done) {
 
       const db = app.get("db");
-      db.find_user([profile.id]).then(userResult => {
+      db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
-          db
-            .create_user([profile.displayName, profile.id, profile.picture])
+          db.users_DB.create_user([profile.displayName, profile.id, profile.picture])
             .then(createdUser => {
               return done(null, createdUser[0].id);
             });
@@ -66,9 +67,7 @@ passport.serializeUser((id, done) => {
   done(null, id);
 });
 passport.deserializeUser((id, done) => {
-  app
-    .get("db")
-    .find_session_user([id])
+  app.get("db").users_DB.find_session_user([id])
     .then(loggedInUser => {
       done(null, loggedInUser[0]);
     });

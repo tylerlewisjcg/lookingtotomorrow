@@ -7,12 +7,15 @@ class CareerForm extends Component {
          }
     }
 
-  
+  handleChange(e){
+console.log('this function needs to somehow be on my reducer editing global state to the value of the inputs of each form input box');
+  }
 
     render() { 
-        return ( <form>
-            <span>Company</span>
-            <input
+        return ( 
+<form>
+         <span>Company</span>
+         <input
               name="company"
               value={this.state.company}
               onChange={e => this.handleChange(e)}
@@ -62,13 +65,16 @@ class CareerForm extends Component {
             <br />
             <button
               onClick={() => {
-                this.handleSubmit();
+               this.props.updateState()
               }}
             >
               Submit
             </button>
-          </form> )
+          </form>
+       
+        )
     }
 }
  
 export default CareerForm;
+ 

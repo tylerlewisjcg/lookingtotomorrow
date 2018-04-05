@@ -1,43 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CareerForm from './CareerForm';
-import { getWorkHistory } from './../../ducks/workHistoryReducer';
 
 
 class CareerHistoryDisplayChild extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-           
+            editButtonIsPressed: false 
          }
+         this.updateState = this.updateState.bind(this);
     }
-    
-    componentDidMount(){
-        this.props.getWorkHistory();
-    }
+    updateState(){
+        if(this.state.editButtonIsPressed === false){
+        this.setState({editButtonIsPressed: true})}
+        else{
+          this.setState({editButtonIsPressed:false})
+        }
+      }
 
     render() { 
         return ( 
         <div>
+        
+            
+        
             {!this.state.editButtonIsPressed ?
         <div>
-            <button>Edit</button>
+            <button onClick={()=> this.updateState()}>Edit</button>
             <button>Delete</button>
 
-            all this shit needs to come from the store
-            <p>{this.props.company}</p>
-            <p>{this.props.startDate}</p>
-            <p>{this.props.endDate}</p>
-            <p>{this.props.salary}</p>
-            <p>{this.props.jobTitle}</p>
-            <p>{this.props.jobResponsibilities}</p>
-            <p>{this.props.notableAchievements}</p>
+        this all needs to come from the store somehow
+            <p>company to display goes here</p>
+            <p>start date goes here</p>
+            <p>end date goes here</p>
+            <p>salary goes here</p>
+            <p>job title goes here</p>
+            <p>job responsibilities go here</p>
+            <p>notable achievements go here</p>
         </div>: 
     
 
         
-            <CareerForm/>
-        
+            <CareerForm
+            updateState={this.updateState} />
             }
         </div>
          )
