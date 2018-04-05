@@ -20,20 +20,19 @@ const initialState = {
 };
 
 
-//const variables
 
 
-
+////////  the reason i make these strings into const variables is to take advantage of auto-complete
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const ADD_WORK_HISTORY_ITEM = "ADD_WORK_HISTORY_ITEM";
 const DELETE_WORK_HISTORY_ITEM = "DELETE_WORK_HISTORY_ITEM";
+const HANDLE_CHANGE = "HANDLE_CHANGE";
 
 
 
 
 
-
- //action creators
+ //action creators/// functions that i can export and call in my individual components
 
 // export function getUserInfo() {
 //   const userData = axios.get("/auth/me").then(res => {
@@ -87,9 +86,12 @@ export function getWorkHistory() {
 } ///// i think this will work
 
 
-// handleChange(e) {
-//   this.setState({ [e.target.name]: e.target.value });
-// }  generic handle change change state to userinput
+export function handleChange(e) {
+ return {
+   type: HANDLE_CHANGE,
+   payload: { [e.target.name]: e.target.value }
+ }
+} 
 
 
 
@@ -107,6 +109,8 @@ export default function reducer(state = initialState, action) {
       case DELETE_WORK_HISTORY_ITEM:
       return Object.assign({}, state, { workHistoryItems: action.payload });
 
+      case HANDLE_CHANGE:
+      return Object.assign({}, state, {?????????: action.payload})
 
     default:
       return state;
