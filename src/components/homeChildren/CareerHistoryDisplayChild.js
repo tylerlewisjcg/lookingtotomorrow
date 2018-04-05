@@ -7,6 +7,7 @@ class CareerHistoryDisplayChild extends Component {
            
          }
     }
+    
     componentDidMount(){ 
         axios.get( '/api/get_work_history' )
         .then( response => {

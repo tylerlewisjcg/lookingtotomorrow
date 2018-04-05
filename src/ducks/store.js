@@ -1,11 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
-import userReducer from './ducks/userReducer';
+import reducers from './mainReducer';
 import promiseMiddleware from "redux-promise-middleware";
 
 const middleware = applyMiddleware(promiseMiddleware());
 
-export default createStore(userReducer, middleware);
+export default createStore(reducers, middleware);
 
 
 
-///how do i import multiple reducers
