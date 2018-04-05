@@ -15,11 +15,9 @@ const initialState = {
   job_responsibilities: "",
   notable_achievements: "",
   salary: 0,
-  addNewButtonIsPressed: false,
-  editButtonIsPressed: false
+  addNewButtonIsPressed: false, //// do i need to put this back in local state and just call 2 methods with my onClick?
+  editButtonIsPressed: false //// do i need to put this back in local state and just call 2 methods with my onClick?
 };
-
-//////need to bring in every damn method on my page and every damn piece of state////
 
 
 //const variables
@@ -37,35 +35,61 @@ const DELETE_WORK_HISTORY_ITEM = "DELETE_WORK_HISTORY_ITEM";
 
  //action creators
 
-export function getUserInfo() {
-  const userData = axios.get("/auth/me").then(res => {
-    return res.data;
-  });
+// export function getUserInfo() {
+//   const userData = axios.get("/auth/me").then(res => {
+//     return res.data;
+//   });
 
-  return {
-    type: UPDATE_USER_INFO,
-    payload: userData
-  };
-}
+//   return {
+//     type: UPDATE_USER_INFO,
+//     payload: userData
+//   };
+// }
 
 
 export function handleAddNewWorkHistory() {
   return { 
-    type: ADD_WORK_HISTORY_ITEM
+    type: ADD_WORK_HISTORY_ITEM,
+    payload: ////?????????    company: this.state.company,
+    // job_title: this.state.job_title,
+    // start_date: this.state.start_date,
+    // end_date: this.state.end_date,
+    // job_responsibilities: this.state.job_responsibilities,
+    // notable_achievements: this.state.notable_achievements,
+    // salary: this.state.salary
+    //// need to add a case statement to reducer function for this
   };
 }
 
 
-export function deleteWorkHistoryItem( id ) {
-  const item = axios.delete( `/api/delete_work_history_item/${id}` )
-      .then( () => {
-          this.getWorkHistory()
-      })
-      return {
-        type: DELETE_WORK_HISTORY_ITEM,
-        payload: item
-      }
-}
+
+
+// export function deleteWorkHistoryItem( id ) {
+//   const item = axios.delete( `/api/delete_work_history_item/${id}` )
+//       .then( () => {
+//           this.getWorkHistory()
+//       })
+//       return {
+//         type: DELETE_WORK_HISTORY_ITEM,
+//         payload: item
+//       }
+// }   
+
+
+export function getWorkHistory() {
+  axios.get( '/api/get_work_history' )
+      .then( response => {
+          console.log( response.data );
+          this.setState({
+              jobs: response.data
+          });
+      } );
+} ///// i think this will work
+
+
+// handleChange(e) {
+//   this.setState({ [e.target.name]: e.target.value });
+// }  generic handle change change state to userinput
 
 
 
