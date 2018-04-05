@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from './../Navbar';
-import SkillsWorkingOn from './currentGoalsChildren/SkillsWorkingOn';
-import CurrentSkills from './currentGoalsChildren/CurrentSkills';
+import Navbar from './../Navbar/Navbar';
+import SkillsWorkingOn from './SkillsWorkingOn';
+import CurrentSkills from './CurrentSkills';
 class CurrentGoals extends Component {
     constructor(props) {
         super(props);

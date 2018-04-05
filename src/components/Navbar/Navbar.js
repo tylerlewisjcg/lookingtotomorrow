@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo } from './../ducks/userReducer';
+import { getUserInfo } from './../../ducks/userReducer';
 
 class Navbar extends Component {
     constructor(props) {

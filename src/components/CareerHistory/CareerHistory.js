@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Navbar from "./../Navbar";
-import CareerHistoryDisplayChild from "./CareerHistoryDisplayChild";
-import CareerForm from './currentGoalsChildren/CareerForm';
+import Navbar from './../Navbar/Navbar';
+import CareerHistoryDisplayChild from './CareerHistoryDisplayChild'
+import CareerForm from './CareerForm';
 
 class CareerHistory extends Component {
   constructor(props) {

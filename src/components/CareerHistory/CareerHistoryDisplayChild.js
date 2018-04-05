@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CareerForm from './currentGoalsChildren/CareerForm';
+import CareerForm from './CareerForm';
 class CareerHistoryDisplayChild extends Component {
     constructor(props) {
         super(props);
