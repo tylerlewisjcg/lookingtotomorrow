@@ -30,7 +30,7 @@ renderWorkHistoryItems(){
   return this.props.workHistoryItems.map(job => {
     return <CareerHistoryDisplayChild 
     job ={job}
-    key={job.id}
+    key={job.work_id}
     />;
   });
 }

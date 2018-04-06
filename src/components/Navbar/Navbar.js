@@ -32,9 +32,7 @@ class Navbar extends Component {
     
         return (
           <div>
-           hello
             {userDataJSX}
-      
           </div>
         );
       }

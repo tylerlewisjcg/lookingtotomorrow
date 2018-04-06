@@ -6,8 +6,8 @@ values
 
 
 
---insert into
---work_history
---(company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary, id)
---values
---('devMountain', 'student', '2018-02-26', '2018-05-25', 'learn to code', 'none yet', 0, '1');
+--   insert into
+--   work_history
+--   (company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary, id)
+--   values
+--   ('devMountain', 'student', '2018-02-26', '2018-05-25', 'learn to code', 'none yet', 0, '1');

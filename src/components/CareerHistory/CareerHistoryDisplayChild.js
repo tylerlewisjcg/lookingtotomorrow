@@ -27,17 +27,28 @@ class CareerHistoryDisplayChild extends Component {
 
            
         <div>
+            {!this.state.editButtonIsPressed ? (
+                <div>
             <button onClick={()=> this.updateState()}>Edit</button>
             <button onClick={()=>this.props.deleteWorkHistory(this.props.job.work_id)}>Delete</button>
 
        
-            <p>{this.props.job.company}</p>
-            <p>{this.props.job.start_date}</p>
-            <p>{this.props.job.end_date}</p>
-            <p>{this.props.job.salary}</p>
-            <p>{this.props.job.job_title}</p>
-            <p>{this.props.job.job_responsibilities}</p>
-            <p>{this.props.job.notable_achievements}</p>
+            <p>Company: {this.props.job.company}</p>
+            <p>Start Date: {this.props.job.start_date}</p>
+            <p>End Date: {this.props.job.end_date}</p>
+            <p>Salary ${this.props.job.salary}</p>
+            <p>Job Title: {this.props.job.job_title}</p>
+            <p>Job Responsibilities: {this.props.job.job_responsibilities}</p>
+            <p>Notable Achievements: {this.props.job.notable_achievements}</p>
+           </div> ): 
+            <CareerForm
+            updateState={this.updateState}
+            job={this.props.job}
+            />
+        
+        
+        }
+
         </div>
     
 
