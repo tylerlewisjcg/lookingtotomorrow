@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import CareerForm from './CareerForm';
-
+import {connect} from 'react-redux';
+import {deleteWorkHistory} from './../../ducks/workHistoryReducer';
 
 class CareerHistoryDisplayChild extends Component {
     constructor(props) {
@@ -15,39 +15,41 @@ class CareerHistoryDisplayChild extends Component {
         if(this.state.editButtonIsPressed === false){
         this.setState({editButtonIsPressed: true})}
         else{
-          this.setState({editButtonIsPressed:false})
+          this.setState({editButtonIsPressed: false})
         }
       }
+      
+      
+
 
     render() { 
         return ( 
-        <div>
-        
-            
-        
-            {!this.state.editButtonIsPressed ?
+
+           
         <div>
             <button onClick={()=> this.updateState()}>Edit</button>
-            <button>Delete</button>
+            <button onClick={()=>this.props.deleteWorkHistory(this.props.job.work_id)}>Delete</button>
 
-        this all needs to come from the store somehow
-            <p>company to display goes here</p>
-            <p>start date goes here</p>
-            <p>end date goes here</p>
-            <p>salary goes here</p>
-            <p>job title goes here</p>
-            <p>job responsibilities go here</p>
-            <p>notable achievements go here</p>
-        </div>: 
+       
+            <p>{this.props.job.company}</p>
+            <p>{this.props.job.start_date}</p>
+            <p>{this.props.job.end_date}</p>
+            <p>{this.props.job.salary}</p>
+            <p>{this.props.job.job_title}</p>
+            <p>{this.props.job.job_responsibilities}</p>
+            <p>{this.props.job.notable_achievements}</p>
+        </div>
     
 
-        
-            <CareerForm
-            updateState={this.updateState} />
-            }
-        </div>
+    
          )
     }
 }
- 
-export default CareerHistoryDisplayChild;
+
+function mapStateToProps(state){
+    return {
+        workHistoryItems: state.workHistory.workHistoryItems
+    }
+  } 
+  
+  export default connect(mapStateToProps, {deleteWorkHistory})(CareerHistoryDisplayChild);

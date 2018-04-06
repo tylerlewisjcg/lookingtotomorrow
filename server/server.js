@@ -89,6 +89,28 @@ app.get("/auth/me", function(req, res) {
   }
 });
 
+// work_history endpoints
+
+app.get("/api/get_work_history", function(req, res) {
+  
+app.get('db').work_history_DB.select_users_work_history([req.session.passport.user])
+.then(response => {res.status(200).send(response)
+  })
+.catch(err => console.log(err))
+});
+
+
+app.delete( '/api/delete_work_history/:id', ( req, res ) => {
+  console.log(req.params.id)
+  app.get('db').work_history_DB.delete_work_history(req.params.id)
+      .then( response => res.status(200).send(response) )
+      .catch(err => console.log(err))
+} )
+
+
+
+
+
 app.get("/auth/logout", (req, res) => {
   req.logOut();
   res.redirect("http://localhost:3000/#");

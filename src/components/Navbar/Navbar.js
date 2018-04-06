@@ -41,7 +41,7 @@ class Navbar extends Component {
 }
 function mapStateToProps(state){
     return {
-      user: state.user
+      user: state.users.user
     }
   } 
   
