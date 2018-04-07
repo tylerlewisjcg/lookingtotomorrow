@@ -23,10 +23,7 @@ function getWorkHistoryTheSecond(){
         .then( response => {
          return response.data
           });
-            return {
-              type: GET_WORK_HISTORY,
-              payload: workData
-            }
+
 }
 
 export function getWorkHistory() {
@@ -42,13 +39,13 @@ export function getWorkHistory() {
 
 export function deleteWorkHistory( id ) {
   console.log('reducer connected correctly');
-    const workData = axios.delete( `/api/delete_work_history/${id}` )
+    const deleteData = axios.delete( `/api/delete_work_history/${id}` )
     .then( response => {
       return response.data
        });
          return {
            type: GET_WORK_HISTORY,
-           payload: workData
+           payload: deleteData
          }
 }
 

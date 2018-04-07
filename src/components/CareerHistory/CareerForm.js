@@ -84,10 +84,6 @@ console.log('this function needs to somehow be on my reducer editing global stat
         )
     }
 }
- 
-function mapStateToProps(state){
-  workHistoryItems: state.workHistory.workHistoryItems  
-}
 
-export default connect(mapStateToProps) (CareerForm);
+export default CareerForm;
  

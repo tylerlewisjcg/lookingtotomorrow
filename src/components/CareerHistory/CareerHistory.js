@@ -25,6 +25,9 @@ updateState(){
 componentDidMount(){
  this.props.getWorkHistory();
 }
+componentDidUpdate(){
+  this.props.getWorkHistory();
+}
   
 renderWorkHistoryItems(){
   return this.props.workHistoryItems.map(job => {
