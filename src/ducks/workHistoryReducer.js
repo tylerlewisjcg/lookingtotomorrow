@@ -34,9 +34,20 @@ const EDIT_WORK_HISTORY = "EDIT_WORK_HISTORY";
 // then i need my endpoint to send the response back to the reducer axios request function 
 // then i need to re-render the updated information 
 /// 
+///// reducer function created/ unknown if working
+//// endpoint created and working with postman
+//// handle change inputs not setup in CareerForm component and not influencing state in workHistoryReducer
+//// editWorkHistory function not passed down to CareerHistoryDisplayChild component to be called
+////
+////
 
-// call it in my component 
-//and setup the endpoint to receive request
+///// trying to get handleChange to actually change values in the reducer state
+export function handleChange(e) {
+  console.log(
+    "this function needs to somehow be on my reducer editing global state to the value of the inputs of each form input box"
+  );
+}
+
 export function editWorkHistory( id, newCompany, newJobTitle, newStartDate, newEndDate, newJobResponsibilities, newNotableAchievements, newSalary ) {
   let body = {
       company: newCompany,

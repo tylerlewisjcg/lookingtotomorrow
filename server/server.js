@@ -109,7 +109,6 @@ app.delete("/api/delete_work_history/:id", (req, res) => {
     .get("db")
     .work_history_DB.delete_work_history(req.params.id)
     .then(response => res.status(200).send(response))
-    /////this is returning the deleted item, not the object of remaining items//// don't know how to fix that
     .catch(err => console.log(err));
 });
 
@@ -128,7 +127,7 @@ app.put("/api/edit_work_history/:id", (req, res) => {
       notable_achievements,
       salary
     ])
-    .then(()=> res.status(200).send())
+    .then(response => res.status(200).send(response))
     .catch(err=> console.log(err))
 });
 
