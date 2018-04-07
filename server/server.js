@@ -20,12 +20,12 @@ const app = express();
 
 app.use(bodyParser.json());
 
-massive(CONNECTION_STRING).then(db => {
-  app.set("db", db)
-  console.log('Database Connection Established');
-})
-.catch(err => console.log(err));
-
+massive(CONNECTION_STRING)
+  .then(db => {
+    app.set("db", db);
+    console.log("Database Connection Established");
+  })
+  .catch(err => console.log(err));
 
 app.use(
   session({
@@ -47,18 +47,18 @@ passport.use(
       scope: "openid profile"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-
       const db = app.get("db");
       db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
-          db.users_DB.create_user([profile.displayName, profile.id, profile.picture])
+          db.users_DB
+            .create_user([profile.displayName, profile.id, profile.picture])
             .then(createdUser => {
               return done(null, createdUser[0].id);
             });
         } else {
           return done(null, userResult[0].id);
         }
-      })
+      });
     }
   )
 );
@@ -67,7 +67,9 @@ passport.serializeUser((id, done) => {
   done(null, id);
 });
 passport.deserializeUser((id, done) => {
-  app.get("db").users_DB.find_session_user([id])
+  app
+    .get("db")
+    .users_DB.find_session_user([id])
     .then(loggedInUser => {
       done(null, loggedInUser[0]);
     });
@@ -92,25 +94,43 @@ app.get("/auth/me", function(req, res) {
 // work_history endpoints
 
 app.get("/api/get_work_history", function(req, res) {
-  
-app.get('db').work_history_DB.select_users_work_history([req.session.passport.user])
-.then(response => {res.status(200).send(response)
-  })
-.catch(err => console.log(err))
+  app
+    .get("db")
+    .work_history_DB.select_users_work_history([req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => console.log(err));
 });
 
+app.delete("/api/delete_work_history/:id", (req, res) => {
+  console.log(req.params.id);
+  app
+    .get("db")
+    .work_history_DB.delete_work_history(req.params.id)
+    .then(response => res.status(200).send(response))
+    /////this is returning the deleted item, not the object of remaining items//// don't know how to fix that
+    .catch(err => console.log(err));
+});
 
-app.delete( '/api/delete_work_history/:id', ( req, res ) => {
-  console.log(req.params.id)
-  app.get('db').work_history_DB.delete_work_history(req.params.id)
-      .then( response => res.status(200).send(response))
-     /////this is returning the deleted item, not the object of remaining items//// don't know how to fix that
-      .catch(err => console.log(err))
-} )
-
-
-
-
+app.put("/api/edit_work_history/:id", (req, res) => {
+  const {company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary} = req.body
+  const {id} = req.params
+  app
+    .get("db")
+    .work_history_DB.edit_work_history([
+      id,
+      company,
+      job_title,
+      start_date,
+      end_date,
+      job_responsibilities,
+      notable_achievements,
+      salary
+    ])
+    .then(()=> res.status(200).send())
+    .catch(err=> console.log(err))
+});
 
 app.get("/auth/logout", (req, res) => {
   req.logOut();
