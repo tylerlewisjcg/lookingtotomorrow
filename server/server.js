@@ -103,7 +103,8 @@ app.get('db').work_history_DB.select_users_work_history([req.session.passport.us
 app.delete( '/api/delete_work_history/:id', ( req, res ) => {
   console.log(req.params.id)
   app.get('db').work_history_DB.delete_work_history(req.params.id)
-      .then( response => res.status(200).send(response) )
+      .then( response => res.status(200).send(response))
+     /////this is returning the deleted item, not the object of remaining items//// don't know how to fix that
       .catch(err => console.log(err))
 } )
 

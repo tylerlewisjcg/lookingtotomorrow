@@ -42,15 +42,15 @@ export function getWorkHistory() {
 
 export function deleteWorkHistory( id ) {
   console.log('reducer connected correctly');
-    const deleteData = axios.delete( `/api/delete_work_history/${id}` )
-            .then( () => {
-              getWorkHistoryTheSecond()
-            })
-            return {
-              type: DELETE_WORK_HISTORY,
-              payload: deleteData 
-            }
-    }
+    const workData = axios.delete( `/api/delete_work_history/${id}` )
+    .then( response => {
+      return response.data
+       });
+         return {
+           type: GET_WORK_HISTORY,
+           payload: workData
+         }
+}
 
    
 export default function reducer(state = initialState, action) {
