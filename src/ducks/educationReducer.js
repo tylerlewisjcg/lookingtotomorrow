@@ -1,12 +1,4 @@
 import axios from "axios";
-////// done with educationForm/ education
-
-
-//// need to do
-/// education reducer
-/// education display child
-//// education endpoints
-//// combine reducers in main reducer
 
 const initialState = {
   educationItems: [],
@@ -30,6 +22,7 @@ const CERTIFICATION_TYPE_CHANGE = "CERTIFICATION_TYPE_CHANGE";
 const ADD_EDUCATION_HISTORY = "ADD_EDUCATION_HISTORY";
 
 export function handleInstitutionChange(e) {
+
   let newInstitutionTemp = e.target.value;
   return {
     type: INSTITUTION_CHANGE,
@@ -37,6 +30,7 @@ export function handleInstitutionChange(e) {
   };
 }
 export function handleStartDateChange(e) {
+
   let newStartDateTemp = e.target.value;
   return {
     type: START_DATE_CHANGE,
@@ -44,6 +38,7 @@ export function handleStartDateChange(e) {
   };
 }
 export function handleEndDateChange(e) {
+
   let newEndDateTemp = e.target.value;
   return {
     type: END_DATE_CHANGE,
@@ -58,6 +53,7 @@ export function handleFieldOfStudyChange(e) {
   };
 }
 export function handleAccomplishmentsChange(e) {
+  
   let newAccomplishmentsTemp = e.target.value;
   return {
     type: ACCOMPLISHMENTS_CHANGE,
@@ -67,6 +63,8 @@ export function handleAccomplishmentsChange(e) {
 
 
 export function handleCertificationTypeChange(e) {
+
+  
   let newCertificationTypeTemp = e.target.value;
   return {
     type: CERTIFICATION_TYPE_CHANGE,
@@ -80,16 +78,16 @@ export function editEducationHistory(
   certification_type,
   start_date,
   end_date,
-  accomplishments,
-  field_of_study
+  field_of_study,
+  accomplishments
 ) {
   let body = {
     institution: institution,
     certification_type: certification_type,
     start_date: start_date,
     end_date: end_date,
-    accomplishments: accomplishments,
-    field_of_study: field_of_study
+    field_of_study: field_of_study,
+    accomplishments: accomplishments    
   };
   const editData = axios
     .put(`/api/edit_education_history/${id}`, body)
