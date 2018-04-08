@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import Navbar from './../Navbar/Navbar';
-import CareerHistoryDisplayChild from './CareerHistoryDisplayChild';
-import CareerForm from './CareerForm';
-import { getWorkHistory } from './../../ducks/workHistoryReducer';
+import { connect } from "react-redux";
+import Navbar from "./../Navbar/Navbar";
+import CareerHistoryDisplayChild from "./CareerHistoryDisplayChild";
+import CareerForm from "./CareerForm";
+import { getWorkHistory } from "./../../ducks/workHistoryReducer";
 
 class CareerHistory extends Component {
   constructor(props) {
@@ -14,61 +14,49 @@ class CareerHistory extends Component {
     this.updateState = this.updateState.bind(this);
   }
 
-updateState(){
-  
-  if(this.state.addNewButtonIsPressed === false){
-  this.setState({addNewButtonIsPressed: true})}
-  else{
-    this.setState({addNewButtonIsPressed:false})
+  updateState() {
+    if (this.state.addNewButtonIsPressed === false) {
+      this.setState({ addNewButtonIsPressed: true });
+    } else {
+      this.setState({ addNewButtonIsPressed: false });
+    }
   }
-}
-componentDidMount(){
- this.props.getWorkHistory();
-}
-componentDidUpdate(){
-  this.props.getWorkHistory();
-}
-  
-renderWorkHistoryItems(){
-  return this.props.workHistoryItems.map(job => {
-    return <CareerHistoryDisplayChild 
-    job ={job}
-    key={job.work_id}
-    />;
-  });
-}
-  render() {    
+  componentDidMount() {
+    this.props.getWorkHistory();
+  }
+  componentDidUpdate() {
+    this.props.getWorkHistory();
+  }
 
+  renderWorkHistoryItems() {
+    return this.props.workHistoryItems.map(job => {
+      return <CareerHistoryDisplayChild job={job} key={job.work_id} />;
+    });
+  }
+  render() {
     return (
       <div>
         <Navbar />
         <h1>Career History</h1>
-   
-      <div>{this.renderWorkHistoryItems()}</div> 
 
-
-
+        <div>{this.renderWorkHistoryItems()}</div>
 
         {!this.state.addNewButtonIsPressed ? (
-          <button
-            onClick={() => this.updateState()}
-          >
+          <button onClick={() => this.updateState()}>
             Add New Work History
           </button>
         ) : (
-          <CareerForm
-        updateState={this.updateState}
-          />
+          <CareerForm updateState={this.updateState} />
         )}
       </div>
     );
   }
 }
 
-function mapStateToProps( state ) {
-return {
-  workHistoryItems: state.workHistory.workHistoryItems
-}
+function mapStateToProps(state) {
+  return {
+    workHistoryItems: state.workHistory.workHistoryItems
+  };
 }
 
-export default connect(mapStateToProps, {getWorkHistory}) (CareerHistory)
+export default connect(mapStateToProps, { getWorkHistory })(CareerHistory);

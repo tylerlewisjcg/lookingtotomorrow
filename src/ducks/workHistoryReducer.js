@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// initialize state
-
 const initialState = {
   workHistoryItems: [],
   company: "",
@@ -12,9 +10,7 @@ const initialState = {
   notable_achievements: "",
   salary: 0
 };
-//// my edit functionality only works sporadically/
-/// will not work on the most recently change item// will not work if you have any fields that used auto-complete.
-// also my display is rendering them out of order for some reason.
+
 const GET_WORK_HISTORY = "GET_WORK_HISTORY";
 const DELETE_WORK_HISTORY = "DELETE_WORK_HISTORY";
 const EDIT_WORK_HISTORY = "EDIT_WORK_HISTORY";
@@ -118,7 +114,6 @@ export function addWorkHistory(
   notable_achievements,
   salary
 ) {
-  console.log("hello");
   let body = {
     company: company,
     job_title: job_title,
@@ -148,7 +143,6 @@ export function getWorkHistory() {
 }
 
 export function deleteWorkHistory(id) {
-  console.log("reducer connected correctly");
   const deleteData = axios
     .delete(`/api/delete_work_history/${id}`)
     .then(response => {

@@ -112,8 +112,16 @@ app.delete("/api/delete_work_history/:id", (req, res) => {
 });
 
 app.put("/api/edit_work_history/:id", (req, res) => {
-  const {company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary} = req.body
-  const {id} = req.params
+  const {
+    company,
+    job_title,
+    start_date,
+    end_date,
+    job_responsibilities,
+    notable_achievements,
+    salary
+  } = req.body;
+  const { id } = req.params;
   app
     .get("db")
     .work_history_DB.edit_work_history([
@@ -127,11 +135,19 @@ app.put("/api/edit_work_history/:id", (req, res) => {
       salary
     ])
     .then(response => res.status(200).send(response))
-    .catch(err=> console.log(err))
+    .catch(err => console.log(err));
 });
 
 app.post("/api/add_work_history", (req, res) => {
-  const {company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary} = req.body
+  const {
+    company,
+    job_title,
+    start_date,
+    end_date,
+    job_responsibilities,
+    notable_achievements,
+    salary
+  } = req.body;
   app
     .get("db")
     .work_history_DB.create_new_work_history([
@@ -145,10 +161,12 @@ app.post("/api/add_work_history", (req, res) => {
       req.session.passport.user
     ])
     .then(response => res.status(200).send(response))
-    .catch(err=> console.log(err))
+    .catch(err => console.log(err));
 });
-///// my add endpoint isn't working all the way
 
+
+
+/// Logout Endpoint
 app.get("/auth/logout", (req, res) => {
   req.logOut();
   res.redirect("http://localhost:3000/#");
