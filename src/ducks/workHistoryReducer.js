@@ -149,7 +149,7 @@ export function deleteWorkHistory(id) {
       return response.data;
     });
   return {
-    type: GET_WORK_HISTORY,
+    type: DELETE_WORK_HISTORY,
     payload: deleteData
   };
 }

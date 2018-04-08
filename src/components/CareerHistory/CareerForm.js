@@ -132,7 +132,6 @@ export default connect(mapStateToProps, {
   handleEndDateChange,
   handleJobResponsibilitiesChange,
   handleJobTitleChange,
-  handleJobTitleChange,
   handleNotableAchievementsChange,
   handleSalaryChange,
   handleStartDateChange,
