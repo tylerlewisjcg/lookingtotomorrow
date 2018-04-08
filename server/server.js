@@ -166,6 +166,83 @@ app.post("/api/add_work_history", (req, res) => {
 
 
 
+
+
+
+
+
+// Education Endpoints
+
+app.get("/api/get_education_history", function(req, res) {
+  app
+    .get("db")
+    .education_DB.select_users_education([req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => console.log(err));
+});
+
+app.delete("/api/delete_education_history/:id", (req, res) => {
+  app
+    .get("db")
+    .education_DB.delete_education(req.params.id)
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+app.put("/api/edit_education_history/:id", (req, res) => {
+  const {
+    institution,
+    certification_type,
+    start_date,
+    end_date,
+    field_of_study,
+    accomplishments
+  } = req.body;
+  const { id } = req.params;
+  app
+    .get("db")
+    .education_DB.edit_education([
+      id,
+      institution,
+      certification_type,
+      start_date,
+      end_date,
+      field_of_study,
+      accomplishments
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+app.post("/api/add_education_history", (req, res) => {
+  const {
+    institution,
+    certification_type,
+    start_date,
+    end_date,
+    field_of_study,
+    accomplishments
+  } = req.body;
+  app
+    .get("db")
+    .education_DB.create_new_education([
+      institution,
+      certification_type,
+      start_date,
+      end_date,
+      field_of_study,
+      accomplishments,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+
+
+
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {
   req.logOut();
