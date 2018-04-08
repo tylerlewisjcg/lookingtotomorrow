@@ -51,7 +51,7 @@ class Education extends Component {
 
 function mapStateToProps(state) {
     return {
-      educationItems: state.workHistory.educationItems
+      educationItems: state.education.educationItems
     };
   }
   

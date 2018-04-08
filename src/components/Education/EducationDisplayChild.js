@@ -3,7 +3,7 @@ import EducationForm from "./EducationForm";
 import { connect } from "react-redux";
 import { deleteEducationHistory } from "./../../ducks/educationReducer";
 import moment from 'moment';
-class CareerHistoryDisplayChild extends Component {
+class EducationDisplayChild extends Component {
   constructor(props) {
     super(props);
     this.state = {

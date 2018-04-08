@@ -1,3 +1,4 @@
 SELECT *
 from users
-JOIN skills ON skills.id = users.id;
+JOIN skills ON skills.id = users.id
+WHERE users.id = $1;

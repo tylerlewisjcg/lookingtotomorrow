@@ -192,6 +192,7 @@ app.delete("/api/delete_education_history/:id", (req, res) => {
 });
 
 app.put("/api/edit_education_history/:id", (req, res) => {
+  console.log(req.body)
   const {
     institution,
     certification_type,
@@ -204,13 +205,13 @@ app.put("/api/edit_education_history/:id", (req, res) => {
   app
     .get("db")
     .education_DB.edit_education([
-      id,
       institution,
       certification_type,
       start_date,
       end_date,
       field_of_study,
-      accomplishments
+      accomplishments,
+      id
     ])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));

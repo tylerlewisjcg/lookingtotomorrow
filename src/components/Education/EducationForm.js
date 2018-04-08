@@ -44,7 +44,7 @@ class EducationForm extends Component {
                       this.props.certification_type,
                       this.props.start_date,
                       this.props.end_date,
-                
+
                       this.props.accomplishments,
                       this.props.field_of_study
                     );
@@ -94,8 +94,6 @@ class EducationForm extends Component {
              placeholder={!!this.props.eduItem ? this.props.eduItem.accomplishments : ""}
              onChange={e => this.props.handleAccomplishmentsChange(e)}/>
           
-            <br/>
-            <button>Submit</button>
         </form>
     );
   }
