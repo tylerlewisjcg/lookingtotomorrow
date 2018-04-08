@@ -6,5 +6,4 @@ UPDATE work_history
         job_responsibilities = $6,
         notable_achievements = $7,
         salary = $8
-            WHERE work_id = $1
-            RETURNING *;
+            WHERE work_id = $1;

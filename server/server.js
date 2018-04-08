@@ -104,7 +104,6 @@ app.get("/api/get_work_history", function(req, res) {
 });
 
 app.delete("/api/delete_work_history/:id", (req, res) => {
-  console.log(req.params.id);
   app
     .get("db")
     .work_history_DB.delete_work_history(req.params.id)
@@ -130,6 +129,25 @@ app.put("/api/edit_work_history/:id", (req, res) => {
     .then(response => res.status(200).send(response))
     .catch(err=> console.log(err))
 });
+
+app.post("/api/add_work_history", (req, res) => {
+  const {company, job_title, start_date, end_date, job_responsibilities, notable_achievements, salary} = req.body
+  app
+    .get("db")
+    .work_history_DB.create_new_work_history([
+      company,
+      job_title,
+      start_date,
+      end_date,
+      job_responsibilities,
+      notable_achievements,
+      salary,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err=> console.log(err))
+});
+///// my add endpoint isn't working all the way
 
 app.get("/auth/logout", (req, res) => {
   req.logOut();
