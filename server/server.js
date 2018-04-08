@@ -54,7 +54,7 @@ passport.use(
             .create_user([profile.displayName, profile.id, profile.picture])
             .then(createdUser => {
               return done(null, createdUser[0].id);
-            });
+            }).catch(err=>console.log(err))
         } else {
           return done(null, userResult[0].id);
         }
@@ -72,7 +72,8 @@ passport.deserializeUser((id, done) => {
     .users_DB.find_session_user([id])
     .then(loggedInUser => {
       done(null, loggedInUser[0]);
-    });
+    })
+    .catch(err=> console.log(err))
 });
 //// Auth0 Endpoints
 app.get("/auth", passport.authenticate("auth0"));
@@ -90,7 +91,6 @@ app.get("/auth/me", function(req, res) {
     res.status(200).send(req.user);
   }
 });
-
 // work_history endpoints
 
 app.get("/api/get_work_history", function(req, res) {

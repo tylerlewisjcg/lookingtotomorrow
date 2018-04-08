@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CareerForm from "./CareerForm";
 import { connect } from "react-redux";
 import { deleteWorkHistory } from "./../../ducks/workHistoryReducer";
-
+import moment from 'moment';
 class CareerHistoryDisplayChild extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +34,8 @@ class CareerHistoryDisplayChild extends Component {
             </button>
 
             <p>Company: {this.props.job.company}</p>
-            <p>Start Date: {this.props.job.start_date}</p>
-            <p>End Date: {this.props.job.end_date}</p>
+            <p>Start Date: {moment(this.props.job.start_date).format('MMM DD, YYYY')}</p>
+            <p>End Date: {moment(this.props.job.end_date).format('MMM DD, YYYY ')}</p>
             <p>Salary ${this.props.job.salary}</p>
             <p>Job Title: {this.props.job.job_title}</p>
             <p>Job Responsibilities: {this.props.job.job_responsibilities}</p>

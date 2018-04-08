@@ -80,6 +80,7 @@ class CareerForm extends Component {
         <br />
         <span>Salary</span>
         <input
+          type="number"
           name="salary"
           placeholder={!!this.props.job ? this.props.job.salary : ""}
           onChange={e => this.props.handleSalaryChange(e)}
