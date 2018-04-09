@@ -24,8 +24,8 @@ handleEditWorkHistorySubmit(){
     this.props.job.work_id,
     this.props.company,
     this.props.job_title,
-    this.props.start_date,
-    this.props.end_date,
+    moment(this.props.start_date).toISOString(),
+    moment(this.props.end_date).toISOString(),
     this.props.job_responsibilities,
     this.props.notable_achievements,
     this.props.salary
@@ -34,11 +34,14 @@ handleEditWorkHistorySubmit(){
 }
 
 handleAddWorkHistorySubmit(){
+  console.log(moment(this.props.start_date).toISOString());
+  console.log(moment(this.props.end_date).toISOString());
+  
   this.props.addWorkHistory(
     this.props.company,
     this.props.job_title,
-    this.props.start_date,
-    this.props.end_date,
+    moment(this.props.start_date).toISOString(),
+    moment(this.props.end_date).toISOString(),
     this.props.job_responsibilities,
     this.props.notable_achievements,
     this.props.salary
@@ -78,7 +81,7 @@ handleAddWorkHistorySubmit(){
         <input
           type="date"
           name="start_date"
-          defaultValue={!!this.props.job ? this.props.job.start_date: ""}
+          defaultValue={!!this.props.job ? moment(this.props.job.start_date).format("YYYY-MM-DD"): ""}
           onChange={e => this.props.handleStartDateChange(e)}
         />
         <br />
@@ -86,7 +89,7 @@ handleAddWorkHistorySubmit(){
         <input
           type="date"
           name="end_date"
-          defaultValue={!!this.props.job ?this.props.job.end_date: ""}
+          defaultValue={!!this.props.job ? moment(this.props.job.end_date).format("YYYY-MM-DD"): ""}
           onChange={e => this.props.handleEndDateChange(e)}
         />
         <br />

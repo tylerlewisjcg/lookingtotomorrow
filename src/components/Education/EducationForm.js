@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import moment from 'moment';
 import {
   handleInstitutionChange,
   handleEndDateChange,
@@ -20,8 +21,8 @@ handleEditEducationHistorySubmit(){
     this.props.eduItem.education_id,
     this.props.institution,
     this.props.certification_type,
-    this.props.start_date,
-    this.props.end_date,
+    moment(this.props.start_date).toISOString(),
+    moment(this.props.end_date).toISOString(),
     this.props.field_of_study,
     this.props.accomplishments
   );
@@ -32,8 +33,8 @@ handleAddEducationHistorySubmit(){
   this.props.addEducationHistory(
     this.props.institution,
     this.props.certification_type,
-    this.props.start_date,
-    this.props.end_date,
+    moment(this.props.start_date).toISOString(),
+    moment(this.props.end_date).toISOString(),
     this.props.field_of_study,
     this.props.accomplishments
   );
@@ -72,14 +73,12 @@ handleAddEducationHistorySubmit(){
           }
         />
         <br />
-
-        {/* using moment.js to autofill my dates is causing my request not to send to my endpoints for some reason? */}
         <span>Start Date</span>
         <input
           type="date"
           name="start_date"
           defaultValue={
-            !!this.props.eduItem ? this.props.eduItem.start_date : ""
+            !!this.props.eduItem ? moment(this.props.eduItem.start_date).format("YYYY-MM-DD") : ""
           }
           onChange={e => this.props.handleStartDateChange(e)}
         />
@@ -88,7 +87,7 @@ handleAddEducationHistorySubmit(){
         <input
           type="date"
           name="end_date"
-          defaultValue={!!this.props.eduItem ? this.props.eduItem.end_date : ""}
+          defaultValue={!!this.props.eduItem ? moment(this.props.eduItem.end_date).format("YYYY-MM-DD") : ""}
           onChange={e => this.props.handleEndDateChange(e)}
         />
         <br />

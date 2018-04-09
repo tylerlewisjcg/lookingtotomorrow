@@ -34,8 +34,8 @@ class CareerHistoryDisplayChild extends Component {
               {moment(this.props.job.start_date).format("MMM DD, YYYY")}
             </p>
             <p>
-              End Date:{" "}
-              {moment(this.props.job.end_date).format("MMM DD, YYYY ")}
+              End Date:
+              {!!this.props.job.end_date ? moment(this.props.job.end_date).format("MMM DD, YYYY "): ""}
             </p>
             <p>Salary ${this.props.job.salary}</p>
             <p>Job Title: {this.props.job.job_title}</p>
