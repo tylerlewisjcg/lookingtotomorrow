@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import moment from "moment";
 import {
   handleInstitutionChange,
   handleEndDateChange,
@@ -16,6 +15,32 @@ class EducationForm extends Component {
     super(props);
     this.state = {};
   }
+handleEditEducationHistorySubmit(){
+  this.props.editEducationHistory(
+    this.props.eduItem.education_id,
+    this.props.institution,
+    this.props.certification_type,
+    this.props.start_date,
+    this.props.end_date,
+    this.props.field_of_study,
+    this.props.accomplishments
+  );
+    this.props.updateState()
+}
+
+handleAddEducationHistorySubmit(){
+  this.props.addEducationHistory(
+    this.props.institution,
+    this.props.certification_type,
+    this.props.start_date,
+    this.props.end_date,
+    this.props.field_of_study,
+    this.props.accomplishments
+  );
+  this.props.updateState()
+}
+
+
 
   render() {
     return (
@@ -30,23 +55,8 @@ class EducationForm extends Component {
         <button
           onClick={() => {
             !!this.props.eduItem
-              ? this.props.editEducationHistory(
-                  this.props.eduItem.education_id,
-                  this.props.institution,
-                  this.props.certification_type,
-                  this.props.start_date,
-                  this.props.end_date,
-                  this.props.field_of_study,
-                  this.props.accomplishments
-                )
-              : this.props.addEducationHistory(
-                  this.props.institution,
-                  this.props.certification_type,
-                  this.props.start_date,
-                  this.props.end_date,
-                  this.props.field_of_study,
-                  this.props.accomplishments
-                );
+              ? this.handleEditEducationHistorySubmit()
+              : this.handleAddEducationHistorySubmit()
           }}
         >
           Submit

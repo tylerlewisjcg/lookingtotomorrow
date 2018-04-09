@@ -13,11 +13,11 @@ class Education extends Component {
     };
     this.updateState = this.updateState.bind(this);
   }
-  updateState() {
-    this.setState({ addNewButtonIsPressed: !this.state.addNewButtonIsPressed });
-  }
   componentDidMount() {
     this.props.getEducationHistory();
+  }
+  updateState() {
+    this.setState({ addNewButtonIsPressed: !this.state.addNewButtonIsPressed });
   }
 
   renderEducationHistory() {
@@ -32,7 +32,6 @@ class Education extends Component {
       <div>
         <Navbar />
         <h1>Education and Training</h1>
-        {/* // {this.props.educationItems && ...more code} */}
         <div>{this.renderEducationHistory()}</div>
         {!this.state.addNewButtonIsPressed ? (
           <button onClick={() => this.updateState()}>

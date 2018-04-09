@@ -19,6 +19,34 @@ class CareerForm extends Component {
     this.state = {};
   }
 
+handleEditWorkHistorySubmit(){
+  this.props.editWorkHistory(
+    this.props.job.work_id,
+    this.props.company,
+    this.props.job_title,
+    this.props.start_date,
+    this.props.end_date,
+    this.props.job_responsibilities,
+    this.props.notable_achievements,
+    this.props.salary
+  )
+  this.props.updateState()
+}
+
+handleAddWorkHistorySubmit(){
+  this.props.addWorkHistory(
+    this.props.company,
+    this.props.job_title,
+    this.props.start_date,
+    this.props.end_date,
+    this.props.job_responsibilities,
+    this.props.notable_achievements,
+    this.props.salary
+  );
+  this.props.updateState();
+}
+
+
   render() {
     return (
       <form>
@@ -32,25 +60,8 @@ class CareerForm extends Component {
         <button
           onClick={() => {
             !!this.props.job
-              ? this.props.editWorkHistory(
-                  this.props.job.work_id,
-                  this.props.company,
-                  this.props.job_title,
-                  this.props.start_date,
-                  this.props.end_date,
-                  this.props.job_responsibilities,
-                  this.props.notable_achievements,
-                  this.props.salary
-                )
-              : this.props.addWorkHistory(
-                  this.props.company,
-                  this.props.job_title,
-                  this.props.start_date,
-                  this.props.end_date,
-                  this.props.job_responsibilities,
-                  this.props.notable_achievements,
-                  this.props.salary
-                );
+              ? this.handleEditWorkHistorySubmit()
+              : this.handleAddWorkHistorySubmit()
           }}
         >
           Submit
