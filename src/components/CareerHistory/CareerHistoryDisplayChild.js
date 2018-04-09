@@ -12,7 +12,7 @@ class CareerHistoryDisplayChild extends Component {
     this.updateState = this.updateState.bind(this);
   }
   updateState() {
-    this.setState({addNewButtonIsPressed: !this.state.addNewButtonIsPressed})
+    this.setState({editButtonIsPressed: !this.state.editButtonIsPressed})
    }
   render() {
     return (
