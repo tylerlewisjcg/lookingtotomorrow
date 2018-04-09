@@ -6,4 +6,5 @@ values
 SELECT *
 from users
 JOIN skills ON skills.id = users.id
-WHERE users.id = $6;
+WHERE users.id = $6
+ORDER BY skill_id ASC;

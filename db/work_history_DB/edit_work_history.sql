@@ -10,4 +10,5 @@ UPDATE work_history
             SELECT *
 from users
 JOIN work_history ON work_history.id = users.id
-WHERE users.id = $8;
+WHERE users.id = $8
+ORDER BY work_id ASC;

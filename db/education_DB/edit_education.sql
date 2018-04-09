@@ -9,4 +9,5 @@ UPDATE education
 SELECT *
 from users
 JOIN education ON education.id = users.id
-WHERE users.id = $8;
+WHERE users.id = $8
+ORDER BY education_id;

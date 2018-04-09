@@ -6,4 +6,5 @@ values
 SELECT *
 from users
 JOIN education ON education.id = users.id
-WHERE users.id = $7;
+WHERE users.id = $7
+ORDER BY education_id;

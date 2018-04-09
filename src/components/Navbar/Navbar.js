@@ -38,22 +38,19 @@ class Navbar extends Component {
       
       <div>
           <Link to="/home/currentgoals">
-            <p>CurrentGoals</p>
+            <button>CurrentGoals</button>
           </Link>
           <Link to="/home/education">
-            {" "}
-            <p>Education</p>
+            <button>Education</button>
           </Link>
           <Link to="/home/careerhistory">
-            <p>CareerHistory</p>
+            <button>CareerHistory</button>
           </Link>
           <Link to="/home/achievements">
-            {" "}
-            <p>Achievements</p>
+            <button>Achievements</button>
           </Link>
           <Link to="/home/motivations">
-            {" "}
-            <p>Motivations</p>
+            <button>Motivations</button>
           </Link>
         </div>
 

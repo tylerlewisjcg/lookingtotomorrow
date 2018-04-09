@@ -8,4 +8,6 @@ UPDATE motivations
             SELECT *
 from users
 JOIN motivations ON motivations.id = users.id
-WHERE users.id = $8;
+WHERE users.id = $8
+ORDER BY motivation_id ASC;
+
