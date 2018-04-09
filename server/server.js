@@ -203,7 +203,7 @@ app.delete("/api/delete_education_history/:id", (req, res) => {
 });
 
 app.put("/api/edit_education_history/:id", (req, res) => {
-
+console.log('hey there');
   const {
     institution,
     certification_type,

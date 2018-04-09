@@ -26,26 +26,7 @@ class Home extends Component {
         <Navbar />
         <CareerSnapshot />
         <AdditionalResources />
-        <div>
-          <Link to="/home/currentgoals">
-            <p>CurrentGoals</p>
-          </Link>
-          <Link to="/home/education">
-            {" "}
-            <p>Education</p>
-          </Link>
-          <Link to="/home/careerhistory">
-            <p>CareerHistory</p>
-          </Link>
-          <Link to="/home/achievements">
-            {" "}
-            <p>Achievements</p>
-          </Link>
-          <Link to="/home/motivations">
-            {" "}
-            <p>Motivations</p>
-          </Link>
-        </div>
+       
       </div>
     );
   }

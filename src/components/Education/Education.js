@@ -14,18 +14,14 @@ class Education extends Component {
          this.updateState = this.updateState.bind(this);
     }
     updateState() {
-        if (this.state.addNewButtonIsPressed === false) {
-          this.setState({ addNewButtonIsPressed: true });
-        } else {
-          this.setState({ addNewButtonIsPressed: false });
-        }
-      }
+      this.setState({addNewButtonIsPressed: !this.state.addNewButtonIsPressed})
+     }
       componentDidMount() {
         this.props.getEducationHistory();
       }
-      componentDidUpdate() {
-        this.props.getEducationHistory();
-      }
+  
+
+
       renderEducationHistory() {
         return this.props.educationItems.map(eduItem => {
           return <EducationDisplayChild eduItem={eduItem} key={eduItem.education_id} />;
@@ -35,7 +31,7 @@ class Education extends Component {
         return ( <div>
             <Navbar />
             <h1>Education and Training</h1>
-    
+            {/* // {this.props.educationItems && ...more code} */}
             <div>{this.renderEducationHistory()}</div>
             {!this.state.addNewButtonIsPressed ? (
           <button onClick={() => this.updateState()}>

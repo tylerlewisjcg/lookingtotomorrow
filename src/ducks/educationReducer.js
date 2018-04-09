@@ -25,6 +25,7 @@ export function handleInstitutionChange(e) {
 
   let newInstitutionTemp = e.target.value;
   return {
+
     type: INSTITUTION_CHANGE,
     payload: newInstitutionTemp
   };
@@ -73,6 +74,7 @@ export function handleCertificationTypeChange(e) {
 }
 
 export function editEducationHistory(
+  
   id,
   institution,
   certification_type,
@@ -81,6 +83,7 @@ export function editEducationHistory(
   field_of_study,
   accomplishments
 ) {
+  console.log('reducer running');
   let body = {
     institution: institution,
     certification_type: certification_type,
@@ -89,6 +92,7 @@ export function editEducationHistory(
     field_of_study: field_of_study,
     accomplishments: accomplishments    
   };
+  console.log(body, id);
   const editData = axios
     .put(`/api/edit_education_history/${id}`, body)
     .then(response => {
@@ -148,6 +152,7 @@ export function deleteEducationHistory(id) {
 }
 
 export default function reducer(state = initialState, action) {
+  console.log('reducer run')
   switch (action.type) {
     case GET_EDUCATION_HISTORY + "_FULFILLED":
       return Object.assign({}, state, { educationItems: action.payload });

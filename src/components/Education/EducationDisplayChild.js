@@ -37,7 +37,7 @@ class EducationDisplayChild extends Component {
             <p>Start Date: {moment(this.props.eduItem.start_date).format('MMM DD, YYYY')}</p>
             <p>End Date: {moment(this.props.eduItem.end_date).format('MMM DD, YYYY ')}</p>
             <p>Certification/Degree Type: {this.props.eduItem.certification_type}</p>
-            <p>JField of Study: {this.props.eduItem.field_of_study}</p>
+            <p>Field of Study: {this.props.eduItem.field_of_study}</p>
             <p>Accomplishments/Extra-Curricular: {this.props.eduItem.accomplishments}</p>
           </div>
         ) : (

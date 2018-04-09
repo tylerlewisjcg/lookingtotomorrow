@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserInfo } from "./../../ducks/userReducer";
+import { Link } from "react-router-dom";
+
 
 class Navbar extends Component {
   constructor(props) {
@@ -30,7 +32,32 @@ class Navbar extends Component {
       </div>
     );
 
-    return <div>{userDataJSX}</div>;
+    return <div>
+      <div>{userDataJSX}</div>
+      
+      <div>
+          <Link to="/home/currentgoals">
+            <p>CurrentGoals</p>
+          </Link>
+          <Link to="/home/education">
+            {" "}
+            <p>Education</p>
+          </Link>
+          <Link to="/home/careerhistory">
+            <p>CareerHistory</p>
+          </Link>
+          <Link to="/home/achievements">
+            {" "}
+            <p>Achievements</p>
+          </Link>
+          <Link to="/home/motivations">
+            {" "}
+            <p>Motivations</p>
+          </Link>
+        </div>
+
+      </div>
+      ;
   }
 }
 function mapStateToProps(state) {
