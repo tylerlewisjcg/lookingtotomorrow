@@ -19,6 +19,7 @@ class Navbar extends Component {
       <div>
         <h2>LookingToTomorrow.com</h2>
         <p>{user.display_name}</p>
+       <img src={user.img} height="25px" width="25px"/>
         <a href="http://localhost:3232/auth/logout">
           <button>Logout</button>
         </a>

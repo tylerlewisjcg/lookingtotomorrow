@@ -5,3 +5,7 @@ UPDATE motivations
         favorite_thing = $5,
         least_favorite_thing = $6
             WHERE motivation_id = $1;
+            SELECT *
+from users
+JOIN motivations ON motivations.id = users.id
+WHERE users.id = $8;

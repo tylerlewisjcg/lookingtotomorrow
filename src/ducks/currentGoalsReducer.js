@@ -9,12 +9,8 @@ const GET_CURRENT_SKILLS = "GET_CURRENT_SKILLS";
 const DELETE_CURRENT_SKILL = "DELETE_CURRENT_SKILL";
 const ADD_CURRENT_SKILL = "ADD_CURRENT_SKILL";
 
-
-
-
 export function getCurrentSkills() {
-  const skillData = axios.get("/api/get_current_skills")
-  .then(response => {
+  const skillData = axios.get("/api/get_current_skills").then(response => {
     return response.data;
   });
   return {
@@ -22,8 +18,6 @@ export function getCurrentSkills() {
     payload: skillData
   };
 }
-
-
 
 export function addCurrentSkill(userNewCurrentSkillInput) {
   let body = {
@@ -52,10 +46,6 @@ export function deleteCurrentSkill(id) {
   };
 }
 
-
-
-
-
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CURRENT_SKILLS + "_FULFILLED":
@@ -65,8 +55,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { currentSkills: action.payload });
 
     case DELETE_CURRENT_SKILL + "_FULFILLED":
-    return Object.assign({}, state, { currentSkills: action.payload });
-    
+      return Object.assign({}, state, { currentSkills: action.payload });
+
     default:
       return state;
   }

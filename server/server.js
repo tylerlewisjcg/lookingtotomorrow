@@ -54,7 +54,8 @@ passport.use(
             .create_user([profile.displayName, profile.id, profile.picture])
             .then(createdUser => {
               return done(null, createdUser[0].id);
-            }).catch(err=>console.log(err))
+            })
+            .catch(err => console.log(err));
         } else {
           return done(null, userResult[0].id);
         }
@@ -73,12 +74,8 @@ passport.deserializeUser((id, done) => {
     .then(loggedInUser => {
       done(null, loggedInUser[0]);
     })
-    .catch(err=> console.log(err))
+    .catch(err => console.log(err));
 });
-
-
-
-
 
 //// Auth0 Endpoints
 app.get("/auth", passport.authenticate("auth0"));
@@ -97,11 +94,6 @@ app.get("/auth/me", function(req, res) {
   }
 });
 
-
-
-
-
-
 // work_history endpoints
 
 app.get("/api/get_work_history", function(req, res) {
@@ -117,7 +109,7 @@ app.get("/api/get_work_history", function(req, res) {
 app.delete("/api/delete_work_history/:id", (req, res) => {
   app
     .get("db")
-    .work_history_DB.delete_work_history(req.params.id)
+    .work_history_DB.delete_work_history([req.params.id, req.session.passport.user])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 });
@@ -143,7 +135,8 @@ app.put("/api/edit_work_history/:id", (req, res) => {
       end_date,
       job_responsibilities,
       notable_achievements,
-      salary
+      salary,
+      req.session.passport.user
     ])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
@@ -175,13 +168,6 @@ app.post("/api/add_work_history", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
-
-
-
-
-
 // Education Endpoints
 
 app.get("/api/get_education_history", function(req, res) {
@@ -197,13 +183,12 @@ app.get("/api/get_education_history", function(req, res) {
 app.delete("/api/delete_education_history/:id", (req, res) => {
   app
     .get("db")
-    .education_DB.delete_education(req.params.id)
+    .education_DB.delete_education([req.params.id, req.session.passport.user])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 });
 
 app.put("/api/edit_education_history/:id", (req, res) => {
-console.log('hey there');
   const {
     institution,
     certification_type,
@@ -222,8 +207,8 @@ console.log('hey there');
       start_date,
       end_date,
       field_of_study,
-      accomplishments
-  
+      accomplishments,
+      req.session.passport.user
     ])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
@@ -253,14 +238,13 @@ app.post("/api/add_education_history", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
 ///  Current Skills Endpoints
 app.post("/api/add_current_skill", (req, res) => {
   app
     .get("db")
     .current_skills_DB.create_new_current_skill([
- req.body.current_skill,
- req.session.passport.user
+      req.body.current_skill,
+      req.session.passport.user
     ])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
@@ -279,11 +263,11 @@ app.get("/api/get_current_skills", function(req, res) {
 app.delete("/api/delete_current_skill/:id", (req, res) => {
   app
     .get("db")
-    .current_skills_DB.delete_current_skill(req.params.id)
-    .then(response => res.status(200).send(response))
+    .current_skills_DB.delete_current_skill([req.params.id, req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response)})
     .catch(err => console.log(err));
 });
-
 
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {

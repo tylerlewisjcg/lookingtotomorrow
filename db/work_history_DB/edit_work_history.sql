@@ -7,3 +7,7 @@ UPDATE work_history
         notable_achievements = $7,
         salary = $8
             WHERE work_id = $1;
+            SELECT *
+from users
+JOIN work_history ON work_history.id = users.id
+WHERE users.id = $8;
