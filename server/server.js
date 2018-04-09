@@ -254,6 +254,35 @@ app.post("/api/add_education_history", (req, res) => {
 });
 
 
+///  Current Skills Endpoints
+app.post("/api/add_current_skill", (req, res) => {
+  app
+    .get("db")
+    .current_skills_DB.create_new_current_skill([
+ req.body.current_skill,
+ req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+app.get("/api/get_current_skills", function(req, res) {
+  app
+    .get("db")
+    .current_skills_DB.select_users_current_skills([req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => console.log(err));
+});
+
+app.delete("/api/delete_current_skill/:id", (req, res) => {
+  app
+    .get("db")
+    .current_skills_DB.delete_current_skill(req.params.id)
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 
 /// Logout Endpoint

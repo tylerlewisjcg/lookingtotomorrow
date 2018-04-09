@@ -164,6 +164,8 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_WORK_HISTORY + "_FULFILLED":
       return Object.assign({}, state, { workHistoryItems: action.payload });
+    /// i don't have an Add_work_history case but i don't necessarily need it since the 
+    // get axios call is being called every time the page mounts and re renders
 
     case COMPANY_CHANGE:
       return Object.assign({}, state, { company: action.payload });

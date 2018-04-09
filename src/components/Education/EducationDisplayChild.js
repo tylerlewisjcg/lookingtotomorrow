@@ -12,12 +12,8 @@ class EducationDisplayChild extends Component {
     this.updateState = this.updateState.bind(this);
   }
   updateState() {
-    if (this.state.editButtonIsPressed === false) {
-      this.setState({ editButtonIsPressed: true });
-    } else {
-      this.setState({ editButtonIsPressed: false });
-    }
-  }
+    this.setState({addNewButtonIsPressed: !this.state.addNewButtonIsPressed})
+   }
 
   render() {
     return (
