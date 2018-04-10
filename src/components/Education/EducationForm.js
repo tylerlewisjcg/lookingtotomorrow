@@ -17,6 +17,7 @@ class EducationForm extends Component {
     this.state = {};
   }
 handleEditEducationHistorySubmit(){
+  console.log('edit education run');
   this.props.editEducationHistory(
     this.props.eduItem.education_id,
     this.props.institution,
@@ -26,10 +27,11 @@ handleEditEducationHistorySubmit(){
     this.props.field_of_study,
     this.props.accomplishments
   );
-    this.props.updateState()
+    this.props.updateState();
 }
 
 handleAddEducationHistorySubmit(){
+  console.log('addEducation Run');
   this.props.addEducationHistory(
     this.props.institution,
     this.props.certification_type,
@@ -38,7 +40,8 @@ handleAddEducationHistorySubmit(){
     this.props.field_of_study,
     this.props.accomplishments
   );
-  this.props.updateState()
+
+  this.props.updateState();
 }
 
 

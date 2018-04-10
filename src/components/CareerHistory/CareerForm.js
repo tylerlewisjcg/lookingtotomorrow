@@ -30,7 +30,7 @@ handleEditWorkHistorySubmit(){
     this.props.notable_achievements,
     this.props.salary
   )
-  this.props.updateState()
+  this.props.updateState();
 }
 
 handleAddWorkHistorySubmit(){
@@ -47,6 +47,7 @@ handleAddWorkHistorySubmit(){
     this.props.salary
   );
   this.props.updateState();
+
 }
 
 

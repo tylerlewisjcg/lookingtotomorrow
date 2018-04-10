@@ -16,9 +16,11 @@ class CurrentGoals extends Component {
       addNewSkillInput: ""
     };
   }
+
   componentDidMount() {
     this.props.getCurrentSkills();
   }
+
   updateState() {
     this.setState({
       addSkillButtonIsPressed: !this.state.addSkillButtonIsPressed
@@ -30,13 +32,17 @@ class CurrentGoals extends Component {
       return <CurrentSkills skill={skill} key={skill.current_skill_id} />;
     });
   }
+
   handleNewSkillInputChange(e) {
     this.setState({ addNewSkillInput: e.target.value });
   }
+
 handleAddCurrentSkillSubmit(){
   this.props.addCurrentSkill(this.state.addNewSkillInput)
   this.updateState()
 }
+
+
   render() {
     return (
       <div>
@@ -47,7 +53,7 @@ handleAddCurrentSkillSubmit(){
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onChange={e => this.handleNewSkillInputChange(e)}
           />
-          <button
+           <button
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onClick={() =>
               this.handleAddCurrentSkillSubmit()
@@ -58,18 +64,20 @@ handleAddCurrentSkillSubmit(){
           <div>{this.renderCurrentSkills()}</div>
         </div>
 
-        {/* <button>Add Skill to Work on</button>
-            <SkillsWorkingOn/> */}
+        <button>Add Skill to Work on</button>
+            <SkillsWorkingOn/>
       </div>
     );
   }
 }
+
 
 function mapStateToProps(state) {
   return {
     currentSkills: state.currentGoals.currentSkills
   };
 }
+
 
 export default connect(mapStateToProps, { getCurrentSkills, addCurrentSkill })(
   CurrentGoals

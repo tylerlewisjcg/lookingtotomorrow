@@ -18,6 +18,7 @@ class Education extends Component {
   }
   updateState() {
     this.setState({ addNewButtonIsPressed: !this.state.addNewButtonIsPressed });
+    this.props.getEducationHistory();
   }
 
   renderEducationHistory() {

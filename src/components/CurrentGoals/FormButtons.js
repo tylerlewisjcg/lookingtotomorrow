@@ -11,7 +11,7 @@ class FormButtons extends Component {
             <button>Add New</button>
             <button>Edit</button>
             <button>Mark As Completed</button>
-            <input id='date' type='date'/>
+            <input type='date'/>
 
         </div> )
     }
