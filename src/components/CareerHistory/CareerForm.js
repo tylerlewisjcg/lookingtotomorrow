@@ -33,10 +33,7 @@ handleEditWorkHistorySubmit(){
   this.props.updateState();
 }
 
-handleAddWorkHistorySubmit(){
-  console.log(moment(this.props.start_date).toISOString());
-  console.log(moment(this.props.end_date).toISOString());
-  
+handleAddWorkHistorySubmit(){  
   this.props.addWorkHistory(
     this.props.company,
     this.props.job_title,

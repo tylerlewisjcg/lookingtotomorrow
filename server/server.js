@@ -215,7 +215,6 @@ app.put("/api/edit_education_history/:id", (req, res) => {
 });
 
 app.post("/api/add_education_history", (req, res) => {
-  console.log('endpoint hit');
   const {
     institution,
     certification_type,

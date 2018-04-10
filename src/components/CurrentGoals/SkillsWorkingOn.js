@@ -10,7 +10,12 @@ class SkillsWorkingOn extends Component {
     render() { 
         return (  
             <div>
-                <FormButtons/>
+                 Skill Name
+            <button>Delete</button>
+            <button>Add New</button>
+            <button>Edit</button>
+            <button>Mark As Completed</button>
+            <input type='date'/>
             </div>
         )
     }
