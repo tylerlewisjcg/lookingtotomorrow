@@ -5,7 +5,8 @@ import {
   deleteSkillWorkingOn,
   markAsComplete,
   getActionItems,
-  addActionItem
+  addActionItem,
+  getSkillsWorkingOn
 } from "./../../ducks/currentGoalsReducer";
 import moment from "moment";
 class SkillsWorkingOn extends Component {
@@ -15,16 +16,18 @@ class SkillsWorkingOn extends Component {
         actionItemDescription: "",
         startDate: "",
         dueDate: "",
-        completionDate: null,
+        actionItemCompletionDate: null,
         addActionItemButtonIsPressed: false
     };
   }
 componentDidMount(){
-    this.props.getActionItems(this.props.skill.skill_id)
-}
+ const currentActionItems = this.props.getActionItems(this.props.skill.skill_id);
+ return currentActionItems
+  }
+
   renderActionItems() {
     return this.props.actionItems.map(item => {
-      return <ActionItems item={item} key={item.action_item_id} />;
+      return <ActionItems item={item} key={item.action_item_id} skill_id={this.props.skill.skill_id}/>;
     });
   }
   toggleAddActionItemButton(){
@@ -32,7 +35,7 @@ componentDidMount(){
   }
 handleAddNewActionButton(){
     const start_date = new Date()
-    this.props.addActionItem(this.state.actionItemDescription, start_date, this.state.completionDate, this.state.dueDate, this.props.skill.skill_id)
+    this.props.addActionItem(this.state.actionItemDescription, start_date, this.state.actionItemCompletionDate, this.state.dueDate, this.props.skill.skill_id)
     this.toggleAddActionItemButton()
 }
 handActionItemDueDateInput(e){
@@ -46,12 +49,7 @@ handleActionItemInput(e){
   render() {
     return (
       <div>
-        <button
-          onClick={() =>
-            this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
-          }>
-          Delete
-        </button>
+        
         <span>{this.props.skill.skill_name}</span>
         <p>{`Start Date: ${moment(this.props.skill.start_date).format(
           "MMM DD, YYYY"
@@ -77,6 +75,12 @@ handleActionItemInput(e){
             Mark As Complete
           </button>
         )}
+        <button
+          onClick={() =>
+            this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
+          }>
+          Delete
+        </button>
 
 
         {this.state.addActionItemButtonIsPressed === false ?
@@ -108,5 +112,6 @@ export default connect(mapStateToProps, {
   deleteSkillWorkingOn,
   markAsComplete,
   getActionItems,
-  addActionItem
+  addActionItem,
+  getSkillsWorkingOn
 })(SkillsWorkingOn);

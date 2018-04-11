@@ -14,6 +14,7 @@ class Navbar extends Component {
   }
 
   render() {
+    
     const { user } = this.props;
     const userDataJSX = user.display_name ? (
       <div>
@@ -32,6 +33,8 @@ class Navbar extends Component {
         </a>
       </div>
     );
+
+
 
     return <div>
       <div>{userDataJSX}</div>

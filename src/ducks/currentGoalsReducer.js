@@ -16,6 +16,7 @@ const MARK_AS_COMPLETE = "MARK_AS_COMPLETE";
 const ADD_ACTION_ITEM = "ADD_ACTION_ITEM";
 const DELETE_ACTION_ITEM = "DELETE_ACTION_ITEM";
 const GET_ACTION_ITEMS = "GET_ACTION_ITEMS";
+const MARK_ACTION_ITEM_AS_COMPLETE = "MARK_ACTION_ITEM_AS_COMPLETE";
 
 export function getSkillsWorkingOn() {
   const skillData = axios.get("/api/get_skills").then(response => {
@@ -98,8 +99,8 @@ export function addCurrentSkill(userNewCurrentSkillInput) {
 
 /////not working/ unable to select items from database.
 export function getActionItems(id){
-  const body = {skill_id: id}
-  const actionData = axios.get('/api/get_action_items', body)
+
+  const actionData = axios.get(`/api/get_action_items/${id}`)
   .then(response => {
     return response.data
   });
@@ -144,15 +145,33 @@ export function addActionItem(
     payload: newActionItem
   };
 }
-export function deleteActionItem(id) {
+export function deleteActionItem(id, skill_id) {
+
   const deleteItem = axios
-    .delete(`/api/delete_action_item/${id}`)
+    .delete(`/api/delete_action_item/${id}/${skill_id}`)
     .then(response => {
       return response.data;
     });
   return {
     type: DELETE_ACTION_ITEM,
     payload: deleteItem
+  };
+}
+
+export function markAsActionItemAsComplete(completion_date, id, skill_id) {
+  let body = {
+    completion_date: completion_date,
+    skill_id: skill_id
+  };
+
+  const completed = axios
+    .put(`/api/mark_action_item_as_complete/${id}`, body)
+    .then(response => {
+      return response.data;
+    });
+  return {
+    type: MARK_ACTION_ITEM_AS_COMPLETE,
+    payload: completed
   };
 }
 
@@ -188,6 +207,8 @@ export default function reducer(state = initialState, action) {
       case GET_ACTION_ITEMS + "_FULFILLED":
       return Object.assign({}, state, {actionItems: action.payload})
 
+      case MARK_ACTION_ITEM_AS_COMPLETE + "_FULFILLED":
+      return Object.assign({}, state, {actionItems: action.payload})
     default:
       return state;
   }

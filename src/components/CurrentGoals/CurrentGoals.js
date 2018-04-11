@@ -8,7 +8,8 @@ import {
   getCurrentSkills,
   addCurrentSkill,
   getSkillsWorkingOn,
-  addSkillWorkingOn
+  addSkillWorkingOn,
+  getActionItems
 } from "./../../ducks/currentGoalsReducer";
 
 class CurrentGoals extends Component {
@@ -24,10 +25,11 @@ class CurrentGoals extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getCurrentSkills();
-    this.props.getSkillsWorkingOn();
+ componentDidMount() {
+this.props.getCurrentSkills();
+ this.props.getSkillsWorkingOn();
   }
+
   renderCurrentSkills() {
     return this.props.currentSkills.map(skill => {
       return <CurrentSkills skill={skill} key={skill.current_skill_id} />;
@@ -161,5 +163,6 @@ export default connect(mapStateToProps, {
   getCurrentSkills,
   addCurrentSkill,
   getSkillsWorkingOn,
-  addSkillWorkingOn
+  addSkillWorkingOn,
+  getActionItems
 })(CurrentGoals);

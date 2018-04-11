@@ -86,6 +86,7 @@ app.get(
     failureRedirect: "http://localhost:3000/#"
   })
 );
+
 app.get("/auth/me", function(req, res) {
   if (!req.user) {
     res.sendStatus(401);
@@ -326,21 +327,20 @@ app.put("/api/mark_skill_as_complete/:id", (req, res) => {
 //////// Action Items Endpoints   
 
 
-app.get("/api/get_action_items", function(req, res) {
-  console.log(req.body.skill_id);
+app.get("/api/get_action_items/:id", function(req, res) {
   app
     .get("db")
-    .action_items_DB.select_action_items([req.body])
+    .action_items_db.select_action_items([req.params.id])
     .then(response => {
       res.status(200).send(response);
     })
     .catch(err => console.log(err));
 });
 
-app.delete("/api/delete_action_item/:id", (req, res) => {
+app.delete("/api/delete_action_item/:id/:skill_id", (req, res) => {
   app
     .get("db")
-    .action_items_DB.delete_action_item([req.params.id, req.session.passport.user])
+    .action_items_db.delete_action_item([req.params.id, req.params.skill_id])
     .then(response => {
       res.status(200).send(response)})
     .catch(err => console.log(err));
@@ -349,7 +349,7 @@ app.delete("/api/delete_action_item/:id", (req, res) => {
 app.post("/api/add_action_item", (req, res) => {
   app
     .get("db")
-    .action_items_DB.create_new_action_item([
+    .action_items_db.create_new_action_item([
       req.body.action_item_description,
       req.body.start_date,
       req.body.completion_date,
@@ -360,9 +360,17 @@ app.post("/api/add_action_item", (req, res) => {
     .catch(err => console.log(err));
 });
 
-////// for some reason my action item endpoints aren't working///
-
-
+app.put("/api/mark_action_item_as_complete/:id", (req, res) => {
+  app
+    .get("db")
+    .action_items_db.mark_item_as_complete([
+      req.body.completion_date,
+      req.params.id,
+      req.body.skill_id
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 
 
