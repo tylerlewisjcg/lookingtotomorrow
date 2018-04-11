@@ -307,7 +307,17 @@ app.delete("/api/delete_skill/:id", (req, res) => {
 });
 
 
-
+app.put("/api/mark_skill_as_complete/:id", (req, res) => {
+  app
+    .get("db")
+    .skills_DB.mark_as_complete([
+      req.body.completion_date,
+      req.params.id,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 
 

@@ -3,6 +3,7 @@ import Navbar from "./../Navbar/Navbar";
 import SkillsWorkingOn from "./SkillsWorkingOn";
 import CurrentSkills from "./CurrentSkills";
 import { connect } from "react-redux";
+import moment from 'moment';
 import {
   getCurrentSkills,
   addCurrentSkill,
@@ -17,7 +18,9 @@ class CurrentGoals extends Component {
       addSkillButtonIsPressed: false,
       addNewSkillInput: "",
       addNewSkillToWorkOnInput: "",
-      addSkillWorkingOnButtonIsPressed: false
+      addSkillWorkingOnButtonIsPressed: false,
+      skillDueDate: "",
+      completionDate: null
     };
   }
 
@@ -49,7 +52,8 @@ class CurrentGoals extends Component {
     this.setState({addNewSkillToWorkOnInput: e.target.value})
   }
   handleAddSkillWorkingOnButtonSubmit(){
-    this.props.addSkillWorkingOn(this.state.addNewSkillToWorkOnInput)
+    const start_date = new Date()
+    this.props.addSkillWorkingOn(this.state.addNewSkillToWorkOnInput, start_date, this.state.completionDate, this.state.skillDueDate)
     this.addSkillWorkingOnButtonToggle()
   }
   
@@ -61,12 +65,13 @@ class CurrentGoals extends Component {
 
   renderSkillsWorkingOn() {
     return this.props.skillsWorkingOn.map(skill => {
-      console.log(skill)
-      return <SkillsWorkingOn skill={skill} key={skill.skill_id} />;
+      return <SkillsWorkingOn skill={skill} key={skill.skill_id}/>;
     });
   }
-
-  
+  handleNewSkillDueDateChange(e){
+    this.setState({skillDueDate: e.target.value})
+  }
+ 
   render() {
     return (
       <div>
@@ -86,6 +91,7 @@ class CurrentGoals extends Component {
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onChange={e => this.handleNewSkillInputChange(e)}
           />
+    
            <button
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onClick={() =>
@@ -112,6 +118,11 @@ class CurrentGoals extends Component {
             hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}
             onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
           />
+              <span hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}>Due Date:</span>
+          <input type="date"
+           hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}
+           onChange={e => this.handleNewSkillDueDateChange(e)}
+           />
            <button
             hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}
             onClick={() =>

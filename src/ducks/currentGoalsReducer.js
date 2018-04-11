@@ -11,7 +11,7 @@ const ADD_CURRENT_SKILL = "ADD_CURRENT_SKILL";
 const ADD_WORKING_SKILL = "ADD_WORKING_SKILL";
 const GET_WORKING_SKILLS = "GET_WORKING_SKILLS";
 const DELETE_WORKING_SKILL = "DELETE_WORKING_SKILL";
-
+const MARK_AS_COMPLETE = "MARK_AS_COMPLETE";
 
 export function getSkillsWorkingOn(){
   const skillData = axios.get("/api/get_skills")
@@ -23,8 +23,23 @@ export function getSkillsWorkingOn(){
     payload: skillData
   }
 }
-////// need to create a form to grab input values to pass as parameters for the addSkillWorkingOn function
-////// also probably need an edit form for this as well
+export function markAsComplete(
+completion_date, id
+) {
+  let body = {
+    completion_date: completion_date
+  };
+
+  const completed = axios
+    .put(`/api/mark_skill_as_complete/${id}`, body)
+    .then(response => {
+      return response.data;
+    });
+  return {
+    type: MARK_AS_COMPLETE,
+    payload: completed
+  };
+}
 export function addSkillWorkingOn(addNewSkillToWorkOnInput, start_date, completion_date, due_date) {
   let body = {
     skill_name: addNewSkillToWorkOnInput,
@@ -111,7 +126,11 @@ export default function reducer(state = initialState, action) {
 
     case DELETE_WORKING_SKILL + "_FULFILLED":
       return Object.assign({}, state, { skillsWorkingOn: action.payload });
-    default:
+    
+      case MARK_AS_COMPLETE + "_FULFILLED":
+      return Object.assign({}, state, { skillsWorkingOn: action.payload });
+    
+      default:
       return state;
   }
 }

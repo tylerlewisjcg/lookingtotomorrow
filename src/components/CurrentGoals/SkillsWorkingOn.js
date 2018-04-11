@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteSkillWorkingOn } from './../../ducks/currentGoalsReducer';
+import { deleteSkillWorkingOn, markAsComplete } from './../../ducks/currentGoalsReducer';
 import moment from 'moment';
 class SkillsWorkingOn extends Component {
     constructor(props) {
@@ -12,20 +12,27 @@ class SkillsWorkingOn extends Component {
     render() { 
         return (  
             <div>
-                 <p>{this.props.skill.skill_name}</p>
-            <button onClick={()=> this.props.deleteSkillWorkingOn(this.props.skill.skill_id)}>Delete</button>
+            <button onClick={()=> this.props.deleteSkillWorkingOn(this.props.skill.skill_id)}>Delete</button>                
+                 <span>{this.props.skill.skill_name}</span>
+                 <p>{`Start Date: ${moment(this.props.skill.start_date).format("MMM DD, YYYY")}`}</p>
+            <p>{`Due Date: ${moment(this.props.skill.due_date).format("MMM DD, YYYY")}`}</p>
+
+            {!!this.props.skill.completion_date?
+            <p>{`Completed On: ${moment(this.props.skill.completion_date).format("MMM DD, YYYY")}`}</p>:
+            <button onClick={()=> {
+                const completeDate= new Date()
+                this.props.markAsComplete(completeDate, this.props.skill.skill_id)
+                console.log(this.props);
+                }}>Mark As Complete</button>
+                
+
+            }
             <button>Add New Action Item</button>
-            <button>Edit</button>
-            <p>Start Date:</p>
-            <input type='date' defaultValue={moment(this.props.skill.start_date).format("YYYY-MM-DD")
-}/>
-           <p> Due Date: </p>
-            <input type='date' defaultValue={moment(this.props.skill.due_date).format("YYYY-MM-DD")
-}/>
             </div>
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
       skillsWorkingOn: state.currentGoals.skillsWorkingOn
@@ -33,6 +40,6 @@ function mapStateToProps(state) {
   }
   
   
-  export default connect(mapStateToProps, {deleteSkillWorkingOn})(
+  export default connect(mapStateToProps, {deleteSkillWorkingOn, markAsComplete})(
     SkillsWorkingOn
   );
