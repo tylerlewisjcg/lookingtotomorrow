@@ -323,19 +323,14 @@ app.put("/api/mark_skill_as_complete/:id", (req, res) => {
 
 
 
-
-
-
-
-
 //////// Action Items Endpoints   
 
-////// need to change what i am passing into the SQL query functions other than req.session.passport.user
 
 app.get("/api/get_action_items", function(req, res) {
+  console.log(req.body.skill_id);
   app
     .get("db")
-    .action_items_DB.select_action_items([req.session.passport.user])
+    .action_items_DB.select_action_items([req.body])
     .then(response => {
       res.status(200).send(response);
     })
@@ -351,6 +346,21 @@ app.delete("/api/delete_action_item/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+app.post("/api/add_action_item", (req, res) => {
+  app
+    .get("db")
+    .action_items_DB.create_new_action_item([
+      req.body.action_item_description,
+      req.body.start_date,
+      req.body.completion_date,
+      req.body.due_date,
+      req.body.skill_id
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+////// for some reason my action item endpoints aren't working///
 
 
 
@@ -359,8 +369,7 @@ app.delete("/api/delete_action_item/:id", (req, res) => {
 
 
 
-
-
+///// motivations endpoints
 
 
 

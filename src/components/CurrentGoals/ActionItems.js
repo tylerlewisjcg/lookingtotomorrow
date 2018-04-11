@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import {connect} from 'react-redux';
+import { deleteActionItem } from './../../ducks/currentGoalsReducer';
 class ActionItems extends Component {
   constructor(props) {
     super(props);
@@ -9,17 +10,15 @@ class ActionItems extends Component {
     return (
       <div>
         <p> Action Item Description</p>
+        <p>Start Date</p>
         <p>Due Date</p>
-        <p>Due Date</p>
-
-        <button>Delete</button>
-        <button>Add New</button>
-        <button>Edit</button>
+        <button onClick={()=> this.props.deleteActionItem(this.props.item.action_item_id)}>Delete</button>
         <button>Mark As Completed</button>
-        <input type="date" />
       </div>
     );
   }
 }
-
-export default ActionItems;
+function mapStateToProps(state){
+actionItems: state.currentGoals.actionItems
+}
+export default connect(mapStateToProps, {deleteActionItem})(ActionItems);
