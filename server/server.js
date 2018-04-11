@@ -269,6 +269,92 @@ app.delete("/api/delete_current_skill/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+/////// Skills Working On Endpoints
+
+
+app.post("/api/add_skill", (req, res) => {
+  app
+    .get("db")
+    .skills_DB.create_new_skill([
+      req.body.skill_name,
+      req.body.start_date,
+      req.body.completion_date,
+      req.body.due_date,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+app.get("/api/get_skills", function(req, res) {
+  app
+    .get("db")
+    .skills_DB.select_users_skills([req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => console.log(err));
+});
+
+app.delete("/api/delete_skill/:id", (req, res) => {
+  app
+    .get("db")
+    .skills_DB.delete_skill([req.params.id, req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response)})
+    .catch(err => console.log(err));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////// Action Items Endpoints   
+
+////// need to change what i am passing into the SQL query functions other than req.session.passport.user
+
+app.get("/api/get_action_items", function(req, res) {
+  app
+    .get("db")
+    .action_items_DB.select_action_items([req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => console.log(err));
+});
+
+app.delete("/api/delete_action_item/:id", (req, res) => {
+  app
+    .get("db")
+    .action_items_DB.delete_action_item([req.params.id, req.session.passport.user])
+    .then(response => {
+      res.status(200).send(response)})
+    .catch(err => console.log(err));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {
   req.logOut();

@@ -5,7 +5,9 @@ import CurrentSkills from "./CurrentSkills";
 import { connect } from "react-redux";
 import {
   getCurrentSkills,
-  addCurrentSkill
+  addCurrentSkill,
+  getSkillsWorkingOn,
+  addSkillWorkingOn
 } from "./../../ducks/currentGoalsReducer";
 
 class CurrentGoals extends Component {
@@ -13,12 +15,20 @@ class CurrentGoals extends Component {
     super(props);
     this.state = {
       addSkillButtonIsPressed: false,
-      addNewSkillInput: ""
+      addNewSkillInput: "",
+      addNewSkillToWorkOnInput: "",
+      addSkillWorkingOnButtonIsPressed: false
     };
   }
 
   componentDidMount() {
     this.props.getCurrentSkills();
+    this.props.getSkillsWorkingOn();
+  }
+  renderCurrentSkills() {
+    return this.props.currentSkills.map(skill => {
+      return <CurrentSkills skill={skill} key={skill.current_skill_id} />;
+    });
   }
 
   updateState() {
@@ -26,29 +36,52 @@ class CurrentGoals extends Component {
       addSkillButtonIsPressed: !this.state.addSkillButtonIsPressed
     });
   }
-
-  renderCurrentSkills() {
-    return this.props.currentSkills.map(skill => {
-      return <CurrentSkills skill={skill} key={skill.current_skill_id} />;
-    });
+  handleAddCurrentSkillSubmit(){
+    this.props.addCurrentSkill(this.state.addNewSkillInput)
+    this.updateState()
   }
-
   handleNewSkillInputChange(e) {
     this.setState({ addNewSkillInput: e.target.value });
   }
+  
+  
+  handleNewSkillWorkingOnInputChange(e){
+    this.setState({addNewSkillToWorkOnInput: e.target.value})
+  }
+  handleAddSkillWorkingOnButtonSubmit(){
+    this.props.addSkillWorkingOn(this.state.addNewSkillToWorkOnInput)
+    this.addSkillWorkingOnButtonToggle()
+  }
+  
+  addSkillWorkingOnButtonToggle(){
+    this.setState({
+      addSkillWorkingOnButtonIsPressed: !this.state.addSkillWorkingOnButtonIsPressed
+    })
+  }
 
-handleAddCurrentSkillSubmit(){
-  this.props.addCurrentSkill(this.state.addNewSkillInput)
-  this.updateState()
-}
+  renderSkillsWorkingOn() {
+    return this.props.skillsWorkingOn.map(skill => {
+      console.log(skill)
+      return <SkillsWorkingOn skill={skill} key={skill.skill_id} />;
+    });
+  }
 
-
+  
   render() {
     return (
       <div>
         <Navbar />
-        <div>
+        <div className="current_skills">
+       <div>
+         {this.state.addSkillButtonIsPressed === false ?
           <button onClick={() => this.updateState()}>Add Skill</button>
+          :
+          <button onClick={() => this.updateState()}>Cancel</button>
+          
+         }
+      </div>
+
+
           <input
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onChange={e => this.handleNewSkillInputChange(e)}
@@ -64,8 +97,30 @@ handleAddCurrentSkillSubmit(){
           <div>{this.renderCurrentSkills()}</div>
         </div>
 
-        <button>Add Skill to Work on</button>
-            <SkillsWorkingOn/>
+
+
+
+      <div>
+         {this.state.addSkillWorkingOnButtonIsPressed === false ?     
+        <button onClick={()=> this.addSkillWorkingOnButtonToggle()}>Add Skill to Work on</button>
+        :
+        <button onClick={()=> this.addSkillWorkingOnButtonToggle()}>Cancel</button>
+         }
+        </div>
+
+        <input
+            hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}
+            onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
+          />
+           <button
+            hidden={!this.state.addSkillWorkingOnButtonIsPressed === true ? true : false}
+            onClick={() =>
+              this.handleAddSkillWorkingOnButtonSubmit()
+            }
+          >
+            Add
+          </button>
+            <div>{this.renderSkillsWorkingOn()}</div>
       </div>
     );
   }
@@ -74,11 +129,12 @@ handleAddCurrentSkillSubmit(){
 
 function mapStateToProps(state) {
   return {
-    currentSkills: state.currentGoals.currentSkills
+    currentSkills: state.currentGoals.currentSkills,
+    skillsWorkingOn: state.currentGoals.skillsWorkingOn
   };
 }
 
 
-export default connect(mapStateToProps, { getCurrentSkills, addCurrentSkill })(
+export default connect(mapStateToProps, { getCurrentSkills, addCurrentSkill, getSkillsWorkingOn, addSkillWorkingOn })(
   CurrentGoals
 );
