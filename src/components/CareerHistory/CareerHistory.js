@@ -15,15 +15,12 @@ class CareerHistory extends Component {
   }
   componentDidMount() {
     this.props.getWorkHistory();
-  
   }
 
   updateState() {
-   this.setState({addNewButtonIsPressed: !this.state.addNewButtonIsPressed})
-   this.props.getWorkHistory();
+    this.setState({ addNewButtonIsPressed: !this.state.addNewButtonIsPressed });
+    this.props.getWorkHistory();
   }
-
-
 
   renderWorkHistoryItems() {
     return this.props.workHistoryItems.map(job => {

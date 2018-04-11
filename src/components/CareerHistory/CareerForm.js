@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import moment from 'moment';
+import moment from "moment";
 import {
   handleCompanyChange,
   handleEndDateChange,
@@ -19,34 +19,32 @@ class CareerForm extends Component {
     this.state = {};
   }
 
-handleEditWorkHistorySubmit(){
-  this.props.editWorkHistory(
-    this.props.job.work_id,
-    this.props.company,
-    this.props.job_title,
-    moment(this.props.start_date).toISOString(),
-    moment(this.props.end_date).toISOString(),
-    this.props.job_responsibilities,
-    this.props.notable_achievements,
-    this.props.salary
-  )
-  this.props.updateState();
-}
+  handleEditWorkHistorySubmit() {
+    this.props.editWorkHistory(
+      this.props.job.work_id,
+      this.props.company,
+      this.props.job_title,
+      moment(this.props.start_date).toISOString(),
+      moment(this.props.end_date).toISOString(),
+      this.props.job_responsibilities,
+      this.props.notable_achievements,
+      this.props.salary
+    );
+    this.props.updateState();
+  }
 
-handleAddWorkHistorySubmit(){  
-  this.props.addWorkHistory(
-    this.props.company,
-    this.props.job_title,
-    moment(this.props.start_date).toISOString(),
-    moment(this.props.end_date).toISOString(),
-    this.props.job_responsibilities,
-    this.props.notable_achievements,
-    this.props.salary
-  );
-  this.props.updateState();
-
-}
-
+  handleAddWorkHistorySubmit() {
+    this.props.addWorkHistory(
+      this.props.company,
+      this.props.job_title,
+      moment(this.props.start_date).toISOString(),
+      moment(this.props.end_date).toISOString(),
+      this.props.job_responsibilities,
+      this.props.notable_achievements,
+      this.props.salary
+    );
+    this.props.updateState();
+  }
 
   render() {
     return (
@@ -62,7 +60,7 @@ handleAddWorkHistorySubmit(){
           onClick={() => {
             !!this.props.job
               ? this.handleEditWorkHistorySubmit()
-              : this.handleAddWorkHistorySubmit()
+              : this.handleAddWorkHistorySubmit();
           }}
         >
           Submit
@@ -79,7 +77,11 @@ handleAddWorkHistorySubmit(){
         <input
           type="date"
           name="start_date"
-          defaultValue={!!this.props.job ? moment(this.props.job.start_date).format("YYYY-MM-DD"): ""}
+          defaultValue={
+            !!this.props.job
+              ? moment(this.props.job.start_date).format("YYYY-MM-DD")
+              : ""
+          }
           onChange={e => this.props.handleStartDateChange(e)}
         />
         <br />
@@ -87,7 +89,11 @@ handleAddWorkHistorySubmit(){
         <input
           type="date"
           name="end_date"
-          defaultValue={!!this.props.job ? moment(this.props.job.end_date).format("YYYY-MM-DD"): ""}
+          defaultValue={
+            !!this.props.job
+              ? moment(this.props.job.end_date).format("YYYY-MM-DD")
+              : ""
+          }
           onChange={e => this.props.handleEndDateChange(e)}
         />
         <br />
@@ -95,7 +101,7 @@ handleAddWorkHistorySubmit(){
         <input
           type="number"
           name="salary"
-          defaultValue={!!this.props.job ? this.props.job.salary: ""}
+          defaultValue={!!this.props.job ? this.props.job.salary : ""}
           onChange={e => this.props.handleSalaryChange(e)}
         />
         <br />

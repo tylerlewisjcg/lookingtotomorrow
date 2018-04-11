@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import moment from 'moment';
+import moment from "moment";
 import {
   handleInstitutionChange,
   handleEndDateChange,
@@ -16,32 +16,31 @@ class EducationForm extends Component {
     super(props);
     this.state = {};
   }
-handleEditEducationHistorySubmit(){
-  this.props.editEducationHistory(
-    this.props.eduItem.education_id,
-    this.props.institution,
-    this.props.certification_type,
-    moment(this.props.start_date).toISOString(),
-    moment(this.props.end_date).toISOString(),
-    this.props.field_of_study,
-    this.props.accomplishments
-  );
+  handleEditEducationHistorySubmit() {
+    this.props.editEducationHistory(
+      this.props.eduItem.education_id,
+      this.props.institution,
+      this.props.certification_type,
+      moment(this.props.start_date).toISOString(),
+      moment(this.props.end_date).toISOString(),
+      this.props.field_of_study,
+      this.props.accomplishments
+    );
     this.props.updateState();
-}
+  }
 
-handleAddEducationHistorySubmit(){
-  this.props.addEducationHistory(
-    this.props.institution,
-    this.props.certification_type,
-    moment(this.props.start_date).toISOString(),
-    moment(this.props.end_date).toISOString(),
-    this.props.field_of_study,
-    this.props.accomplishments
-  );
+  handleAddEducationHistorySubmit() {
+    this.props.addEducationHistory(
+      this.props.institution,
+      this.props.certification_type,
+      moment(this.props.start_date).toISOString(),
+      moment(this.props.end_date).toISOString(),
+      this.props.field_of_study,
+      this.props.accomplishments
+    );
 
-  this.props.updateState();
-}
-
+    this.props.updateState();
+  }
 
   render() {
     return (
@@ -57,7 +56,7 @@ handleAddEducationHistorySubmit(){
           onClick={() => {
             !!this.props.eduItem
               ? this.handleEditEducationHistorySubmit()
-              : this.handleAddEducationHistorySubmit()
+              : this.handleAddEducationHistorySubmit();
           }}
         >
           Submit
@@ -78,7 +77,9 @@ handleAddEducationHistorySubmit(){
           type="date"
           name="start_date"
           defaultValue={
-            !!this.props.eduItem ? moment(this.props.eduItem.start_date).format("YYYY-MM-DD") : ""
+            !!this.props.eduItem
+              ? moment(this.props.eduItem.start_date).format("YYYY-MM-DD")
+              : ""
           }
           onChange={e => this.props.handleStartDateChange(e)}
         />
@@ -87,7 +88,11 @@ handleAddEducationHistorySubmit(){
         <input
           type="date"
           name="end_date"
-          defaultValue={!!this.props.eduItem ? moment(this.props.eduItem.end_date).format("YYYY-MM-DD") : ""}
+          defaultValue={
+            !!this.props.eduItem
+              ? moment(this.props.eduItem.end_date).format("YYYY-MM-DD")
+              : ""
+          }
           onChange={e => this.props.handleEndDateChange(e)}
         />
         <br />

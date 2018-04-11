@@ -34,11 +34,13 @@ class EducationDisplayChild extends Component {
             <p>Institution: {this.props.eduItem.institution}</p>
             <p>
               Start Date:
-              { moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
+              {moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
             </p>
             <p>
               End Date:
-              {!!this.props.eduItem.end_date ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY "): ""}
+              {!!this.props.eduItem.end_date
+                ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY ")
+                : ""}
             </p>
             <p>
               Certification/Degree Type: {this.props.eduItem.certification_type}
