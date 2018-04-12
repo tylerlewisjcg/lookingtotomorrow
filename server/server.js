@@ -378,9 +378,43 @@ app.put("/api/mark_action_item_as_complete/:id", (req, res) => {
 
 
 ///// motivations endpoints
+app.post("/api/add_motivations", (req, res) => {
+  app
+    .get("db")
+    .motivations_DB.create_new_motivation([
+      req.body.why,
+      req.body.interests,
+      req.body.priorities,
+      req.body.favorite,
+      req.body.leastFavorite,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 
+app.put("/api/edit_motivations", (req, res) => {
+  app
+    .get("db")
+    .motivations_DB.edit_motivation([
+      req.body.why,
+      req.body.interests,
+      req.body.priorities,
+      req.body.favorite,
+      req.body.leastFavorite,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
+app.get('/api/get_motivations', (req, res)=> {
+  app.get('db')
+  .motivations_DB.select_users_motivations([req.session.passport.user])
+  .then(response => res.status(200).send(response))
+  .catch(err=> console.log(err))
+})
 
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {

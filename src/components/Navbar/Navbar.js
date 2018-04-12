@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserInfo } from "./../../ducks/userReducer";
 import { Link } from "react-router-dom";
-import Granim from 'react-granim';
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -61,11 +60,6 @@ class Navbar extends Component {
             <button
             type="button" className="btn btn-primary"
             >CareerHistory</button>
-          </Link>
-          <Link to="/home/achievements">
-            <button
-            type="button" className="btn btn-primary"
-            >Achievements</button>
           </Link>
           <Link to="/home/motivations">
             <button

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ActionItems from './ActionItems';
 import {tween} from 'popmotion';
 import { MotionValue } from 'popmotion-react';
+import axios from 'axios';
 import {
   deleteSkillWorkingOn,
   markAsComplete,
@@ -21,17 +22,26 @@ class SkillsWorkingOn extends Component {
         addActionItemButtonIsPressed: false,
         actionItems: []
     };
+    this.getActionItems=this.getActionItems.bind(this);
   }
 componentDidMount(){
-this.props.getActionItems(this.props.skill.skill_id).then(data=> {
-  this.setState({actionItems:data}); //////// console log data flow
-})
+this.getActionItems()
 }
 
+getActionItems(){
+  axios.get(`/api/get_action_items/${this.props.skill.skill_id}`)
+  .then(response => {
+    this.setState({actionItems:response.data})
+  });
+}
   renderActionItems() {
-    return this.props.actionItems.map(item => {
-      return <ActionItems item={item} key={item.action_item_id} skill_id={this.props.skill.skill_id}/>;
-    });
+    let filtered = []
+     this.state.actionItems.map(item => {
+      filtered.push(item)
+    })
+    return filtered.map(item => {
+      return <ActionItems item={item} key={item.action_item_id} skill_id={this.props.skill.skill_id} getActionItems={this.getActionItems()}/>;
+    })
   }
   
   toggleAddActionItemButton(){
@@ -51,7 +61,6 @@ handleActionItemInput(e){
 
 
   render() {
-   
     return (
       <div>
         

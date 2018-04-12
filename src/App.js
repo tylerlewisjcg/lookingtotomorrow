@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import axios from "axios";
 import Home from './components/Home/Home';
 import { Switch, Route } from "react-router-dom";
-import Achievements from './components/Achievements/Achievements';
 import CareerHistory from './components/CareerHistory/CareerHistory';
 import CurrentGoals from './components/CurrentGoals/CurrentGoals';
 import Education from './components/Education/Education';
@@ -17,7 +16,6 @@ class App extends Component {
           render={() => (
               <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/home/achievements" component={Achievements} />
                 <Route path="/home/careerhistory" component={CareerHistory} />
                 <Route path="/home/currentgoals" component={CurrentGoals} />
                 <Route path="/home/education" component={Education} />

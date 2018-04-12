@@ -7,6 +7,10 @@ class ActionItems extends Component {
     super(props);
     this.state = {};
   }
+  handleDeleteClick(){
+    this.props.getActionItems();
+    this.props.deleteActionItem(this.props.item.action_item_id, this.props.item.skill_id)
+  }
 
   render() {
     
@@ -39,7 +43,7 @@ class ActionItems extends Component {
         
         <button 
         type="button" className="btn btn-primary"
-        onClick={()=> this.props.deleteActionItem(this.props.item.action_item_id, this.props.item.skill_id) }>Delete</button>
+        onClick={()=> this.handleDeleteClick() }>Delete</button>
         
        
       

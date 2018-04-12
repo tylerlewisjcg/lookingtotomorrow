@@ -48,10 +48,10 @@ class EducationDisplayChild extends Component {
             <p>
               Certification/Degree Type: {this.props.eduItem.certification_type}
             </p>
-            <p>Field of Study: {this.props.eduItem.accomplishments}</p>
+            <p>Field of Study: {this.props.eduItem.field_of_study}</p>
             <p>
               Accomplishments/Extra-Curricular:
-              {this.props.eduItem.field_of_study}
+              {this.props.eduItem.accomplishments}
             </p>
           </div>
         ) : (

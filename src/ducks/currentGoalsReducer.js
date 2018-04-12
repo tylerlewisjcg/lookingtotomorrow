@@ -97,7 +97,6 @@ export function addCurrentSkill(userNewCurrentSkillInput) {
   };
 }
 
-/////not working/ unable to select items from database.
 export function getActionItems(id){
 
   const actionData = axios.get(`/api/get_action_items/${id}`)
