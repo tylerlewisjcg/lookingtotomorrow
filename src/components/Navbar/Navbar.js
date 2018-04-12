@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getUserInfo } from "./../../ducks/userReducer";
 import { Link } from "react-router-dom";
 import Granim from 'react-granim';
-import { granimInstance} from 'granim';
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -39,9 +38,9 @@ class Navbar extends Component {
 
 
     return <div >
-     <div className="granim">
-     <Granim style={{zIndex: -2, width: '100vw', height: '14vh'}}/>
-     <p style={{font:'georgia', fontSize: '26px', position: 'absolute', left: '30px', top: '20px'}}>LookingToTomorrow.com</p>
+     <div >
+    
+     <p style={{font:'georgia', fontSize: '26px', left: '30px', top: '20px'}}>LookingToTomorrow.com</p>
      </div>
       <div>{userDataJSX}</div>
       <div>

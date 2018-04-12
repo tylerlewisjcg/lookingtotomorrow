@@ -23,19 +23,19 @@ class Motivations extends Component {
             <h1>My Motivations</h1>
             <form>
                 <span>Why am i at my current job?</span>
-                <input defaultValue='' onChange={(e)=> this.handleChange(e)}/>
+                <input name='why' defaultValue='' onChange={(e)=> this.handleChange(e)}/>
                 <span>What are my interests/passions?</span>
                 
-                <input defaultValue='' onChange={(e)=> this.handleChange(e)}/>
+                <input name='interests' defaultValue='' onChange={(e)=> this.handleChange(e)}/>
                 <span>what are my priorities from a job?</span>
                 
-                <input defaultValue='' onChange={(e)=> this.handleChange(e)}/>
+                <input name='priorities' defaultValue='' onChange={(e)=> this.handleChange(e)}/>
                 <span>what is my favorite thing about my current job?</span>
                 
-                <input defaultValue='' onChange={(e)=> this.handleChange(e)}/>
+                <input name='favorite' defaultValue='' onChange={(e)=> this.handleChange(e)}/>
                 <span>what is my least favorite thing about my current job?</span>
                 
-                <input defaultValue='' onChange={(e)=> this.handleChange(e)}/>
+                <input name='leastFavorite' defaultValue='' onChange={(e)=> this.handleChange(e)}/>
 
                 {/* this button needs to switch from a axios post to axios put request if they have existing answers already and inputs need to switch to users answer or a blank string */}
                 <button

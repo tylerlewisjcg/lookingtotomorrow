@@ -8,7 +8,6 @@ import {
   markAsComplete,
   getActionItems,
   addActionItem,
-  getSkillsWorkingOn
 } from "./../../ducks/currentGoalsReducer";
 import moment from "moment";
 class SkillsWorkingOn extends Component {
@@ -19,13 +18,15 @@ class SkillsWorkingOn extends Component {
         startDate: "",
         dueDate: "",
         actionItemCompletionDate: null,
-        addActionItemButtonIsPressed: false
+        addActionItemButtonIsPressed: false,
+        actionItems: []
     };
   }
 componentDidMount(){
- const currentActionItems = this.props.getActionItems(this.props.skill.skill_id);
- return currentActionItems
-  }
+this.props.getActionItems(this.props.skill.skill_id).then(data=> {
+  this.setState({actionItems:data}); //////// console log data flow
+})
+}
 
   renderActionItems() {
     return this.props.actionItems.map(item => {
@@ -116,7 +117,6 @@ handleActionItemInput(e){
 
 function mapStateToProps(state) {
   return {
-    skillsWorkingOn: state.currentGoals.skillsWorkingOn,
     actionItems: state.currentGoals.actionItems
   };
 }
@@ -126,5 +126,4 @@ export default connect(mapStateToProps, {
   markAsComplete,
   getActionItems,
   addActionItem,
-  getSkillsWorkingOn
 })(SkillsWorkingOn);
