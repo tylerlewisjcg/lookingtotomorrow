@@ -35,7 +35,9 @@ class Education extends Component {
         <h1>Education and Training</h1>
         <div>{this.renderEducationHistory()}</div>
         {!this.state.addNewButtonIsPressed ? (
-          <button onClick={() => this.updateState()}>
+          <button 
+          type="button" className="btn btn-primary"
+          onClick={() => this.updateState()}>
             Add New Education/Training
           </button>
         ) : (

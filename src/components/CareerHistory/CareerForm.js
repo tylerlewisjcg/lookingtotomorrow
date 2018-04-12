@@ -50,6 +50,7 @@ class CareerForm extends Component {
     return (
       <form>
         <button
+        type="button" className="btn btn-primary"
           onClick={() => {
             this.props.updateState();
           }}
@@ -57,6 +58,7 @@ class CareerForm extends Component {
           Cancel
         </button>
         <button
+        type="button" className="btn btn-primary"
           onClick={() => {
             !!this.props.job
               ? this.handleEditWorkHistorySubmit()

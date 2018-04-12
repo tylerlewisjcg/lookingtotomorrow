@@ -36,7 +36,9 @@ class CareerHistory extends Component {
         <div>{this.renderWorkHistoryItems()}</div>
 
         {!this.state.addNewButtonIsPressed ? (
-          <button onClick={() => this.updateState()}>
+          <button 
+          type="button" className="btn btn-primary"
+         onClick={() => this.updateState()}>
             Add New Work History
           </button>
         ) : (

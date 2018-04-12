@@ -20,8 +20,11 @@ class EducationDisplayChild extends Component {
       <div>
         {!this.state.editButtonIsPressed ? (
           <div>
-            <button onClick={() => this.updateState()}>Edit</button>
+            <button 
+            type="button" className="btn btn-primary"
+            onClick={() => this.updateState()}>Edit</button>
             <button
+            type="button" className="btn btn-primary"
               onClick={() =>
                 this.props.deleteEducationHistory(
                   this.props.eduItem.education_id
@@ -45,10 +48,10 @@ class EducationDisplayChild extends Component {
             <p>
               Certification/Degree Type: {this.props.eduItem.certification_type}
             </p>
-            <p>Field of Study: {this.props.eduItem.field_of_study}</p>
+            <p>Field of Study: {this.props.eduItem.accomplishments}</p>
             <p>
               Accomplishments/Extra-Curricular:
-              {this.props.eduItem.accomplishments}
+              {this.props.eduItem.field_of_study}
             </p>
           </div>
         ) : (
