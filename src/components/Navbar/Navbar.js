@@ -21,8 +21,8 @@ class Navbar extends Component {
         <p>{user.display_name}</p>
        <img src={user.img} height="25px" width="25px"/>
         <a href="http://localhost:3232/auth/logout">
-          <button
-          type="button" className="btn btn-primary"
+        <button style={{position: 'absolute', top: '20px', right: '30px', width: '100px'}}
+          type="button" className="btn btn-dark btn-sm"
           >Logout</button>
         </a>
       </div>

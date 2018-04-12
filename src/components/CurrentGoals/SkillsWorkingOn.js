@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ActionItems from './ActionItems';
+import {tween} from 'popmotion';
+import { MotionValue } from 'popmotion-react';
 import {
   deleteSkillWorkingOn,
   markAsComplete,
@@ -47,6 +49,7 @@ handleActionItemInput(e){
 
 
   render() {
+   
     return (
       <div>
         
@@ -76,7 +79,7 @@ handleActionItemInput(e){
             Mark As Complete
           </button>
         )}
-        
+       {/* need to do the popmotion marked as complete SVG linedraw for the checkmark */}
         <button 
         type="button" className="btn btn-primary"
           onClick={() =>
