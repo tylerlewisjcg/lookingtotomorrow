@@ -32,6 +32,7 @@ componentDidMount(){
       return <ActionItems item={item} key={item.action_item_id} skill_id={this.props.skill.skill_id}/>;
     });
   }
+  
   toggleAddActionItemButton(){
       this.setState({addActionItemButtonIsPressed: !this.state.addActionItemButtonIsPressed})
   }
