@@ -46,6 +46,7 @@ class EducationForm extends Component {
     return (
       <form>
         <button
+        type="button" className="btn btn-primary"
           onClick={() => {
             this.props.updateState();
           }}
@@ -53,6 +54,7 @@ class EducationForm extends Component {
           Cancel
         </button>
         <button
+        type="button" className="btn btn-primary"
           onClick={() => {
             !!this.props.eduItem
               ? this.handleEditEducationHistorySubmit()

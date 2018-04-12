@@ -7,16 +7,12 @@ class ActionItems extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount(){
-    {console.log(this.props.item)}
-  }
 
   render() {
     
     return (
       <div>
         
-      
         <p>{this.props.item.action_item_description}</p>
         <p>{moment(this.props.item.start_date).format("MMM DD, YYYY")}</p>
         <p>{moment(this.props.item.due_date).format("MMM DD, YYYY")}</p>
@@ -27,6 +23,7 @@ class ActionItems extends Component {
           )}`}</p>
         ) : (
           <button
+          type="button" className="btn btn-primary"
             onClick={() => {
               const completeDate = new Date();
               this.props.markAsActionItemAsComplete(
@@ -39,7 +36,10 @@ class ActionItems extends Component {
             Mark As Complete
           </button>
         )}
-        <button onClick={()=> this.props.deleteActionItem(this.props.item.action_item_id, this.props.item.skill_id) }>Delete</button>
+        
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.props.deleteActionItem(this.props.item.action_item_id, this.props.item.skill_id) }>Delete</button>
         
        
       

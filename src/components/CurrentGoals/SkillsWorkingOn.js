@@ -64,6 +64,7 @@ handleActionItemInput(e){
           )}`}</p>
         ) : (
           <button
+          type="button" className="btn btn-primary"
             onClick={() => {
               const completeDate = new Date();
               this.props.markAsComplete(
@@ -75,7 +76,9 @@ handleActionItemInput(e){
             Mark As Complete
           </button>
         )}
-        <button
+        
+        <button 
+        type="button" className="btn btn-primary"
           onClick={() =>
             this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
           }>
@@ -84,15 +87,21 @@ handleActionItemInput(e){
 
 
         {this.state.addActionItemButtonIsPressed === false ?
-        <button onClick={()=> this.toggleAddActionItemButton()}>Add New Action Item</button>
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.toggleAddActionItemButton()}>Add New Action Item</button>
         :
         <div>
         <span> Action Item: </span>
         <input onChange={e=> this.handleActionItemInput(e)}/>
         <span>Due Date:</span>
         <input type="date" onChange={e=> this.handActionItemDueDateInput(e)}/>
-        <button onClick={()=> this.handleAddNewActionButton()}>Add</button>
-        <button onClick={()=> this.toggleAddActionItemButton()}>Cancel</button>
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.handleAddNewActionButton()}>Add</button>
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.toggleAddActionItemButton()}>Cancel</button>
         </div>
         }
         <div>{this.renderActionItems()}</div>

@@ -86,9 +86,9 @@ this.props.getCurrentSkills();
         <div className="current_skills">
           <div>
             {this.state.addSkillButtonIsPressed === false ? (
-              <button onClick={() => this.updateState()}>Add Skill</button>
+              <button type="button" className="btn btn-primary" onClick={() => this.updateState()}>Add Skill</button>
             ) : (
-              <button onClick={() => this.updateState()}>Cancel</button>
+              <button type="button" className="btn btn-primary" onClick={() => this.updateState()}>Cancel</button>
             )}
           </div>
 
@@ -98,6 +98,7 @@ this.props.getCurrentSkills();
           />
 
           <button
+          type="button" className="btn btn-primary"
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onClick={() => this.handleAddCurrentSkillSubmit()}
           >
@@ -108,11 +109,15 @@ this.props.getCurrentSkills();
 
         <div>
           {this.state.addSkillWorkingOnButtonIsPressed === false ? (
-            <button onClick={() => this.addSkillWorkingOnButtonToggle()}>
+            <button 
+            type="button" className="btn btn-primary"
+            onClick={() => this.addSkillWorkingOnButtonToggle()}>
               Add Skill to Work on
             </button>
           ) : (
-            <button onClick={() => this.addSkillWorkingOnButtonToggle()}>
+            <button 
+            type="button" className="btn btn-primary"
+            onClick={() => this.addSkillWorkingOnButtonToggle()}>
               Cancel
             </button>
           )}
@@ -139,6 +144,7 @@ this.props.getCurrentSkills();
           onChange={e => this.handleNewSkillDueDateChange(e)}
         />
         <button
+        type="button" className="btn btn-primary"
           hidden={
             !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
           }

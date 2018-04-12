@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import './styles/main.css';
+import 'font-awesome/css/font-awesome.min.css';
 import registerServiceWorker from "./registerServiceWorker";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";

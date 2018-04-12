@@ -12,6 +12,7 @@ class CurrentSkills extends Component {
     return (
       <div>
         <button
+        type="button" className="btn btn-primary"
           onClick={() =>
             this.props.deleteCurrentSkill(this.props.skill.current_skill_id)
           }

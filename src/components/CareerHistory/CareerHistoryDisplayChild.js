@@ -19,8 +19,11 @@ class CareerHistoryDisplayChild extends Component {
       <div>
         {!this.state.editButtonIsPressed ? (
           <div>
-            <button onClick={() => this.updateState()}>Edit</button>
+            <button 
+            type="button" className="btn btn-primary"
+            onClick={() => this.updateState()}>Edit</button>
             <button
+            type="button" className="btn btn-primary"
               onClick={() =>
                 this.props.deleteWorkHistory(this.props.job.work_id)
               }
