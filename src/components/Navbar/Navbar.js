@@ -18,7 +18,6 @@ class Navbar extends Component {
     const { user } = this.props;
     const userDataJSX = user.display_name ? (
       <div>
-        <h2>LookingToTomorrow.com</h2>
         <p>{user.display_name}</p>
        <img src={user.img} height="25px" width="25px"/>
         <a href="http://localhost:3232/auth/logout">
@@ -29,10 +28,9 @@ class Navbar extends Component {
       </div>
     ) : (
       <div>
-        <h2>LookingToTomorrow.com</h2>
         <a href={process.env.REACT_APP_LOGIN}>
-          <button
-          type="button" className="btn btn-primary"
+          <button style={{position: 'absolute', top: '20px', right: '30px', width: '100px'}}
+          type="button" className="btn btn-dark btn-sm"
           >Login</button>
         </a>
       </div>
@@ -41,7 +39,10 @@ class Navbar extends Component {
 
 
     return <div >
-     <div className="granim"><Granim style={{zIndex: -20, width: '100vw', height: '20vh'}}/></div>
+     <div className="granim">
+     <Granim style={{zIndex: -2, width: '100vw', height: '14vh'}}/>
+     <p style={{font:'georgia', fontSize: '26px', position: 'absolute', left: '30px', top: '20px'}}>LookingToTomorrow.com</p>
+     </div>
       <div>{userDataJSX}</div>
       <div>
 
