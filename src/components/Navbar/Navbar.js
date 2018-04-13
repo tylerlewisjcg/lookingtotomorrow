@@ -46,6 +46,11 @@ class Navbar extends Component {
 
       </div>
       <div>
+      <Link to="/">
+            <button
+            type="button" className="btn btn-primary"
+            >Home</button>
+          </Link>
           <Link to="/home/currentgoals">
             <button
             type="button" className="btn btn-primary"
