@@ -5,7 +5,7 @@ const express = require("express"),
   massive = require("massive"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-
+  const {google} = require('googleapis');
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -421,5 +421,29 @@ app.get("/auth/logout", (req, res) => {
   req.logOut();
   res.redirect("http://localhost:3000/#");
 });
+
+
+
+
+
+/////////// Google Calendar/////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
