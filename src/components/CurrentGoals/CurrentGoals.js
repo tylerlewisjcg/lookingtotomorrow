@@ -38,7 +38,8 @@ this.props.getCurrentSkills();
 
   updateState() {
     this.setState({
-      addSkillButtonIsPressed: !this.state.addSkillButtonIsPressed
+      addSkillButtonIsPressed: !this.state.addSkillButtonIsPressed,
+      addNewSkillInput: ''
     });
   }
   handleAddCurrentSkillSubmit() {
@@ -66,7 +67,9 @@ this.props.getCurrentSkills();
   addSkillWorkingOnButtonToggle() {
     this.setState({
       addSkillWorkingOnButtonIsPressed: !this.state
-        .addSkillWorkingOnButtonIsPressed
+        .addSkillWorkingOnButtonIsPressed,
+        addNewSkillToWorkOnInput: '',
+        skillDueDate: ''
     });
   }
 
@@ -93,6 +96,7 @@ this.props.getCurrentSkills();
           </div>
 
           <input
+          value={this.state.addNewSkillInput}
             hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
             onChange={e => this.handleNewSkillInputChange(e)}
           />
@@ -124,6 +128,7 @@ this.props.getCurrentSkills();
         </div>
 
         <input
+        value={this.state.addNewSkillToWorkOnInput}
           hidden={
             !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
           }
@@ -137,6 +142,7 @@ this.props.getCurrentSkills();
           Due Date:
         </span>
         <input
+        value ={this.state.skillDueDate}
           type="date"
           hidden={
             !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
