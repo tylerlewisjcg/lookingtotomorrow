@@ -2,17 +2,23 @@ import React from 'react';
 const AdditionalResources = () => {
     return (
         <div>
-            AdditionalResources
-            <a href="https://www.devmountain.com"><p>DevMountain</p></a>
-            <a href="https://www.codecademy.com"><p>Codecademy</p></a>
-            <a href="https://www.khanacademy.org"><p>KhanAcademy</p></a>
-            <a href="https://www.udemy.com"><p>Udemy</p></a>
-            <a href="https://www.coursera.org"><p>Coursera</p></a>
-            <a href="https://www.ed2go.com"><p>ed2go</p></a>
-            <a href="https://www.duolingo.com"><p>DuoLingo</p></a>
-            <a href="https://www.memrise.com"><p>memrise</p></a>
-            <a href="https://www.edx.org"><p>edX</p></a>
-            <a href="https://www.alison.com"><p>Alison</p></a>
+          <h2>Additional Resources</h2>
+           <a href="https://www.devmountain.com"><img src='https://devmountain.difference-engine.com/Domain/Media/DevMountain-logo.png' width="175px"/></a>
+           <br/>
+            <a href="https://www.codecademy.com"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Codecademy.svg/2000px-Codecademy.svg.png' width="150px"/></a>
+           <br/>            
+            <a href="https://www.khanacademy.org"><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Khan_Academy_logo.svg/2000px-Khan_Academy_logo.svg.png' width="150px"/></a>
+            <br/>            
+            <a href="https://www.udemy.com"><img src="https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg" width="150px"/></a>
+            <br/>            
+            <a href="https://www.coursera.org"><img src="https://d3q6qq2zt8nhwv.cloudfront.net/platform/4b9a27f7ca854bbd9a245d55310bc727.png" width="150px"/></a>
+            <br/>            
+            <a href="https://www.ed2go.com"><img src="http://partner.ed2go.com/wp-content/uploads/2015/06/standard.png" width="150px"/></a>
+            <br/>            
+            <a href="https://www.duolingo.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Duolingo_logo.svg/2000px-Duolingo_logo.svg.png" width="150px"/></a>
+            <br/>            
+            <a href="https://www.edx.org"><img src="https://www.edx.org/sites/default/files/edx-logo-registered.png" width="100px"/></a>
+    
             
         </div>
     )

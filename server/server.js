@@ -422,7 +422,13 @@ app.get("/auth/logout", (req, res) => {
   res.redirect("http://localhost:3000/#");
 });
 
-
+//// Recently Completed ////
+app.get('/api/recently_completed', (req, res)=> {
+  app.get('db')
+  .action_items_db.select_action_items_sorted([req.session.passport.user])
+  .then(response => res.status(200).send(response))
+  .catch(err=> console.log(err))
+})
 
 
 
