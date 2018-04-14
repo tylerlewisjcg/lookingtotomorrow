@@ -16,65 +16,63 @@ class Navbar extends Component {
     const { user } = this.props;
     const userDataJSX = user.display_name ? (
       <div>
-        <p>{user.display_name}</p>
+        <span>{user.display_name}</span>
        <img src={user.img} height="25px" width="25px"/>
-        <a href="http://localhost:3232/auth/logout">
-        <button style={{position: 'absolute', top: '20px', right: '30px', width: '100px'}}
-          type="button" className="btn btn-dark btn-sm"
-          >Logout</button>
-        </a>
+       <ul>
+        <li className="nav-item"
+            > <a className="nav-link" href="http://localhost:3232/auth/logout">Logout</a></li>
+  </ul>
       </div>
     ) : (
-      <div>
-        <a href={process.env.REACT_APP_LOGIN}>
-          <button style={{position: 'absolute', top: '20px', right: '30px', width: '100px'}}
-          type="button" className="btn btn-dark btn-sm"
-          >Login</button>
-        </a>
-      </div>
+      <ul>
+       
+        <li className="nav-item"
+            > <a className="nav-link" href={process.env.REACT_APP_LOGIN}>Login</a></li>
+    
+      </ul>
     );
 
 
 
-    return <div >
-     <div >
-    
-     <p style={{font:'georgia', fontSize: '26px', left: '30px', top: '20px'}}>LookingToTomorrow.com</p>
-     </div>
-      <div>{userDataJSX}</div>
-      <div>
+    return <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a className="navbar-brand" href="#">LookingToTomorrow</a>
+    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarText">
+      <ul className="navbar-nav mr-auto">
 
-      </div>
-      <div>
-      <Link to="/">
-            <button
-            type="button" className="btn btn-primary"
-            >Home</button>
+       <li className="nav-item">
+          <Link to="/" className="nav-link">
+           Home
           </Link>
-          <Link to="/home/currentgoals">
-            <button
-            type="button" className="btn btn-primary"
-            >CurrentGoals</button>
+          </li>
+          <li className="nav-item">
+          <Link to="/home/currentgoals" className="nav-link">
+           Current Goals
           </Link>
-          <Link to="/home/education">
-            <button
-            type="button" className="btn btn-primary"
-            >Education</button>
+          </li>
+          <li className="nav-item">
+          <Link to="/home/careerhistory" className="nav-link">
+           Career History
           </Link>
-          <Link to="/home/careerhistory">
-            <button
-            type="button" className="btn btn-primary"
-            >CareerHistory</button>
+          </li>
+          <li className="nav-item">
+          <Link to="/home/education" className="nav-link">
+           Education
           </Link>
-          <Link to="/home/motivations">
-            <button
-            type="button" className="btn btn-primary"
-            >Motivations</button>
+          </li>
+          <li className="nav-item">
+          <Link to="/home/motivations" className="nav-link">
+           Motivation
           </Link>
-        </div>
-
-     </div>
-      ;
+          </li>
+      </ul>
+      <span className="navbar-text">
+      {userDataJSX} </span>
+    </div>
+  </nav>
+   
   }
 }
 function mapStateToProps(state) {

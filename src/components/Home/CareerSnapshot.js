@@ -2,7 +2,7 @@ import React from 'react';
 const CareerSnapshot = () => {
     return (
         <div>
-            CareerSnapshot component
+            <h2>Career Snapshot</h2>
         </div>
     )
 }

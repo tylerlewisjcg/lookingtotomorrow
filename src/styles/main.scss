@@ -1,33 +1,61 @@
 @import './partials/reset.scss';
-@import './partials/globals.scss';    //// why do we need a globals file? saw in missy's demo project
+
+@import './partials/globals.scss'; 
 
 
 
 // ===== VARIABLES ===== //
 
+
+
 @import './modules/variables.scss';
 
 
+
 // ===== FUNCTIONS ===== //
+
 @import './modules/functions.scss';
 
 
+
+// ===== 3RD PARTY IMPORTS ==== //
+
+@import 'bootstrap/scss/bootstrap';
+
+
+
 // ===== MIXINS ===== //
+
 @import './modules/mixins.scss';
 
 
-// ===== COMPONENTS ===== //   /////do i need a stylesheet for every single component?
+
+
+
+// ===== COMPONENTS ===== // 
+
 
 
 @import './partials/componentStyles/AdditionalResources.scss';
+
 @import './partials/componentStyles/CareerHistory.scss';
+
 @import './partials/componentStyles/CareerSnapshot.scss';
+
 @import './partials/componentStyles/CurrentGoals.scss';
+
 @import './partials/componentStyles/CurrentSkill.scss';
+
 @import './partials/componentStyles/Education.scss';
+
 @import './partials/componentStyles/FormButtons.scss';
+
 @import './partials/componentStyles/Home.scss';
+
 @import './partials/componentStyles/Motivations.scss';
+
 @import './partials/componentStyles/Navbar.scss';
+
 @import './partials/componentStyles/NotFound.scss';
+
 @import './partials/componentStyles/SkillsWorkingOn.scss';

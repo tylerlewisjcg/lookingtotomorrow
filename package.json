@@ -22,6 +22,7 @@
     "node-sass-chokidar": "^1.2.1",
     "npm": "^5.8.0",
     "npm-run-all": "^4.1.2",
+    "numeral": "^2.0.6",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
     "popmotion": "^8.1.22",
@@ -38,7 +39,7 @@
     "redux-promise-middleware": "^5.0.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
+    "build-css": "node-sass-chokidar src/ --include-path ./node_modules src/styles/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",

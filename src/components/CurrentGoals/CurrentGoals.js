@@ -25,9 +25,9 @@ class CurrentGoals extends Component {
     };
   }
 
- componentDidMount() {
-this.props.getCurrentSkills();
- this.props.getSkillsWorkingOn();
+  componentDidMount() {
+    this.props.getCurrentSkills();
+    this.props.getSkillsWorkingOn();
   }
 
   renderCurrentSkills() {
@@ -39,7 +39,7 @@ this.props.getCurrentSkills();
   updateState() {
     this.setState({
       addSkillButtonIsPressed: !this.state.addSkillButtonIsPressed,
-      addNewSkillInput: ''
+      addNewSkillInput: ""
     });
   }
   handleAddCurrentSkillSubmit() {
@@ -68,8 +68,8 @@ this.props.getCurrentSkills();
     this.setState({
       addSkillWorkingOnButtonIsPressed: !this.state
         .addSkillWorkingOnButtonIsPressed,
-        addNewSkillToWorkOnInput: '',
-        skillDueDate: ''
+      addNewSkillToWorkOnInput: "",
+      skillDueDate: ""
     });
   }
 
@@ -86,79 +86,123 @@ this.props.getCurrentSkills();
     return (
       <div>
         <Navbar />
-        <div className="current_skills">
-          <div>
-            {this.state.addSkillButtonIsPressed === false ? (
-              <button type="button" className="btn btn-primary" onClick={() => this.updateState()}>Add Skill</button>
+        <div className="container mt-3">
+          <h1>Current Goals</h1>
+          <div className="current_skills">
+            <h2>Skills I Have</h2>
+            <form className="form-inline">
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={this.state.addSkillButtonIsPressed}
+                onClick={() => this.updateState()}
+              >
+                Add Skill
+              </button>
+
+              <div className="form-group mx-sm-3">
+                <input
+                  className="form-control"
+                  type="text"
+                  value={this.state.addNewSkillInput}
+                  hidden={
+                    !this.state.addSkillButtonIsPressed === true ? true : false
+                  }
+                  onChange={e => this.handleNewSkillInputChange(e)}
+                />
+              </div>
+
+              <button
+                type="button"
+                className="btn btn-primary"
+                hidden={
+                  !this.state.addSkillButtonIsPressed === true ? true : false
+                }
+                onClick={() => this.handleAddCurrentSkillSubmit()}
+              >
+                Add
+              </button>
+              
+            <button
+              type="button"
+              className="btn btn-primary"
+              hidden={
+                !this.state.addSkillButtonIsPressed === true ? true : false
+              }
+              onClick={() => this.updateState()}
+            >
+              Cancel
+            </button>
+            </form>
+
+          
+      
+            <div>{this.renderCurrentSkills()}</div>
+          </div>
+
+          <div className="working-skills">
+            <h2>Skills I'm Working On</h2>
+            {this.state.addSkillWorkingOnButtonIsPressed === false ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => this.addSkillWorkingOnButtonToggle()}
+              >
+                Add Skill to Work on
+              </button>
             ) : (
-              <button type="button" className="btn btn-primary" onClick={() => this.updateState()}>Cancel</button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => this.addSkillWorkingOnButtonToggle()}
+              >
+                Cancel
+              </button>
             )}
           </div>
 
           <input
-          value={this.state.addNewSkillInput}
-            hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
-            onChange={e => this.handleNewSkillInputChange(e)}
+            value={this.state.addNewSkillToWorkOnInput}
+            hidden={
+              !this.state.addSkillWorkingOnButtonIsPressed === true
+                ? true
+                : false
+            }
+            onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
           />
-
+          <span
+            hidden={
+              !this.state.addSkillWorkingOnButtonIsPressed === true
+                ? true
+                : false
+            }
+          >
+            Due Date:
+          </span>
+          <input
+            value={this.state.skillDueDate}
+            type="date"
+            hidden={
+              !this.state.addSkillWorkingOnButtonIsPressed === true
+                ? true
+                : false
+            }
+            onChange={e => this.handleNewSkillDueDateChange(e)}
+          />
           <button
-          type="button" className="btn btn-primary"
-            hidden={!this.state.addSkillButtonIsPressed === true ? true : false}
-            onClick={() => this.handleAddCurrentSkillSubmit()}
+            type="button"
+            className="btn btn-primary"
+            hidden={
+              !this.state.addSkillWorkingOnButtonIsPressed === true
+                ? true
+                : false
+            }
+            onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
           >
             Add
           </button>
-          <div>{this.renderCurrentSkills()}</div>
+          <div>{this.renderSkillsWorkingOn()}</div>
         </div>
-
-        <div>
-          {this.state.addSkillWorkingOnButtonIsPressed === false ? (
-            <button 
-            type="button" className="btn btn-primary"
-            onClick={() => this.addSkillWorkingOnButtonToggle()}>
-              Add Skill to Work on
-            </button>
-          ) : (
-            <button 
-            type="button" className="btn btn-primary"
-            onClick={() => this.addSkillWorkingOnButtonToggle()}>
-              Cancel
-            </button>
-          )}
-        </div>
-
-        <input
-        value={this.state.addNewSkillToWorkOnInput}
-          hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
-          }
-          onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
-        />
-        <span
-          hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
-          }
-        >
-          Due Date:
-        </span>
-        <input
-        value ={this.state.skillDueDate}
-          type="date"
-          hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
-          }
-          onChange={e => this.handleNewSkillDueDateChange(e)}
-        />
-        <button
-        type="button" className="btn btn-primary"
-          hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true ? true : false
-          }
-          onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
-        >
-          Add
-        </button>
-        <div>{this.renderSkillsWorkingOn()}</div>
       </div>
     );
   }

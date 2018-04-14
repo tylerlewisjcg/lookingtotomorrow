@@ -32,9 +32,8 @@ renderMapped(){
     render() { 
         return (  
         <div>
-            <button onClick={()=> {
-                this.getCompleted()
-            }}>Render</button>
+            <h2>Recently Completed</h2>
+            
             { `Recently Completed Items: ${this.renderMapped()}`}
        
         </div>)
