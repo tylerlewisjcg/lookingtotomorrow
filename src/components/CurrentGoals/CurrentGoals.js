@@ -114,7 +114,7 @@ class CurrentGoals extends Component {
 
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-success"
                 hidden={
                   !this.state.addSkillButtonIsPressed === true ? true : false
                 }
@@ -125,7 +125,7 @@ class CurrentGoals extends Component {
               
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-danger"
               hidden={
                 !this.state.addSkillButtonIsPressed === true ? true : false
               }
@@ -142,26 +142,24 @@ class CurrentGoals extends Component {
 
           <div className="working-skills">
             <h2>Skills I'm Working On</h2>
-            {this.state.addSkillWorkingOnButtonIsPressed === false ? (
+            <form className="form-inline">
+        
               <button
                 type="button"
+                disabled={this.state.addSkillButtonIsPressed}
                 className="btn btn-primary"
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
                 Add Skill to Work on
               </button>
-            ) : (
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => this.addSkillWorkingOnButtonToggle()}
-              >
-                Cancel
-              </button>
-            )}
-          </div>
+           
+            
+        
 
-          <input
+          <div className="form-group mx-sm-3">
+                <input
+                  className="form-control"
+                  type="text"
             value={this.state.addNewSkillToWorkOnInput}
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true
@@ -170,6 +168,7 @@ class CurrentGoals extends Component {
             }
             onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
           />
+          </div>
           <span
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true
@@ -179,7 +178,9 @@ class CurrentGoals extends Component {
           >
             Due Date:
           </span>
+          <div className="form-group mx-sm-3">
           <input
+          className="form-control"
             value={this.state.skillDueDate}
             type="date"
             hidden={
@@ -189,9 +190,10 @@ class CurrentGoals extends Component {
             }
             onChange={e => this.handleNewSkillDueDateChange(e)}
           />
+          </div>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-success"
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true
                 ? true
@@ -201,10 +203,25 @@ class CurrentGoals extends Component {
           >
             Add
           </button>
+          <button
+                type="button"
+                className="btn btn-danger"
+                hidden={
+                  !this.state.addSkillWorkingOnButtonIsPressed === true
+                    ? true
+                    : false
+                }
+                onClick={() => this.addSkillWorkingOnButtonToggle()}
+              >
+                Cancel
+              </button>
+              </form>
           <div>{this.renderSkillsWorkingOn()}</div>
         </div>
       </div>
+      </div>
     );
+
   }
 }
 

@@ -12,12 +12,12 @@ class CurrentSkills extends Component {
     return (
       <div>
         <button
-        type="button" className="btn btn-primary"
+        type="button" className="btn btn-link"
           onClick={() =>
             this.props.deleteCurrentSkill(this.props.skill.current_skill_id)
           }
         >
-          Delete
+          <i class="far fa-trash-alt"></i>
         </button>
         <span>{this.props.skill.current_skill}</span>
       </div>
