@@ -100,80 +100,24 @@ handleActionItemInput(e){
         </button>
 
 
-        <form className="form-inline">
-        
-        <button
-          type="button"
-          disabled={this.state.addSkillButtonIsPressed}
-          className="btn btn-primary"
-          onClick={() => this.addSkillWorkingOnButtonToggle()}
-        >
-          Add Skill to Work on
-        </button>
-     
-      
-  
-
-    <div className="form-group mx-sm-3">
-          <input
-            className="form-control"
-            type="text"
-      value={this.state.addNewSkillToWorkOnInput}
-      hidden={
-        !this.state.addSkillWorkingOnButtonIsPressed === true
-          ? true
-          : false
-      }
-      onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
-    />
-    </div>
-    <span
-      hidden={
-        !this.state.addSkillWorkingOnButtonIsPressed === true
-          ? true
-          : false
-      }
-    >
-      Due Date:
-    </span>
-    <div className="form-group mx-sm-3">
-    <input
-    className="form-control"
-      value={this.state.skillDueDate}
-      type="date"
-      hidden={
-        !this.state.addSkillWorkingOnButtonIsPressed === true
-          ? true
-          : false
-      }
-      onChange={e => this.handleNewSkillDueDateChange(e)}
-    />
-    </div>
-    <button
-      type="button"
-      className="btn btn-success"
-      hidden={
-        !this.state.addSkillWorkingOnButtonIsPressed === true
-          ? true
-          : false
-      }
-      onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
-    >
-      Add
-    </button>
-    <button
-          type="button"
-          className="btn btn-danger"
-          hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true
-              ? true
-              : false
-          }
-          onClick={() => this.addSkillWorkingOnButtonToggle()}
-        >
-          Cancel
-        </button>
-        </form>
+        {this.state.addActionItemButtonIsPressed === false ?
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.toggleAddActionItemButton()}>Add New Action Item</button>
+        :
+        <div>
+        <span> Action Item: </span>
+        <input onChange={e=> this.handleActionItemInput(e)}/>
+        <span>Due Date:</span>
+        <input type="date" onChange={e=> this.handActionItemDueDateInput(e)}/>
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.handleAddNewActionButton()}>Add</button>
+        <button 
+        type="button" className="btn btn-primary"
+        onClick={()=> this.toggleAddActionItemButton()}>Cancel</button>
+        </div>
+        }
         <div>{this.renderActionItems()}</div>
       </div>
     );
