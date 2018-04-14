@@ -17,7 +17,7 @@ class CurrentSkills extends Component {
             this.props.deleteCurrentSkill(this.props.skill.current_skill_id)
           }
         >
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </button>
         <span>{this.props.skill.current_skill}</span>
       </div>
