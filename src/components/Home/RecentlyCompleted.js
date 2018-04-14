@@ -7,9 +7,11 @@ class RecentlyCompleted extends Component {
         recentlyCompleted: []
          }
     }
-    componentDidMount(){
+     componentDidMount(){
        this.getCompleted()
+     
     }
+
 
     getCompleted(){
         let recentlyCompletedTemp= []
@@ -19,20 +21,21 @@ class RecentlyCompleted extends Component {
         })
         this.setState({recentlyCompleted: recentlyCompletedTemp})
     }
-    renderCompleted(){
-        if (this.state.recentlyCompleted.length > 0){
-            return this.state.recentlyCompleted.action_item_description
-        }
-        else{
-            return this.state.recentlyCompleted.action_item_description
-        }
-    }
-
+    
+renderMapped(){
+    this.state.recentlyCompleted.map(completedItem=>{
+        return <div><p>{completedItem.action_item_description}</p>
+        <p>{completedItem.completion_date}</p>
+        </div>
+    })
+}
     render() { 
-     
         return (  
         <div>
-            <p>Recently Completed</p>
+            <button onClick={()=> {
+                this.getCompleted()
+            }}>Render</button>
+            { `Recently Completed Items: ${this.renderMapped()}`}
        
         </div>)
     }
