@@ -55,7 +55,7 @@ class ActionItems extends Component {
           <button
             type="button"
             className="btn btn-link"
-            onClick={() => this.props.handleDeleteClick()}
+            onClick={() => this.handleDeleteClick()}
           >
             <i className="far fa-trash-alt" />
           </button>

@@ -90,6 +90,7 @@ class CurrentGoals extends Component {
           <h1>Current Goals</h1>
           <div className="current_skills">
             <h2>Skills I Have</h2>
+
             <form className="form-inline">
               <button
                 type="button"
@@ -136,6 +137,8 @@ class CurrentGoals extends Component {
             </form>
 
           
+
+
       
             <div>{this.renderCurrentSkills()}</div>
           </div>
@@ -146,7 +149,7 @@ class CurrentGoals extends Component {
         
               <button
                 type="button"
-                disabled={this.state.addSkillButtonIsPressed}
+                disabled={this.state.addSkillWorkingOnButtonIsPressed}
                 className="btn btn-primary"
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
@@ -157,6 +160,13 @@ class CurrentGoals extends Component {
         
 
           <div className="form-group mx-sm-3">
+          <span
+           hidden={
+            !this.state.addSkillWorkingOnButtonIsPressed === true
+              ? true
+              : false
+          }
+          >Skill: </span>
                 <input
                   className="form-control"
                   type="text"
@@ -169,6 +179,9 @@ class CurrentGoals extends Component {
             onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
           />
           </div>
+
+
+          
           <span
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true

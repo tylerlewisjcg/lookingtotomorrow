@@ -4,10 +4,6 @@ import { connect } from "react-redux";
 
 import ActionItems from "./ActionItems";
 
-import { tween } from "popmotion";
-
-import { MotionValue } from "popmotion-react";
-
 import axios from "axios";
 
 import {
@@ -113,42 +109,67 @@ class SkillsWorkingOn extends Component {
             <h3 className="card-title">{this.props.skill.skill_name}</h3>
 
             <h5 className="card-subtitle mb-2 text-muted">
-              <span>{`Start Date: ${moment(this.props.skill.start_date).format(
+              <p>{`Start Date: ${moment(this.props.skill.start_date).format(
                 "MMM DD, YYYY"
-              )}`}</span>
+              )}`}</p>
 
-              <span>{`Due Date: ${moment(this.props.skill.due_date).format(
+              <p>{`Due Date: ${moment(this.props.skill.due_date).format(
                 "MMM DD, YYYY"
-              )}`}</span>
+              )}`}</p>
             </h5>
 
             <p className="card-text">
               <h5>Action Items</h5>
+                <form className="form-inline">
 
-              {this.state.addActionItemButtonIsPressed === false ? (
                 <button
                   type="button"
+                  disabled={this.state.addActionItemButtonIsPressed}
                   className="btn btn-light"
                   onClick={() => this.toggleAddActionItemButton()}
                 >
                   <i class="fas fa-plus" /> Add New
                 </button>
-              ) : (
-                <div>
-                  <span> Action Item: </span>
+       
 
-                  <input onChange={e => this.handleActionItemInput(e)} />
 
-                  <span>Due Date:</span>
+
+
+
+
+              <div className="form-group mx-sm-3">
+                  <span
+                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
+                   > Action Item: </span>
 
                   <input
+                  type="text"
+                  className="form-control"
+                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
+                   value={this.state.actionItemDescription}
+                   onChange={e => this.handleActionItemInput(e)} />
+                   </div>
+
+
+
+
+
+                <div className="form-group mx-sm-3">
+                  <span
+                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
+                  >Due Date:</span>
+
+                  <input
+                  className="form-control"
+                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     type="date"
                     onChange={e => this.handActionItemDueDateInput(e)}
                   />
-
+                </div>
                   <button
                     type="button"
                     className="btn btn-success"
+                    hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.handleAddNewActionButton()}
                   >
                     Add
@@ -157,12 +178,23 @@ class SkillsWorkingOn extends Component {
                   <button
                     type="button"
                     className="btn btn-danger"
+                    hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.toggleAddActionItemButton()}
                   >
                     Cancel
                   </button>
-                </div>
-              )}
+                </form>
+          
+
+
+
+
+
+
+
+
+
+
 
               <table className="table">
                 <thead>
