@@ -30,20 +30,23 @@ class CareerHistory extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+      <Navbar />
+      <div className="container mt-3">
         <h1>Career History</h1>
 
-        <div>{this.renderWorkHistoryItems()}</div>
 
         {!this.state.addNewButtonIsPressed ? (
           <button 
-          type="button" className="btn btn-primary"
+          type="button" className="btn btn-light"
          onClick={() => this.updateState()}>
+         <i class="fas fa-plus mr-2" />
             Add New Work History
           </button>
         ) : (
           <CareerForm updateState={this.updateState} />
         )}
+        <div>{this.renderWorkHistoryItems()}</div>
+      </div>
       </div>
     );
   }

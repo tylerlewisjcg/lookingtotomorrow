@@ -48,36 +48,18 @@ class CareerForm extends Component {
 
   render() {
     return (
+      <div>
       <form>
-        <button
-        type="button" className="btn btn-primary"
-          onClick={() => {
-            this.props.updateState();
-          }}
-        >
-        <i class="fas fa-times mr-2"></i>
-          Cancel
-        </button>
-        <button
-        type="button" className="btn btn-primary"
-          onClick={() => {
-            !!this.props.job
-              ? this.handleEditWorkHistorySubmit()
-              : this.handleAddWorkHistorySubmit();
-          }}
-        >
-          Submit
-        </button>
-        <br />
-        <span>Company</span>
+        <label htmlFor="company">Company</label>
         <input
+          id="company"
           name="company"
           defaultValue={!!this.props.job ? this.props.job.company : ""}
           onChange={e => this.props.handleCompanyChange(e)}
         />
-        <br />
-        <span>Start Date</span>
+        <label htmlFor="start_date">Start Date</label>
         <input
+        id="start_date"
           type="date"
           name="start_date"
           defaultValue={
@@ -87,9 +69,9 @@ class CareerForm extends Component {
           }
           onChange={e => this.props.handleStartDateChange(e)}
         />
-        <br />
-        <span>End Date</span>
+        <label htmlFor="end_date">End Date</label>
         <input
+        id="end_date"
           type="date"
           name="end_date"
           defaultValue={
@@ -99,33 +81,33 @@ class CareerForm extends Component {
           }
           onChange={e => this.props.handleEndDateChange(e)}
         />
-        <br />
-        <span>Salary</span>
+        <label htmlFor="salary">Salary</label>
         <input
+        id="salary"
           type="number"
           name="salary"
           defaultValue={!!this.props.job ? this.props.job.salary : ""}
           onChange={e => this.props.handleSalaryChange(e)}
         />
-        <br />
-        <span>Job Title</span>
+        <label htmlFor="job_title">Job Title</label>
         <input
+        id="job_title"
           name="job_title"
           defaultValue={!!this.props.job ? this.props.job.job_title : ""}
           onChange={e => this.props.handleJobTitleChange(e)}
         />
-        <br />
-        <span>Job Responsibilities</span>
+        <label htmlFor="job_responsibilities">Job Responsibilities</label>
         <input
+        id="job_responsibilities"
           name="job_responsibilities"
           defaultValue={
             !!this.props.job ? this.props.job.job_responsibilities : ""
           }
           onChange={e => this.props.handleJobResponsibilitiesChange(e)}
         />
-        <br />
-        <span>Notable Achievements</span>
+        <label htmlFor="notable_achievements">Notable Achievements</label>
         <input
+        id="notable_achievements"
           name="notable_achievements"
           defaultValue={
             !!this.props.job ? this.props.job.notable_achievements : ""
@@ -133,6 +115,26 @@ class CareerForm extends Component {
           onChange={e => this.props.handleNotableAchievementsChange(e)}
         />
       </form>
+    <button
+    type="button" className="btn btn-light"
+      onClick={() => {
+        this.props.updateState();
+      }}
+    >
+    <i class="fas fa-times mr-2"></i>
+      Cancel
+    </button>
+    <button
+    type="button" className="btn btn-secondary"
+      onClick={() => {
+        !!this.props.job
+          ? this.handleEditWorkHistorySubmit()
+          : this.handleAddWorkHistorySubmit();
+      }}
+    >
+      Submit
+    </button>
+    </div>
     );
   }
 }

@@ -144,7 +144,7 @@ class CurrentGoals extends Component {
             <div className="container">{this.renderCurrentSkills()}</div>
           </div>
 
-          <div className="working-skills">
+          <div className="working-skills mt-3">
             <h2>Skills I'm Working On</h2>
             <form className="form-inline">
         
@@ -161,13 +161,15 @@ class CurrentGoals extends Component {
         
 
           <div className="form-group mx-sm-3">
-          <span
+          <span className= "mr-3"
            hidden={
             !this.state.addSkillWorkingOnButtonIsPressed === true
               ? true
               : false
           }
-          >Skill: </span>
+          >
+          Skill:
+          </span>
                 <input
                   className="form-control"
                   type="text"
@@ -227,7 +229,7 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
-              <i class="fas fa-times mr-2"></i>
+              <i class="fas fa-times mr-2" ></i>
                 Cancel
               </button>
               </form>

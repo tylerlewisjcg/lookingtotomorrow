@@ -19,17 +19,6 @@ class CareerHistoryDisplayChild extends Component {
       <div>
         {!this.state.editButtonIsPressed ? (
           <div>
-            <button 
-            type="button" className="btn btn-primary"
-            onClick={() => this.updateState()}>Edit</button>
-            <button
-            type="button" className="btn btn-primary"
-              onClick={() =>
-                this.props.deleteWorkHistory(this.props.job.work_id)
-              }
-            >
-              Delete
-            </button>
 
             <p>Company: {this.props.job.company}</p>
             <p>
@@ -46,10 +35,55 @@ class CareerHistoryDisplayChild extends Component {
             <p>Job Title: {this.props.job.job_title}</p>
             <p>Job Responsibilities: {this.props.job.job_responsibilities}</p>
             <p>Notable Achievements: {this.props.job.notable_achievements}</p>
+            <button 
+            type="button" className="btn btn-light mr-4"
+            onClick={() => this.updateState()}>
+            <i class="far fa-edit mr-2"></i>
+            Edit</button>
+            <button
+                type="button btn-sm"
+                className="btn btn-secondary"
+                data-toggle="modal"
+            data-target="#deleteConfirmModal3"
+               
+              >
+              <i class="far fa-trash-alt mr-2"></i>
+             Delete
+              </button>
+            
           </div>
         ) : (
           <CareerForm updateState={this.updateState} job={this.props.job} />
         )}
+
+
+        <div class="modal fade" id="deleteConfirmModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Are you sure you want to delete this work history item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={() =>
+                  this.props.deleteWorkHistory(this.props.job.work_id)
+                }>Confirm Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+        
       </div>
     );
   }

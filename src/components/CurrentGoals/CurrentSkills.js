@@ -13,6 +13,7 @@ class CurrentSkills extends Component {
       <span className="badge badge-pill badge-light">{this.props.skill.current_skill}
         <button
         type="button" className="btn btn-link"
+        style={{color: "#5A6268"}}
           onClick={() =>
             this.props.deleteCurrentSkill(this.props.skill.current_skill_id)
           }
