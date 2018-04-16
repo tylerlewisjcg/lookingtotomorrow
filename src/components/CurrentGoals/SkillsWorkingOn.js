@@ -168,7 +168,7 @@ class SkillsWorkingOn extends Component {
                 </div>
                   <button
                     type="button"
-                    className="btn btn-success"
+                    className="btn btn-success mr-1"
                     hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.handleAddNewActionButton()}
                   >
@@ -201,15 +201,15 @@ class SkillsWorkingOn extends Component {
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Action Item</th>
+                    <th scope="col" className="font-weight-bold">Action Item</th>
 
-                    <th scope="col">Start Date</th>
+                    <th scope="col" className="font-weight-bold">Start Date</th>
 
-                    <th scope="col">Due Date</th>
+                    <th scope="col" className="font-weight-bold">Due Date</th>
 
-                    <th scope="col">Completed</th>
+                    <th scope="col" className="font-weight-bold">Completed</th>
 
-                    <th scope="col">Delete</th>
+                    <th scope="col" className="font-weight-bold">Delete</th>
                   </tr>
                 </thead>
 

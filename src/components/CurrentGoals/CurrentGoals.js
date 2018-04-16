@@ -115,7 +115,7 @@ class CurrentGoals extends Component {
 
               <button
                 type="button"
-                className="btn btn-success"
+                className="btn btn-success mr-1"
                 hidden={
                   !this.state.addSkillButtonIsPressed === true ? true : false
                 }
@@ -209,7 +209,7 @@ class CurrentGoals extends Component {
           </div>
           <button
             type="button"
-            className="btn btn-success"
+            className="btn btn-success mr-1"
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true
                 ? true

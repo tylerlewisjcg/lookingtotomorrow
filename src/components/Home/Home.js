@@ -25,7 +25,7 @@ class Home extends Component {
         <Navbar />
         <div className="jumbotron">
         <div className="container">
-          <h1 className="display-3">Welcome!!!</h1>
+          <h1 className="display-3">Welcome</h1>
           <p>This paragraph will have some introduction to my site or something</p>
           <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
