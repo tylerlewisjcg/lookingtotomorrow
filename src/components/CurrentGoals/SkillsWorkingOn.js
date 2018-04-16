@@ -118,7 +118,7 @@ class SkillsWorkingOn extends Component {
               )}`}</p>
             </h5>
 
-            <p className="card-text">
+            <div className="card-text">
               <h5>Action Items</h5>
                 <form className="form-inline">
 
@@ -128,7 +128,7 @@ class SkillsWorkingOn extends Component {
                   className="btn btn-light"
                   onClick={() => this.toggleAddActionItemButton()}
                 >
-                  <i class="fas fa-plus" /> Add New
+                  <i className="fas fa-plus" /> Add New
                 </button>
        
 
@@ -216,7 +216,7 @@ class SkillsWorkingOn extends Component {
                 <tbody>{this.renderActionItems()}</tbody>
               </table>
               </div>
-            </p>
+            </div>
 
             <a className="card-link">
               {!!this.props.skill.completion_date ? (
@@ -254,7 +254,7 @@ class SkillsWorkingOn extends Component {
              Delete Skill
               </button>
             </a>
-            <div className="modal fade" id="deleteConfirmModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div className="modal fade" id="deleteConfirmModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
   <div className="modal-dialog" role="document">
     <div className="modal-content">
       <div className="modal-header">

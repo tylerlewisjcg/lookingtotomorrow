@@ -59,7 +59,7 @@ class CareerHistoryDisplayChild extends Component {
         )}
 
 
-        <div className="modal fade" id="deleteConfirmModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div className="modal fade" id="deleteConfirmModal3" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
   <div className="modal-dialog" role="document">
     <div className="modal-content">
       <div className="modal-header">

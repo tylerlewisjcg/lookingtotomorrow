@@ -148,8 +148,8 @@ class CareerForm extends Component {
     >
       Submit
     </button>
-    </div>                      {/* card-body */}
-    </div>                               {/* card */}
+    </div>                      
+    </div>                               
     </div>                       
     );
   }

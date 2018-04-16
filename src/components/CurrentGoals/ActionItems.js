@@ -59,10 +59,9 @@ class ActionItems extends Component {
           >
             <i className="far fa-trash-alt"  style={{color: "#5A6268"}}/>
           </a>
-        </td>
 
 
-        <div className="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="deleteConfirmModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog" role="document">
     <div className="modal-content">
       <div className="modal-header">
@@ -83,6 +82,7 @@ class ActionItems extends Component {
 </div>
 
 
+        </td>
 
       </tr>
     );
