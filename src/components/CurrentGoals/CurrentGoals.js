@@ -121,7 +121,7 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.handleAddCurrentSkillSubmit()}
               >
-              <i class="fas fa-plus" />  Add
+              <i className="fas fa-plus" />  Add
               </button>
               
             <button
@@ -132,7 +132,7 @@ class CurrentGoals extends Component {
               }
               onClick={() => this.updateState()}
             >
-           <i class="fas fa-times mr-2"></i>
+           <i className="fas fa-times mr-2"></i>
               Cancel
             </button>
             </form>
@@ -217,7 +217,7 @@ class CurrentGoals extends Component {
             }
             onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
           >
-           <i class="fas fa-plus" /> Add
+           <i className="fas fa-plus" /> Add
           </button>
           <button
                 type="button"
@@ -229,7 +229,7 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
-              <i class="fas fa-times mr-2" ></i>
+              <i className="fas fa-times mr-2" ></i>
                 Cancel
               </button>
               </form>

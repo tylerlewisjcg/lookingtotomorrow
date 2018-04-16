@@ -37,15 +37,15 @@ class CareerHistory extends Component {
 
         {!this.state.addNewButtonIsPressed ? (
           <button 
-          type="button" className="btn btn-light"
+          type="button" className="btn btn-light mb-2"
          onClick={() => this.updateState()}>
-         <i class="fas fa-plus mr-2" />
+         <i className="fas fa-plus mr-2" />
             Add New Work History
           </button>
         ) : (
           <CareerForm updateState={this.updateState} />
         )}
-        <div>{this.renderWorkHistoryItems()}</div>
+        <div className="container"><div className="row">{this.renderWorkHistoryItems()}</div></div>
       </div>
       </div>
     );

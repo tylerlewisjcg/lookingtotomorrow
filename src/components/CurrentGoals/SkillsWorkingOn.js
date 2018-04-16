@@ -103,7 +103,7 @@ class SkillsWorkingOn extends Component {
 
   render() {
     return (
-      <div className="working-skills--container">
+      <div className="working-skills--container mb-2">
         <div className="card">
           <div className="card-body">
             <h3 className="card-title">{this.props.skill.skill_name}</h3>
@@ -172,7 +172,7 @@ class SkillsWorkingOn extends Component {
                     hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.handleAddNewActionButton()}
                   >
-                  <i class="fas fa-plus" />  Add
+                  <i className="fas fa-plus" />  Add
                   </button>
 
                   <button
@@ -181,7 +181,7 @@ class SkillsWorkingOn extends Component {
                     hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.toggleAddActionItemButton()}
                   >
-                  <i class="fas fa-times mr-2" />
+                  <i className="fas fa-times mr-2" />
                     Cancel
                   </button>
                 </form>
@@ -237,7 +237,7 @@ class SkillsWorkingOn extends Component {
                     );
                   }}
                 >
-                 <i class="fas fa-check" />   Mark As Complete
+                 <i className="fas fa-check" />   Mark As Complete
                 </button>
               )}
             </a>
@@ -250,25 +250,25 @@ class SkillsWorkingOn extends Component {
             data-target="#deleteConfirmModal2"
                
               >
-              <i class="far fa-trash-alt mr-2"></i>
+              <i className="far fa-trash-alt mr-2"></i>
              Delete Skill
               </button>
             </a>
-            <div class="modal fade" id="deleteConfirmModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="deleteConfirmModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div className="modal-dialog" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div className="modal-body">
        Are you sure you want to delete this skill that you have been working so hard on?
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={() =>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() =>
                   this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
                 }>Confirm Delete</button>
       </div>

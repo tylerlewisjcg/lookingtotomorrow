@@ -48,10 +48,15 @@ class CareerForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container mb-2">
+      <div className="card border-primary" style={{width: "16rem"}}>
+      <div className="card-body">
+      <div className="card-subtitle mb-2 text-muted"> New Work Item</div>
       <form>
         <label htmlFor="company">Company</label>
         <input
+        className="form-control"
+         type="text"
           id="company"
           name="company"
           defaultValue={!!this.props.job ? this.props.job.company : ""}
@@ -59,6 +64,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="start_date">Start Date</label>
         <input
+        className="form-control"
         id="start_date"
           type="date"
           name="start_date"
@@ -71,6 +77,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="end_date">End Date</label>
         <input
+        className="form-control"
         id="end_date"
           type="date"
           name="end_date"
@@ -83,6 +90,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="salary">Salary</label>
         <input
+        className="form-control"
         id="salary"
           type="number"
           name="salary"
@@ -91,6 +99,8 @@ class CareerForm extends Component {
         />
         <label htmlFor="job_title">Job Title</label>
         <input
+        className="form-control"
+        type="text"
         id="job_title"
           name="job_title"
           defaultValue={!!this.props.job ? this.props.job.job_title : ""}
@@ -98,6 +108,8 @@ class CareerForm extends Component {
         />
         <label htmlFor="job_responsibilities">Job Responsibilities</label>
         <input
+        type="text"
+        className="form-control"
         id="job_responsibilities"
           name="job_responsibilities"
           defaultValue={
@@ -107,6 +119,8 @@ class CareerForm extends Component {
         />
         <label htmlFor="notable_achievements">Notable Achievements</label>
         <input
+        type="text"
+        className="form-control mb-2"
         id="notable_achievements"
           name="notable_achievements"
           defaultValue={
@@ -116,12 +130,12 @@ class CareerForm extends Component {
         />
       </form>
     <button
-    type="button" className="btn btn-light"
+    type="button" className="btn btn-light mr-3"
       onClick={() => {
         this.props.updateState();
       }}
     >
-    <i class="fas fa-times mr-2"></i>
+    <i className="fas fa-times mr-2"></i>
       Cancel
     </button>
     <button
@@ -134,7 +148,9 @@ class CareerForm extends Component {
     >
       Submit
     </button>
-    </div>
+    </div>                      {/* card-body */}
+    </div>                               {/* card */}
+    </div>                       
     );
   }
 }
