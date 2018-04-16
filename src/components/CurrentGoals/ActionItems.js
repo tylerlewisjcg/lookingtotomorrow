@@ -28,9 +28,9 @@ class ActionItems extends Component {
 
         <td>
           {!!this.props.item.completion_date ? (
-            <span>{`Completed On: ${moment(this.props.item.completion_date).format(
-              "MMM DD, YYYY"
-            )}`}</span>
+            <span>{`Completed On: ${moment(
+              this.props.item.completion_date
+            ).format("MMM DD, YYYY")}`}</span>
           ) : (
             <button
               type="button"
@@ -52,38 +52,61 @@ class ActionItems extends Component {
           )}
         </td>
         <td>
-          <a    
+          <a
             className="btn"
             data-toggle="modal"
             data-target="#deleteConfirmModal"
           >
-            <i className="far fa-trash-alt"  style={{color: "#5A6268"}}/>
+            <i className="far fa-trash-alt" style={{ color: "#5A6268" }} />
           </a>
 
-
-        <div className="modal fade" id="deleteConfirmModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-       Are you sure you want to delete this Action Item?
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" className="btn btn-danger"  data-dismiss="modal" onClick={() => this.handleDeleteClick()}>Confirm Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+          <div
+            className="modal fade"
+            id="deleteConfirmModal"
+            tabIndex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">
+                    Are you sure?
+                  </h5>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  Are you sure you want to delete this Action Item?
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    data-dismiss="modal"
+                    onClick={() => this.handleDeleteClick()}
+                  >
+                    Confirm Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
-
       </tr>
     );
   }

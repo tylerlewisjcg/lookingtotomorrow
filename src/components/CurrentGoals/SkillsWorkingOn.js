@@ -122,8 +122,7 @@ class SkillsWorkingOn extends Component {
 
             <div className="card-text">
               <h5>Action Items</h5>
-                <form className="form-inline">
-
+              <form className="form-inline">
                 <button
                   type="button"
                   disabled={this.state.addActionItemButtonIsPressed}
@@ -132,92 +131,111 @@ class SkillsWorkingOn extends Component {
                 >
                   <i className="fas fa-plus" /> Add New
                 </button>
-       
-
-
-
-
-
-
-              <div className="form-group mx-sm-3">
-                  <span
-                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
-                   > Action Item:</span>
-
-                  <input
-                  type="text"
-                  className="form-control"
-                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
-                   value={this.state.actionItemDescription}
-                   onChange={e => this.handleActionItemInput(e)} />
-                   </div>
-
-
-
-
 
                 <div className="form-group mx-sm-3">
                   <span
-                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
-                  >Due Date:</span>
+                    hidden={
+                      !this.state.addActionItemButtonIsPressed === true
+                        ? true
+                        : false
+                    }
+                  >
+                    {" "}
+                    Action Item:
+                  </span>
 
                   <input
-                  className="form-control"
-                  value={this.state.dueDate}
-                   hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
+                    type="text"
+                    className="form-control"
+                    hidden={
+                      !this.state.addActionItemButtonIsPressed === true
+                        ? true
+                        : false
+                    }
+                    value={this.state.actionItemDescription}
+                    onChange={e => this.handleActionItemInput(e)}
+                  />
+                </div>
+
+                <div className="form-group mx-sm-3">
+                  <span
+                    hidden={
+                      !this.state.addActionItemButtonIsPressed === true
+                        ? true
+                        : false
+                    }
+                  >
+                    Due Date:
+                  </span>
+
+                  <input
+                    className="form-control"
+                    value={this.state.dueDate}
+                    hidden={
+                      !this.state.addActionItemButtonIsPressed === true
+                        ? true
+                        : false
+                    }
                     type="date"
                     onChange={e => this.handActionItemDueDateInput(e)}
                   />
                 </div>
-                  <button
-                    type="button"
-                    className="btn btn-success mr-1"
-                    hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
-                    onClick={() => this.handleAddNewActionButton()}
-                  >
-                  <i className="fas fa-plus" />  Add
-                  </button>
+                <button
+                  type="button"
+                  className="btn btn-success mr-1"
+                  hidden={
+                    !this.state.addActionItemButtonIsPressed === true
+                      ? true
+                      : false
+                  }
+                  onClick={() => this.handleAddNewActionButton()}
+                >
+                  <i className="fas fa-plus" /> Add
+                </button>
 
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
-                    onClick={() => this.toggleAddActionItemButton()}
-                  >
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  hidden={
+                    !this.state.addActionItemButtonIsPressed === true
+                      ? true
+                      : false
+                  }
+                  onClick={() => this.toggleAddActionItemButton()}
+                >
                   <i className="fas fa-times mr-2" />
-                    Cancel
-                  </button>
-                </form>
-          
-
-
-
-
-
-
-
-
-
+                  Cancel
+                </button>
+              </form>
 
               <div className="table-responsive">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col" className="font-weight-bold">
+                        Action Item
+                      </th>
 
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col" className="font-weight-bold">Action Item</th>
+                      <th scope="col" className="font-weight-bold">
+                        Start Date
+                      </th>
 
-                    <th scope="col" className="font-weight-bold">Start Date</th>
+                      <th scope="col" className="font-weight-bold">
+                        Due Date
+                      </th>
 
-                    <th scope="col" className="font-weight-bold">Due Date</th>
+                      <th scope="col" className="font-weight-bold">
+                        Completed
+                      </th>
 
-                    <th scope="col" className="font-weight-bold">Completed</th>
+                      <th scope="col" className="font-weight-bold">
+                        Delete
+                      </th>
+                    </tr>
+                  </thead>
 
-                    <th scope="col" className="font-weight-bold">Delete</th>
-                  </tr>
-                </thead>
-
-                <tbody>{this.renderActionItems()}</tbody>
-              </table>
+                  <tbody>{this.renderActionItems()}</tbody>
+                </table>
               </div>
             </div>
 
@@ -240,7 +258,7 @@ class SkillsWorkingOn extends Component {
                     );
                   }}
                 >
-                 <i className="fas fa-check" />   Mark As Complete
+                  <i className="fas fa-check" /> Mark As Complete
                 </button>
               )}
             </a>
@@ -250,34 +268,63 @@ class SkillsWorkingOn extends Component {
                 type="button btn-sm"
                 className="btn btn-secondary"
                 data-toggle="modal"
-            data-target="#deleteConfirmModal2"
-               
+                data-target="#deleteConfirmModal2"
               >
-              <i className="far fa-trash-alt mr-2"></i>
-             Delete Skill
+                <i className="far fa-trash-alt mr-2" />
+                Delete Skill
               </button>
             </a>
-            <div className="modal fade" id="deleteConfirmModal2" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-       Are you sure you want to delete this skill that you have been working so hard on?
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() =>
-                  this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
-                }>Confirm Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <div
+              className="modal fade"
+              id="deleteConfirmModal2"
+              tabIndex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel2"
+              aria-hidden="true"
+            >
+              <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
+                      Are you sure?
+                    </h5>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    Are you sure you want to delete this skill that you have
+                    been working so hard on?
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      data-dismiss="modal"
+                      onClick={() =>
+                        this.props.deleteSkillWorkingOn(
+                          this.props.skill.skill_id
+                        )
+                      }
+                    >
+                      Confirm Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

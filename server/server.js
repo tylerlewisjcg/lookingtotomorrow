@@ -5,7 +5,7 @@ const express = require("express"),
   massive = require("massive"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-  const {google} = require('googleapis');
+const { google } = require("googleapis");
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -110,7 +110,10 @@ app.get("/api/get_work_history", function(req, res) {
 app.delete("/api/delete_work_history/:id", (req, res) => {
   app
     .get("db")
-    .work_history_DB.delete_work_history([req.params.id, req.session.passport.user])
+    .work_history_DB.delete_work_history([
+      req.params.id,
+      req.session.passport.user
+    ])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 });
@@ -264,15 +267,17 @@ app.get("/api/get_current_skills", function(req, res) {
 app.delete("/api/delete_current_skill/:id", (req, res) => {
   app
     .get("db")
-    .current_skills_DB.delete_current_skill([req.params.id, req.session.passport.user])
+    .current_skills_DB.delete_current_skill([
+      req.params.id,
+      req.session.passport.user
+    ])
     .then(response => {
-      res.status(200).send(response)})
+      res.status(200).send(response);
+    })
     .catch(err => console.log(err));
 });
 
-
 /////// Skills Working On Endpoints
-
 
 app.post("/api/add_skill", (req, res) => {
   app
@@ -303,10 +308,10 @@ app.delete("/api/delete_skill/:id", (req, res) => {
     .get("db")
     .skills_DB.delete_skill([req.params.id, req.session.passport.user])
     .then(response => {
-      res.status(200).send(response)})
+      res.status(200).send(response);
+    })
     .catch(err => console.log(err));
 });
-
 
 app.put("/api/mark_skill_as_complete/:id", (req, res) => {
   app
@@ -320,12 +325,7 @@ app.put("/api/mark_skill_as_complete/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
-
-
-//////// Action Items Endpoints   
-
+//////// Action Items Endpoints
 
 app.get("/api/get_action_items/:id", function(req, res) {
   app
@@ -342,7 +342,8 @@ app.delete("/api/delete_action_item/:id/:skill_id", (req, res) => {
     .get("db")
     .action_items_db.delete_action_item([req.params.id, req.params.skill_id])
     .then(response => {
-      res.status(200).send(response)})
+      res.status(200).send(response);
+    })
     .catch(err => console.log(err));
 });
 
@@ -372,11 +373,6 @@ app.put("/api/mark_action_item_as_complete/:id", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
-
-
-
 ///// motivations endpoints
 app.post("/api/add_motivations", (req, res) => {
   app
@@ -393,7 +389,6 @@ app.post("/api/add_motivations", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
 app.put("/api/edit_motivations", (req, res) => {
   app
     .get("db")
@@ -409,12 +404,13 @@ app.put("/api/edit_motivations", (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.get('/api/get_motivations', (req, res)=> {
-  app.get('db')
-  .motivations_DB.select_users_motivations([req.session.passport.user])
-  .then(response => res.status(200).send(response))
-  .catch(err=> console.log(err))
-})
+app.get("/api/get_motivations", (req, res) => {
+  app
+    .get("db")
+    .motivations_DB.select_users_motivations([req.session.passport.user])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {
@@ -423,33 +419,14 @@ app.get("/auth/logout", (req, res) => {
 });
 
 //// Recently Completed ////
-app.get('/api/recently_completed', (req, res)=> {
-  app.get('db')
-  .action_items_db.select_action_items_sorted([req.session.passport.user])
-  .then(response => res.status(200).send(response))
-  .catch(err=> console.log(err))
-})
-
-
+app.get("/api/recently_completed", (req, res) => {
+  app
+    .get("db")
+    .action_items_db.select_action_items_sorted([req.session.passport.user])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
 /////////// Google Calendar/////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));

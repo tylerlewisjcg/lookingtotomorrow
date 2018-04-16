@@ -97,16 +97,14 @@ export function addCurrentSkill(userNewCurrentSkillInput) {
   };
 }
 
-export function getActionItems(id){
-
-  const actionData = axios.get(`/api/get_action_items/${id}`)
-  .then(response => {
-    return response.data
+export function getActionItems(id) {
+  const actionData = axios.get(`/api/get_action_items/${id}`).then(response => {
+    return response.data;
   });
   return {
     type: GET_ACTION_ITEMS,
     payload: actionData
-  }
+  };
 }
 export function deleteCurrentSkill(id) {
   const deleteData = axios
@@ -145,7 +143,6 @@ export function addActionItem(
   };
 }
 export function deleteActionItem(id, skill_id) {
-
   const deleteItem = axios
     .delete(`/api/delete_action_item/${id}/${skill_id}`)
     .then(response => {
@@ -203,11 +200,11 @@ export default function reducer(state = initialState, action) {
     case DELETE_ACTION_ITEM + "_FULFILLED":
       return Object.assign({}, state, { actionItems: action.payload });
 
-      case GET_ACTION_ITEMS + "_FULFILLED":
-      return Object.assign({}, state, {actionItems: action.payload})
+    case GET_ACTION_ITEMS + "_FULFILLED":
+      return Object.assign({}, state, { actionItems: action.payload });
 
-      case MARK_ACTION_ITEM_AS_COMPLETE + "_FULFILLED":
-      return Object.assign({}, state, {actionItems: action.payload})
+    case MARK_ACTION_ITEM_AS_COMPLETE + "_FULFILLED":
+      return Object.assign({}, state, { actionItems: action.payload });
     default:
       return state;
   }

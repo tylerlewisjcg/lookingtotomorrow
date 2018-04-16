@@ -121,33 +121,28 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.handleAddCurrentSkillSubmit()}
               >
-              <i className="fas fa-plus" />  Add
+                <i className="fas fa-plus" /> Add
               </button>
-              
-            <button
-              type="button"
-              className="btn btn-danger"
-              hidden={
-                !this.state.addSkillButtonIsPressed === true ? true : false
-              }
-              onClick={() => this.updateState()}
-            >
-           <i className="fas fa-times mr-2"></i>
-              Cancel
-            </button>
+
+              <button
+                type="button"
+                className="btn btn-danger"
+                hidden={
+                  !this.state.addSkillButtonIsPressed === true ? true : false
+                }
+                onClick={() => this.updateState()}
+              >
+                <i className="fas fa-times mr-2" />
+                Cancel
+              </button>
             </form>
 
-          
-
-
-      
             <div className="container">{this.renderCurrentSkills()}</div>
           </div>
 
           <div className="working-skills mt-3">
             <h2>Skills I'm Working On</h2>
             <form className="form-inline">
-        
               <button
                 type="button"
                 disabled={this.state.addSkillWorkingOnButtonIsPressed}
@@ -156,70 +151,66 @@ class CurrentGoals extends Component {
               >
                 Add Skill to Work on
               </button>
-           
-            
-        
 
-          <div className="form-group mx-sm-3">
-          <span className= "mr-3"
-           hidden={
-            !this.state.addSkillWorkingOnButtonIsPressed === true
-              ? true
-              : false
-          }
-          >
-          Skill:
-          </span>
+              <div className="form-group mx-sm-3">
+                <span
+                  className="mr-3"
+                  hidden={
+                    !this.state.addSkillWorkingOnButtonIsPressed === true
+                      ? true
+                      : false
+                  }
+                >
+                  Skill:
+                </span>
                 <input
                   className="form-control"
                   type="text"
-            value={this.state.addNewSkillToWorkOnInput}
-            hidden={
-              !this.state.addSkillWorkingOnButtonIsPressed === true
-                ? true
-                : false
-            }
-            onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
-          />
-          </div>
+                  value={this.state.addNewSkillToWorkOnInput}
+                  hidden={
+                    !this.state.addSkillWorkingOnButtonIsPressed === true
+                      ? true
+                      : false
+                  }
+                  onChange={e => this.handleNewSkillWorkingOnInputChange(e)}
+                />
+              </div>
 
-
-
-          <span
-            hidden={
-              !this.state.addSkillWorkingOnButtonIsPressed === true
-                ? true
-                : false
-            }
-          >
-            Due Date:
-          </span>
-          <div className="form-group mx-sm-3">
-          <input
-          className="form-control"
-            value={this.state.skillDueDate}
-            type="date"
-            hidden={
-              !this.state.addSkillWorkingOnButtonIsPressed === true
-                ? true
-                : false
-            }
-            onChange={e => this.handleNewSkillDueDateChange(e)}
-          />
-          </div>
-          <button
-            type="button"
-            className="btn btn-success mr-1"
-            hidden={
-              !this.state.addSkillWorkingOnButtonIsPressed === true
-                ? true
-                : false
-            }
-            onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
-          >
-           <i className="fas fa-plus" /> Add
-          </button>
-          <button
+              <span
+                hidden={
+                  !this.state.addSkillWorkingOnButtonIsPressed === true
+                    ? true
+                    : false
+                }
+              >
+                Due Date:
+              </span>
+              <div className="form-group mx-sm-3">
+                <input
+                  className="form-control"
+                  value={this.state.skillDueDate}
+                  type="date"
+                  hidden={
+                    !this.state.addSkillWorkingOnButtonIsPressed === true
+                      ? true
+                      : false
+                  }
+                  onChange={e => this.handleNewSkillDueDateChange(e)}
+                />
+              </div>
+              <button
+                type="button"
+                className="btn btn-success mr-1"
+                hidden={
+                  !this.state.addSkillWorkingOnButtonIsPressed === true
+                    ? true
+                    : false
+                }
+                onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
+              >
+                <i className="fas fa-plus" /> Add
+              </button>
+              <button
                 type="button"
                 className="btn btn-danger"
                 hidden={
@@ -229,16 +220,15 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
-              <i className="fas fa-times mr-2" ></i>
+                <i className="fas fa-times mr-2" />
                 Cancel
               </button>
-              </form>
-          <div>{this.renderSkillsWorkingOn()}</div>
+            </form>
+            <div>{this.renderSkillsWorkingOn()}</div>
+          </div>
         </div>
       </div>
-      </div>
     );
-
   }
 }
 

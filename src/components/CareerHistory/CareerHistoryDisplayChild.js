@@ -19,73 +19,93 @@ class CareerHistoryDisplayChild extends Component {
       <div className="container mb-2">
         {!this.state.editButtonIsPressed ? (
           <div className="card border-primary">
-
-              <div className="card-body">
-            <h5 className="card-title">{this.props.job.company}</h5>
-            <p className="card-subtitle text-muted">
-              Start Date:{" "}
-              {moment(this.props.job.start_date).format("MMM DD, YYYY")}
-            </p>
-            <p className="card-subtitle mb-2 text-muted">
-              End Date:
-              {!!this.props.job.end_date
-                ? moment(this.props.job.end_date).format("MMM DD, YYYY ")
-                : ""}
-            </p>
-            <p>Salary ${this.props.job.salary}</p>
-            <p>Job Title: {this.props.job.job_title}</p>
-            <p>Job Responsibilities: {this.props.job.job_responsibilities}</p>
-            <p>Notable Achievements: {this.props.job.notable_achievements}</p>
-            <button 
-            type="button" className="btn btn-light mr-4"
-            onClick={() => this.updateState()}>
-            <i className="far fa-edit mr-2"></i>
-            Edit</button>
-            <button
+            <div className="card-body">
+              <h5 className="card-title">{this.props.job.company}</h5>
+              <p className="card-subtitle text-muted">
+                Start Date:{" "}
+                {moment(this.props.job.start_date).format("MMM DD, YYYY")}
+              </p>
+              <p className="card-subtitle mb-2 text-muted">
+                End Date:
+                {!!this.props.job.end_date
+                  ? moment(this.props.job.end_date).format("MMM DD, YYYY ")
+                  : ""}
+              </p>
+              <p>Salary ${this.props.job.salary}</p>
+              <p>Job Title: {this.props.job.job_title}</p>
+              <p>Job Responsibilities: {this.props.job.job_responsibilities}</p>
+              <p>Notable Achievements: {this.props.job.notable_achievements}</p>
+              <button
+                type="button"
+                className="btn btn-light mr-4"
+                onClick={() => this.updateState()}
+              >
+                <i className="far fa-edit mr-2" />
+                Edit
+              </button>
+              <button
                 type="button btn-sm"
                 className="btn btn-secondary"
                 data-toggle="modal"
                 data-target="#deleteConfirmModal3"
-                
-                >
-              <i className="far fa-trash-alt mr-2"></i>
-             Delete
+              >
+                <i className="far fa-trash-alt mr-2" />
+                Delete
               </button>
-            
-                </div>
+            </div>
           </div>
         ) : (
           <CareerForm updateState={this.updateState} job={this.props.job} />
         )}
 
-
-        <div className="modal fade" id="deleteConfirmModal3" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-       Are you sure you want to delete this work history item?
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() =>
-                  this.props.deleteWorkHistory(this.props.job.work_id)
-                }>Confirm Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-        
+        <div
+          className="modal fade"
+          id="deleteConfirmModal3"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel3"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Are you sure?
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                Are you sure you want to delete this work history item?
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  data-dismiss="modal"
+                  onClick={() =>
+                    this.props.deleteWorkHistory(this.props.job.work_id)
+                  }
+                >
+                  Confirm Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

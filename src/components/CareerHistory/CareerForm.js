@@ -49,108 +49,110 @@ class CareerForm extends Component {
   render() {
     return (
       <div className="container mb-2">
-      <div className="card border-primary">
-      <div className="card-body">
-      <div className="card-subtitle mb-2 text-muted"> New Work Item</div>
-      <form>
-        <label htmlFor="company">Company</label>
-        <input
-        className="form-control  mb-2"
-         type="text"
-          id="company"
-          name="company"
-          defaultValue={!!this.props.job ? this.props.job.company : ""}
-          onChange={e => this.props.handleCompanyChange(e)}
-        />
-        <label htmlFor="start_date">Start Date</label>
-        <input
-        className="form-control  mb-2"
-        id="start_date"
-          type="date"
-          name="start_date"
-          defaultValue={
-            !!this.props.job
-              ? moment(this.props.job.start_date).format("YYYY-MM-DD")
-              : ""
-          }
-          onChange={e => this.props.handleStartDateChange(e)}
-        />
-        <label htmlFor="end_date">End Date</label>
-        <input
-        className="form-control mb-2"
-        id="end_date"
-          type="date"
-          name="end_date"
-          defaultValue={
-            !!this.props.job
-              ? moment(this.props.job.end_date).format("YYYY-MM-DD")
-              : ""
-          }
-          onChange={e => this.props.handleEndDateChange(e)}
-        />
-        <label htmlFor="salary">Salary</label>
-        <input
-        className="form-control mb-2"
-        id="salary"
-          type="number"
-          name="salary"
-          defaultValue={!!this.props.job ? this.props.job.salary : ""}
-          onChange={e => this.props.handleSalaryChange(e)}
-        />
-        <label htmlFor="job_title">Job Title</label>
-        <input
-        className="form-control mb-2"
-        type="text"
-        id="job_title"
-          name="job_title"
-          defaultValue={!!this.props.job ? this.props.job.job_title : ""}
-          onChange={e => this.props.handleJobTitleChange(e)}
-        />
-        <label htmlFor="job_responsibilities">Job Responsibilities</label>
-        <input
-        type="text"
-        className="form-control mb-2"
-        id="job_responsibilities"
-          name="job_responsibilities"
-          defaultValue={
-            !!this.props.job ? this.props.job.job_responsibilities : ""
-          }
-          onChange={e => this.props.handleJobResponsibilitiesChange(e)}
-        />
-        <label htmlFor="notable_achievements">Notable Achievements</label>
-        <input
-        type="text"
-        className="form-control mb-2"
-        id="notable_achievements"
-          name="notable_achievements"
-          defaultValue={
-            !!this.props.job ? this.props.job.notable_achievements : ""
-          }
-          onChange={e => this.props.handleNotableAchievementsChange(e)}
-        />
-      </form>
-    <button
-    type="button" className="btn btn-light mr-3"
-      onClick={() => {
-        this.props.updateState();
-      }}
-    >
-    <i className="fas fa-times mr-2"></i>
-      Cancel
-    </button>
-    <button
-    type="button" className="btn btn-secondary"
-      onClick={() => {
-        !!this.props.job
-          ? this.handleEditWorkHistorySubmit()
-          : this.handleAddWorkHistorySubmit();
-      }}
-    >
-      Submit
-    </button>
-    </div>                      
-    </div>                               
-    </div>                       
+        <div className="card border-primary">
+          <div className="card-body">
+            <div className="card-subtitle mb-2 text-muted"> New Work Item</div>
+            <form>
+              <label htmlFor="company">Company</label>
+              <input
+                className="form-control  mb-2"
+                type="text"
+                id="company"
+                name="company"
+                defaultValue={!!this.props.job ? this.props.job.company : ""}
+                onChange={e => this.props.handleCompanyChange(e)}
+              />
+              <label htmlFor="start_date">Start Date</label>
+              <input
+                className="form-control  mb-2"
+                id="start_date"
+                type="date"
+                name="start_date"
+                defaultValue={
+                  !!this.props.job
+                    ? moment(this.props.job.start_date).format("YYYY-MM-DD")
+                    : ""
+                }
+                onChange={e => this.props.handleStartDateChange(e)}
+              />
+              <label htmlFor="end_date">End Date</label>
+              <input
+                className="form-control mb-2"
+                id="end_date"
+                type="date"
+                name="end_date"
+                defaultValue={
+                  !!this.props.job
+                    ? moment(this.props.job.end_date).format("YYYY-MM-DD")
+                    : ""
+                }
+                onChange={e => this.props.handleEndDateChange(e)}
+              />
+              <label htmlFor="salary">Salary</label>
+              <input
+                className="form-control mb-2"
+                id="salary"
+                type="number"
+                name="salary"
+                defaultValue={!!this.props.job ? this.props.job.salary : ""}
+                onChange={e => this.props.handleSalaryChange(e)}
+              />
+              <label htmlFor="job_title">Job Title</label>
+              <input
+                className="form-control mb-2"
+                type="text"
+                id="job_title"
+                name="job_title"
+                defaultValue={!!this.props.job ? this.props.job.job_title : ""}
+                onChange={e => this.props.handleJobTitleChange(e)}
+              />
+              <label htmlFor="job_responsibilities">Job Responsibilities</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                id="job_responsibilities"
+                name="job_responsibilities"
+                defaultValue={
+                  !!this.props.job ? this.props.job.job_responsibilities : ""
+                }
+                onChange={e => this.props.handleJobResponsibilitiesChange(e)}
+              />
+              <label htmlFor="notable_achievements">Notable Achievements</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                id="notable_achievements"
+                name="notable_achievements"
+                defaultValue={
+                  !!this.props.job ? this.props.job.notable_achievements : ""
+                }
+                onChange={e => this.props.handleNotableAchievementsChange(e)}
+              />
+            </form>
+            <button
+              type="button"
+              className="btn btn-light mr-3"
+              onClick={() => {
+                this.props.updateState();
+              }}
+            >
+              <i className="fas fa-times mr-2" />
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                !!this.props.job
+                  ? this.handleEditWorkHistorySubmit()
+                  : this.handleAddWorkHistorySubmit();
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 }

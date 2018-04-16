@@ -19,46 +19,45 @@ class EducationDisplayChild extends Component {
     return (
       <div className="container mb-2">
         {!this.state.editButtonIsPressed ? (
-          
           <div className="card border-primary">
-          <div className="card-body">
-          <h5 className="card-title">{this.props.eduItem.institution}</h5>
-          <p className="card-subtitle text-muted">
-              Start Date:
-              {moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
-            </p>
-            <p className="card-subtitle text-muted">
-              End Date:
-              {!!this.props.eduItem.end_date
-                ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY ")
-                : ""}
-            </p>
-            <p>
-              Certification/Degree Type: {this.props.eduItem.certification_type}
-            </p>
-            <p>Field of Study: {this.props.eduItem.field_of_study}</p>
-            <p>
-              Accomplishments/Extra-Curricular:
-              {this.props.eduItem.accomplishments}
-            </p>
-            <button 
-            type="button" className="btn btn-light mr-4"
-            onClick={() => this.updateState()}>
-            <i className="far fa-edit mr-2"></i>
-            Edit</button>
-            <button
-            type="button" className="btn btn-secondary"
-            data-toggle="modal"
-            data-target="#deleteConfirmModal4"
-             
-            >
-            <i className="far fa-trash-alt mr-2"></i>
-              Delete
-            </button>
-
-            
-          
-        
+            <div className="card-body">
+              <h5 className="card-title">{this.props.eduItem.institution}</h5>
+              <p className="card-subtitle text-muted">
+                Start Date:
+                {moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
+              </p>
+              <p className="card-subtitle text-muted">
+                End Date:
+                {!!this.props.eduItem.end_date
+                  ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY ")
+                  : ""}
+              </p>
+              <p>
+                Certification/Degree Type:{" "}
+                {this.props.eduItem.certification_type}
+              </p>
+              <p>Field of Study: {this.props.eduItem.field_of_study}</p>
+              <p>
+                Accomplishments/Extra-Curricular:
+                {this.props.eduItem.accomplishments}
+              </p>
+              <button
+                type="button"
+                className="btn btn-light mr-4"
+                onClick={() => this.updateState()}
+              >
+                <i className="far fa-edit mr-2" />
+                Edit
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-toggle="modal"
+                data-target="#deleteConfirmModal4"
+              >
+                <i className="far fa-trash-alt mr-2" />
+                Delete
+              </button>
             </div>
           </div>
         ) : (
@@ -68,33 +67,56 @@ class EducationDisplayChild extends Component {
           />
         )}
 
-     <div className="modal fade" id="deleteConfirmModal4" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-       Are you sure you want to delete this education item?
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" className="btn btn-danger" data-dismiss="modal" 
-                 onClick={() =>
-                  this.props.deleteEducationHistory(
-                    this.props.eduItem.education_id
-                  )
-                }>Confirm Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+        <div
+          className="modal fade"
+          id="deleteConfirmModal4"
+          tabIndex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel4"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Are you sure?
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                Are you sure you want to delete this education item?
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  data-dismiss="modal"
+                  onClick={() =>
+                    this.props.deleteEducationHistory(
+                      this.props.eduItem.education_id
+                    )
+                  }
+                >
+                  Confirm Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

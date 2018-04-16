@@ -93,7 +93,8 @@ class Motivations extends Component {
                 className="form-control"
                 name="why"
                 value={this.state.why}
-                onChange={e => this.handleChange(e)}></textarea>
+                onChange={e => this.handleChange(e)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="interests">What are my interests/passions?</label>
@@ -103,17 +104,19 @@ class Motivations extends Component {
                 name="interests"
                 value={this.state.interests}
                 onChange={e => this.handleChange(e)}
-              ></textarea>
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="priorities">What are my priorities from a job?</label>
+              <label htmlFor="priorities">
+                What are my priorities from a job?
+              </label>
               <textarea
                 id="priorities"
                 className="form-control"
                 name="priorities"
                 value={this.state.priorities}
                 onChange={e => this.handleChange(e)}
-              ></textarea>
+              />
             </div>
             <div className="form-group">
               <label htmlFor="favorite">
@@ -125,7 +128,7 @@ class Motivations extends Component {
                 name="favorite"
                 value={this.state.favorite}
                 onChange={e => this.handleChange(e)}
-              ></textarea>
+              />
             </div>
             <div className="form-group">
               <label htmlFor="leastFavorite">
@@ -137,7 +140,7 @@ class Motivations extends Component {
                 name="leastFavorite"
                 value={this.state.leastFavorite}
                 onChange={e => this.handleChange(e)}
-              ></textarea>
+              />
             </div>
             {this.state.checkForExisting === 0 ? (
               <button
