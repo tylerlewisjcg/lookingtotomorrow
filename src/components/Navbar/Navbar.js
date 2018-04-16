@@ -50,9 +50,8 @@ class Navbar extends Component {
           </Link>
           </li>
       </ul>
-      {console.log(this.props.user)}
       <span className="navbar-text">  <a className="nav-item" >{this.props.user.display_name ? (this.props.user.display_name): ("")}</a></span>
-      <span className="navbar-text ml-2">  <a className="nav-item">{this.props.user.display_name ? (this.props.user.img): ("")}</a></span>
+      <span className="navbar-text ml-2">  <a className="nav-item"><img hidden={!this.props.user.display_name} src={this.props.user.display_name ? (this.props.user.img): ("")} width="35px" height="35px"/></a></span>
     
       <span className="navbar-text">
 
