@@ -28,9 +28,9 @@ class ActionItems extends Component {
 
         <td>
           {!!this.props.item.completion_date ? (
-            <p>{`Completed On: ${moment(this.props.item.completion_date).format(
+            <span>{`Completed On: ${moment(this.props.item.completion_date).format(
               "MMM DD, YYYY"
-            )}`}</p>
+            )}`}</span>
           ) : (
             <button
               type="button"

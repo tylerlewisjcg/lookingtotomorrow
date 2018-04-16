@@ -49,7 +49,7 @@ class CareerForm extends Component {
   render() {
     return (
       <div className="container mb-2">
-      <div className="card border-primary" style={{width: "16rem"}}>
+      <div className="card border-primary">
       <div className="card-body">
       <div className="card-subtitle mb-2 text-muted"> New Work Item</div>
       <form>

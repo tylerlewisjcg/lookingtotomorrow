@@ -16,9 +16,9 @@ class CareerHistoryDisplayChild extends Component {
   }
   render() {
     return (
-      <div className="container col mb-2">
+      <div className="container mb-2">
         {!this.state.editButtonIsPressed ? (
-          <div className="card border-primary"  style={{width: "16rem"}}>
+          <div className="card border-primary">
 
               <div className="card-body">
             <h5 className="card-title">{this.props.job.company}</h5>

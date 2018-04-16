@@ -45,7 +45,7 @@ class CareerHistory extends Component {
         ) : (
           <CareerForm updateState={this.updateState} />
         )}
-        <div className="container"><div className="row">{this.renderWorkHistoryItems()}</div></div>
+        <div className="container">{this.renderWorkHistoryItems()}</div>
       </div>
       </div>
     );

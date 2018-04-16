@@ -32,17 +32,19 @@ class Education extends Component {
     return (
       <div>
         <Navbar />
+      <div className="container mt-3">
         <h1>Education and Training</h1>
-        <div>{this.renderEducationHistory()}</div>
         {!this.state.addNewButtonIsPressed ? (
           <button 
-          type="button" className="btn btn-primary"
+          type="button" className="btn btn-light mb-2"
           onClick={() => this.updateState()}>
             Add New Education/Training
           </button>
         ) : (
           <EducationForm updateState={this.updateState} />
         )}
+        <div className="container">{this.renderEducationHistory()}</div>
+      </div>
       </div>
     );
   }

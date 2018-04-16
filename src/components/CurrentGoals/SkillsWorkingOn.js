@@ -71,7 +71,9 @@ class SkillsWorkingOn extends Component {
 
   toggleAddActionItemButton() {
     this.setState({
-      addActionItemButtonIsPressed: !this.state.addActionItemButtonIsPressed
+      addActionItemButtonIsPressed: !this.state.addActionItemButtonIsPressed,
+      actionItemDescription: "",
+      dueDate: ""
     });
   }
 
@@ -104,7 +106,7 @@ class SkillsWorkingOn extends Component {
   render() {
     return (
       <div className="working-skills--container mb-2">
-        <div className="card">
+        <div className="card border-primary">
           <div className="card-body">
             <h3 className="card-title">{this.props.skill.skill_name}</h3>
 
@@ -161,6 +163,7 @@ class SkillsWorkingOn extends Component {
 
                   <input
                   className="form-control"
+                  value={this.state.dueDate}
                    hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     type="date"
                     onChange={e => this.handActionItemDueDateInput(e)}
