@@ -50,20 +50,26 @@ class Navbar extends Component {
           </Link>
           </li>
       </ul>
+      {console.log(this.props.user)}
+      <span className="navbar-text">  <a className="nav-item" >{this.props.user.display_name ? (this.props.user.display_name): ("")}</a></span>
+      <span className="navbar-text ml-2">  <a className="nav-item">{this.props.user.display_name ? (this.props.user.img): ("")}</a></span>
+    
       <span className="navbar-text">
+
       { this.props.user.display_name ? (
-   
-       <ul>
-        <li className="nav-item" > <a className="nav-link" href="http://localhost:3232/auth/logout">Logout</a></li>
-        </ul>
-    
-    ) : (
-      <ul>
        
-        <li className="nav-item"
-            > <a className="nav-link" href={process.env.REACT_APP_LOGIN}>Login</a></li>
+        
+       
+        <span className="nav-item" > <a className="nav-link" href="http://localhost:3232/auth/logout">Logout</a></span>
+        
+       
+        
+    ) : (
+  
+       
+        <span className="nav-item"
+            > <a className="nav-link" href={process.env.REACT_APP_LOGIN}>Login</a></span>
     
-      </ul>
     )
 } </span>
     </div>
