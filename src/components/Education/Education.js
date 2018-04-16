@@ -38,6 +38,7 @@ class Education extends Component {
           <button 
           type="button" className="btn btn-light mb-2"
           onClick={() => this.updateState()}>
+          <i className="fas fa-plus mr-2" />
             Add New Education/Training
           </button>
         ) : (

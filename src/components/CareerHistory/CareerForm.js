@@ -55,7 +55,7 @@ class CareerForm extends Component {
       <form>
         <label htmlFor="company">Company</label>
         <input
-        className="form-control"
+        className="form-control  mb-2"
          type="text"
           id="company"
           name="company"
@@ -64,7 +64,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="start_date">Start Date</label>
         <input
-        className="form-control"
+        className="form-control  mb-2"
         id="start_date"
           type="date"
           name="start_date"
@@ -77,7 +77,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="end_date">End Date</label>
         <input
-        className="form-control"
+        className="form-control mb-2"
         id="end_date"
           type="date"
           name="end_date"
@@ -90,7 +90,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="salary">Salary</label>
         <input
-        className="form-control"
+        className="form-control mb-2"
         id="salary"
           type="number"
           name="salary"
@@ -99,7 +99,7 @@ class CareerForm extends Component {
         />
         <label htmlFor="job_title">Job Title</label>
         <input
-        className="form-control"
+        className="form-control mb-2"
         type="text"
         id="job_title"
           name="job_title"
@@ -109,7 +109,7 @@ class CareerForm extends Component {
         <label htmlFor="job_responsibilities">Job Responsibilities</label>
         <input
         type="text"
-        className="form-control"
+        className="form-control mb-2"
         id="job_responsibilities"
           name="job_responsibilities"
           defaultValue={
