@@ -91,7 +91,7 @@ class CurrentGoals extends Component {
           <div className="current_skills">
             <h2>Skills I Have</h2>
 
-            <form className="form-inline">
+            <form className="form-inline mb-2">
               <button
                 type="button"
                 className="btn btn-primary"
@@ -121,7 +121,7 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.handleAddCurrentSkillSubmit()}
               >
-                Add
+              <i class="fas fa-plus" />  Add
               </button>
               
             <button
@@ -132,6 +132,7 @@ class CurrentGoals extends Component {
               }
               onClick={() => this.updateState()}
             >
+           <i class="fas fa-times mr-2"></i>
               Cancel
             </button>
             </form>
@@ -140,7 +141,7 @@ class CurrentGoals extends Component {
 
 
       
-            <div>{this.renderCurrentSkills()}</div>
+            <div className="container">{this.renderCurrentSkills()}</div>
           </div>
 
           <div className="working-skills">
@@ -150,7 +151,7 @@ class CurrentGoals extends Component {
               <button
                 type="button"
                 disabled={this.state.addSkillWorkingOnButtonIsPressed}
-                className="btn btn-primary"
+                className="btn btn-primary mb-1"
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
                 Add Skill to Work on
@@ -181,7 +182,7 @@ class CurrentGoals extends Component {
           </div>
 
 
-          
+
           <span
             hidden={
               !this.state.addSkillWorkingOnButtonIsPressed === true
@@ -214,7 +215,7 @@ class CurrentGoals extends Component {
             }
             onClick={() => this.handleAddSkillWorkingOnButtonSubmit()}
           >
-            Add
+           <i class="fas fa-plus" /> Add
           </button>
           <button
                 type="button"
@@ -226,6 +227,7 @@ class CurrentGoals extends Component {
                 }
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
+              <i class="fas fa-times mr-2"></i>
                 Cancel
               </button>
               </form>

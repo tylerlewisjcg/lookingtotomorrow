@@ -172,7 +172,7 @@ class SkillsWorkingOn extends Component {
                     hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.handleAddNewActionButton()}
                   >
-                    Add
+                  <i class="fas fa-plus" />  Add
                   </button>
 
                   <button
@@ -181,6 +181,7 @@ class SkillsWorkingOn extends Component {
                     hidden={!this.state.addActionItemButtonIsPressed === true? true: false}
                     onClick={() => this.toggleAddActionItemButton()}
                   >
+                  <i class="fas fa-times mr-2" />
                     Cancel
                   </button>
                 </form>
@@ -195,8 +196,9 @@ class SkillsWorkingOn extends Component {
 
 
 
+              <div className="table-responsive">
 
-              <table className="table">
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Action Item</th>
@@ -213,6 +215,7 @@ class SkillsWorkingOn extends Component {
 
                 <tbody>{this.renderActionItems()}</tbody>
               </table>
+              </div>
             </p>
 
             <a className="card-link">
@@ -223,7 +226,7 @@ class SkillsWorkingOn extends Component {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-success"
+                  className="btn btn-light"
                   onClick={() => {
                     const completeDate = new Date();
 
@@ -234,20 +237,21 @@ class SkillsWorkingOn extends Component {
                     );
                   }}
                 >
-                  Mark As Complete
+                 <i class="fas fa-check" />   Mark As Complete
                 </button>
               )}
             </a>
 
             <a className="card-link">
               <button
-                type="button"
+                type="button btn-sm"
                 className="btn btn-danger"
                 onClick={() =>
                   this.props.deleteSkillWorkingOn(this.props.skill.skill_id)
                 }
               >
-                Delete
+              <i class="far fa-trash-alt mr-2"></i>
+             Delete Skill
               </button>
             </a>
           </div>

@@ -13,25 +13,7 @@ class Navbar extends Component {
 
   render() {
 
-    const { user } = this.props;
-    const userDataJSX = user.display_name ? (
-      <div>
-        <span>{user.display_name}</span>
-       <img src={user.img} height="25px" width="25px"/>
-       <ul>
-        <li className="nav-item"
-            > <a className="nav-link" href="http://localhost:3232/auth/logout">Logout</a></li>
-  </ul>
-      </div>
-    ) : (
-      <ul>
-       
-        <li className="nav-item"
-            > <a className="nav-link" href={process.env.REACT_APP_LOGIN}>Login</a></li>
-    
-      </ul>
-    );
-
+   
 
 
     return <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -69,7 +51,21 @@ class Navbar extends Component {
           </li>
       </ul>
       <span className="navbar-text">
-      {userDataJSX} </span>
+      { this.props.user.display_name ? (
+   
+       <ul>
+        <li className="nav-item" > <a className="nav-link" href="http://localhost:3232/auth/logout">Logout</a></li>
+        </ul>
+    
+    ) : (
+      <ul>
+       
+        <li className="nav-item"
+            > <a className="nav-link" href={process.env.REACT_APP_LOGIN}>Login</a></li>
+    
+      </ul>
+    )
+} </span>
     </div>
   </nav>
    

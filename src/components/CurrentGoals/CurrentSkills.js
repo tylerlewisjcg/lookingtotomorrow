@@ -10,17 +10,16 @@ class CurrentSkills extends Component {
 
   render() {
     return (
-      <div>
+      <span className="badge badge-pill badge-light">{this.props.skill.current_skill}
         <button
         type="button" className="btn btn-link"
           onClick={() =>
             this.props.deleteCurrentSkill(this.props.skill.current_skill_id)
           }
         >
-          <i className="far fa-trash-alt"></i>
+         <i class="fas fa-times-circle"></i>
         </button>
-        <span>{this.props.skill.current_skill}</span>
-      </div>
+        </span>
     );
   }
 }

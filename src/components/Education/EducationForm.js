@@ -51,6 +51,7 @@ class EducationForm extends Component {
             this.props.updateState();
           }}
         >
+        <i class="fas fa-times mr-2"></i>
           Cancel
         </button>
         <button
