@@ -13,7 +13,10 @@ const {
   CLIENT_ID,
   CLIENT_SECRET,
   CALLBACK_URL,
-  CONNECTION_STRING
+  CONNECTION_STRING,
+  GOOGLE_CALENDAR_API_KEY,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET
 } = process.env;
 
 const app = express();
@@ -44,9 +47,10 @@ passport.use(
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       callbackURL: CALLBACK_URL,
-      scope: "openid profile"
+      scope: "openid profile email"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
+      console.log(accessToken, refreshToken, extraParams, profile)
       const db = app.get("db");
       db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
@@ -68,6 +72,7 @@ passport.serializeUser((id, done) => {
   done(null, id);
 });
 passport.deserializeUser((id, done) => {
+
   app
     .get("db")
     .users_DB.find_session_user([id])
@@ -427,6 +432,29 @@ app.get("/api/recently_completed", (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+
 /////////// Google Calendar/////////
+////how do i pass in the object to the 
+//// how does the post url know who the primary user is? 
+app.post(`https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=0&maxAttendees=1&sendNotifications=true&supportsAttachments=false&fields=creator%2Cdescription%2Cend%2ChtmlLink%2Csource%2Cstart%2Csummary&key=${GOOGLE_CALENDAR_API_KEY}
+`, (req, res) => {
+  app
+  .get("db")
+  ///what does the body need to look like?
+  .then(response => res.status(200).send(response))
+  .catch(err => console.log(err));
+})
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 // initialize state
 
 const initialState = {
@@ -13,6 +14,7 @@ const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 
 export function getUserInfo() {
   const userData = axios.get("/auth/me").then(res => {
+    console.log(res)
     return res.data;
   });
 

@@ -19,6 +19,9 @@ class Home extends Component {
   componentDidMount() {
     this.props.getUserInfo();
   }
+  postToCalender(){
+    
+  }
   render() {
     return (
       <div>
