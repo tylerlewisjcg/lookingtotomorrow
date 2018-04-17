@@ -22,9 +22,9 @@ class RecentlyCompleted extends Component {
     return this.state.recentlyCompleted.map(completedItem => {
       return (
         <div key={completedItem.action_item_id}>
-          <span>{completedItem.action_item_description}</span>
+          <span className="mr-2 font-weight-bold">{completedItem.action_item_description}</span>
           <span>
-            {moment(completedItem.completion_date).format("MMM DD, YYYY")}
+            {completedItem.completion_date? `Completed on: ${moment(completedItem.completion_date).format("MMM DD, YYYY")}`: ""}
           </span>{" "}
         </div>
       );
@@ -32,7 +32,7 @@ class RecentlyCompleted extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="mb-4">
         <h2>Recently Completed</h2>
 
         <div>{this.renderMapped()} </div>

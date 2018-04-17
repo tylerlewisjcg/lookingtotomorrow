@@ -23,11 +23,11 @@ class EducationDisplayChild extends Component {
             <div className="card-body">
               <h5 className="card-title">{this.props.eduItem.institution}</h5>
               <p className="card-subtitle text-muted">
-                Start Date:
+                {`Start Date: `}
                 {moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
               </p>
               <p className="card-subtitle text-muted">
-                End Date:
+                {`End Date: `}
                 {!!this.props.eduItem.end_date
                   ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY ")
                   : ""}
@@ -36,10 +36,10 @@ class EducationDisplayChild extends Component {
                 Certification/Degree Type:{" "}
                 {this.props.eduItem.certification_type}
               </p>
-              <p>Field of Study: {this.props.eduItem.field_of_study}</p>
+              <p>Field of Study: {this.props.eduItem.accomplishments}</p>
               <p>
-                Accomplishments/Extra-Curricular:
-                {this.props.eduItem.accomplishments}
+                {`Accomplishments/Extra-Curricular: `}
+                {this.props.eduItem.field_of_study}
               </p>
               <button
                 type="button"
