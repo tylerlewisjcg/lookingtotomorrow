@@ -437,6 +437,36 @@ app.get("/api/recently_completed", (req, res) => {
 
 
 
+//////// Upload endpoints ///////////
+app.get("/api/get_uploads", (req, res) => {
+  app
+    .get("db")
+    .uploads_DB.get_users_uploads([req.session.passport.user])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+
+app.post("/api/add_uploads", (req, res) => {
+  app
+    .get("db")
+    .uploads_DB.create_upload([
+     req.body.img,
+      req.session.passport.user
+    ])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
+
+
+
+
+
+
+
+
+
+
 /////////// Google Calendar/////////
 ////how do i pass in the object to the 
 //// how does the post url know who the primary user is? 

@@ -18,6 +18,8 @@ export default class FileUpload extends Component {
         this.sendPhoto=this.sendPhoto.bind(this)
     }
 
+ 
+
     handlePhoto(event){
         const reader = new FileReader()
             , file = event.target.files[0]
@@ -35,11 +37,24 @@ export default class FileUpload extends Component {
 
     sendPhoto(event){
         event.preventDefault()
-
+///// may need to define a body object and pass that in with only the 3 things from state, i might need to create an array in state of the users img uploads
         sendToback(this.state).then(response => {
             console.log(response.data)
+            this.uploadPhotoToDB(response)
+            
         })
     }
+
+
+    uploadPhotoToDB(response) {
+        let body = {
+          img: response.data.Location,
+        };
+        axios.post("/api/add_uploads", body)
+        .then(response => {
+      console.log(response.data)
+        });
+      }
 
     render(){
         this.state.file && console.log(this.state.photo)
@@ -56,3 +71,5 @@ export default class FileUpload extends Component {
         )
     }
 }
+
+
