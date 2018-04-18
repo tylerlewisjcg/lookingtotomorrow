@@ -10,6 +10,7 @@ import { getUserInfo } from "./../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import RecentlyCompleted from "./RecentlyCompleted";
+import FileUpload from './FileUpload';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,7 @@ class Home extends Component {
           <div className="row">
             <div className="col-md-4">
               <CareerSnapshot />
+              <FileUpload/>
             </div>
             <div className="col-md-4">
               <RecentlyCompleted />
@@ -50,6 +52,7 @@ class Home extends Component {
             <div className="col-md-4">
               <AdditionalResources />
             </div>
+          
           </div>
         </div>
       </div>

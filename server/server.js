@@ -3,9 +3,11 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   session = require("express-session"),
   massive = require("massive"),
+  cors = require('cors'),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
 const { google } = require("googleapis");
+S3 = require('./s3')
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -16,12 +18,14 @@ const {
   CONNECTION_STRING,
   GOOGLE_CALENDAR_API_KEY,
   GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET
+  GOOGLE_CLIENT_SECRET,
 } = process.env;
 
 const app = express();
+app.use(cors())
+app.use(bodyParser.json( {limit: '50MB'}))
 
-app.use(bodyParser.json());
+S3(app)
 
 massive(CONNECTION_STRING)
   .then(db => {
@@ -50,7 +54,6 @@ passport.use(
       scope: "openid profile email"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-      console.log(accessToken, refreshToken, extraParams, profile)
       const db = app.get("db");
       db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
@@ -437,14 +440,14 @@ app.get("/api/recently_completed", (req, res) => {
 /////////// Google Calendar/////////
 ////how do i pass in the object to the 
 //// how does the post url know who the primary user is? 
-app.post(`https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=0&maxAttendees=1&sendNotifications=true&supportsAttachments=false&fields=creator%2Cdescription%2Cend%2ChtmlLink%2Csource%2Cstart%2Csummary&key=${GOOGLE_CALENDAR_API_KEY}
-`, (req, res) => {
-  app
-  .get("db")
+// app.post(`https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=0&maxAttendees=1&sendNotifications=true&supportsAttachments=false&fields=creator%2Cdescription%2Cend%2ChtmlLink%2Csource%2Cstart%2Csummary&key=${GOOGLE_CALENDAR_API_KEY}
+// `, (req, res) => {
+//   app
+//   .get("db")
   ///what does the body need to look like?
-  .then(response => res.status(200).send(response))
-  .catch(err => console.log(err));
-})
+//   .then(response => res.status(200).send(response))
+//   .catch(err => console.log(err));
+// })
 
 
 
