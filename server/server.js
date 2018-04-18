@@ -6,8 +6,8 @@ const express = require("express"),
   cors = require('cors'),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-const { google } = require("googleapis");
-S3 = require('./s3')
+const google = require("googleapis"),
+S3 = require('./s3');
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -51,9 +51,10 @@ passport.use(
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       callbackURL: CALLBACK_URL,
-      scope: "openid profile email"
+      scope: "openid profile email "
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
+      console.log("accessToken::::", accessToken, "refreshToken:::::", refreshToken, "extraParams::::", extraParams, "profile::::", profile )
       const db = app.get("db");
       db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
@@ -312,6 +313,7 @@ app.get("/api/get_skills", function(req, res) {
 });
 
 app.delete("/api/delete_skill/:id", (req, res) => {
+  console.log(req.params)
   app
     .get("db")
     .skills_DB.delete_skill([req.params.id, req.session.passport.user])
@@ -468,20 +470,47 @@ app.post("/api/add_uploads", (req, res) => {
 
 
 /////////// Google Calendar/////////
-////how do i pass in the object to the 
-//// how does the post url know who the primary user is? 
-// app.post(`https://www.googleapis.com/calendar/v3/calendars/primary/events?conferenceDataVersion=0&maxAttendees=1&sendNotifications=true&supportsAttachments=false&fields=creator%2Cdescription%2Cend%2ChtmlLink%2Csource%2Cstart%2Csummary&key=${GOOGLE_CALENDAR_API_KEY}
-// `, (req, res) => {
-//   app
-//   .get("db")
-  ///what does the body need to look like?
-//   .then(response => res.status(200).send(response))
-//   .catch(err => console.log(err));
-// })
+//how do i pass in the object with the details?
 
+//{
+//  "end": {
+//   "date": "2018-04-19"
+//  },
+//  "start": {
+//   "date": "2018-04-19"
+//  },
+//  "summary": "TEST EVENT 4/18/18 at 11:04 am",
+//  "description": "This is a test event to try to figure out how to call this API"
+// }
 
+////where do i put the access token i got from google?
+// how does the post url know who the primary user is? 
+// const calendar = google.calendar({version: 'v3'});
+// var event = {
+//   'summary': 'Tylers Practice Event',
+//   'description': 'testing',
+//   'start': {
+//     'date': '2018-05-19'
+//   },
+//   'end': {
+//     'date': '2018-05-19'
+//   },
+//   'reminders': {
+//     'useDefault': false
+//   },
+// };
 
-
+// calendar.events.insert({
+//   auth: 'TnE6TuESdcKN5Dai16a-bNnmRyQZRr4v',
+//   calendarId: 'primary',
+//   resource: event,
+// }, function(err, event) {
+//   if (err) {
+//     console.log('There was an error contacting the Calendar service: ' + err);
+//     return;
+//   }
+//   console.log('Event created: %s', event.htmlLink);
+// });
 
 
 

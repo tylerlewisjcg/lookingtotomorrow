@@ -46,8 +46,11 @@ class CareerHistoryDisplayChild extends Component {
               <button
                 type="button btn-sm"
                 className="btn btn-secondary"
-                data-toggle="modal"
-                data-target="#deleteConfirmModal3"
+                // data-toggle="modal"
+                // data-target="#deleteConfirmModal3"
+                onClick={() =>
+                  this.props.deleteWorkHistory(this.props.job.work_id)
+                }
               >
                 <i className="far fa-trash-alt mr-2" />
                 Delete
@@ -96,9 +99,9 @@ class CareerHistoryDisplayChild extends Component {
                   type="button"
                   className="btn btn-danger"
                   data-dismiss="modal"
-                  onClick={() =>
-                    this.props.deleteWorkHistory(this.props.job.work_id)
-                  }
+                  // onClick={() =>
+                  //   this.props.deleteWorkHistory(this.props.job.work_id)
+                  // }
                 >
                   Confirm Delete
                 </button>

@@ -54,8 +54,9 @@ class ActionItems extends Component {
         <td>
           <a
             className="btn"
-            data-toggle="modal"
-            data-target="#deleteConfirmModal"
+            onClick={() => this.handleDeleteClick()}
+            // data-toggle="modal"
+            // data-target="#deleteConfirmModal"
           >
             <i className="far fa-trash-alt" style={{ color: "#5A6268" }} />
           </a>
@@ -98,7 +99,7 @@ class ActionItems extends Component {
                     type="button"
                     className="btn btn-danger"
                     data-dismiss="modal"
-                    onClick={() => this.handleDeleteClick()}
+                    // onClick={() => this.handleDeleteClick()}
                   >
                     Confirm Delete
                   </button>
@@ -106,6 +107,9 @@ class ActionItems extends Component {
               </div>
             </div>
           </div>
+
+
+
         </td>
       </tr>
     );

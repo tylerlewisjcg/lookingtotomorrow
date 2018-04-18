@@ -57,13 +57,13 @@ class Navbar extends Component {
             </li>
           </ul>
           <span className="navbar-text">
-            {" "}
+            
             <a className="nav-item">
               {this.props.user.display_name ? this.props.user.display_name : ""}
             </a>
           </span>
           <span className="navbar-text ml-2">
-            {" "}
+            
             <a className="nav-item">
               <img
                 hidden={!this.props.user.display_name}
@@ -77,7 +77,7 @@ class Navbar extends Component {
           <span className="navbar-text">
             {this.props.user.display_name ? (
               <span className="nav-item">
-                {" "}
+                
                 <a
                   className="nav-link"
                   href="http://localhost:3232/auth/logout"
@@ -87,12 +87,12 @@ class Navbar extends Component {
               </span>
             ) : (
               <span className="nav-item">
-                {" "}
+                
                 <a className="nav-link" href={process.env.REACT_APP_LOGIN}>
                   Login
                 </a>
               </span>
-            )}{" "}
+            )}
           </span>
         </div>
       </nav>

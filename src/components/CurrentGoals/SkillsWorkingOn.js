@@ -104,6 +104,7 @@ class SkillsWorkingOn extends Component {
   }
 
   render() {
+    console.log('render props: ',this.props)
     return (
       <div className="working-skills--container mb-2">
         <div className="card border-primary">
@@ -267,8 +268,14 @@ class SkillsWorkingOn extends Component {
               <button
                 type="button btn-sm"
                 className="btn btn-secondary"
-                data-toggle="modal"
-                data-target="#deleteConfirmModal2"
+                onClick={() => {
+                  console.log(this.props.skill.skill_id)
+                  this.props.deleteSkillWorkingOn(
+                    this.props.skill.skill_id
+                  )
+                }}
+                // data-toggle="modal"
+                // data-target="#deleteConfirmModal2"
               >
                 <i className="far fa-trash-alt mr-2" />
                 Delete Skill
@@ -298,6 +305,8 @@ class SkillsWorkingOn extends Component {
                     </button>
                   </div>
                   <div className="modal-body">
+                  {console.log(this.props.skill)}
+                  {JSON.stringify(this.props)}
                     Are you sure you want to delete this skill that you have
                     been working so hard on?
                   </div>
@@ -313,11 +322,13 @@ class SkillsWorkingOn extends Component {
                       type="button"
                       className="btn btn-danger"
                       data-dismiss="modal"
-                      onClick={() =>
-                        this.props.deleteSkillWorkingOn(
-                          this.props.skill.skill_id
-                        )
-                      }
+                      // onClick={() => {
+                      //   console.log(this.props.skill.skill_id)
+                        // this.props.deleteSkillWorkingOn(
+                        //   this.props.skill.skill_id
+                        //)
+                      // }
+                      // }
                     >
                       Confirm Delete
                     </button>

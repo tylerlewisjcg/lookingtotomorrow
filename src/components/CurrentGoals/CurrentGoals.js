@@ -75,7 +75,7 @@ class CurrentGoals extends Component {
 
   renderSkillsWorkingOn() {
     return this.props.skillsWorkingOn.map(skill => {
-      return <SkillsWorkingOn skill={skill} key={skill.skill_id} />;
+      return <SkillsWorkingOn skill={skill} key={skill.skill_id+skill.skill_name} />;
     });
   }
   handleNewSkillDueDateChange(e) {

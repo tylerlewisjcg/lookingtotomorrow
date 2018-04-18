@@ -52,8 +52,13 @@ class EducationDisplayChild extends Component {
               <button
                 type="button"
                 className="btn btn-secondary"
-                data-toggle="modal"
-                data-target="#deleteConfirmModal4"
+                onClick={() =>
+                  this.props.deleteEducationHistory(
+                    this.props.eduItem.education_id
+                  )
+                }
+                // data-toggle="modal"
+                // data-target="#deleteConfirmModal4"
               >
                 <i className="far fa-trash-alt mr-2" />
                 Delete
@@ -105,11 +110,11 @@ class EducationDisplayChild extends Component {
                   type="button"
                   className="btn btn-danger"
                   data-dismiss="modal"
-                  onClick={() =>
-                    this.props.deleteEducationHistory(
-                      this.props.eduItem.education_id
-                    )
-                  }
+                  // onClick={() =>
+                  //   this.props.deleteEducationHistory(
+                  //     this.props.eduItem.education_id
+                  //   )
+                  // }
                 >
                   Confirm Delete
                 </button>
