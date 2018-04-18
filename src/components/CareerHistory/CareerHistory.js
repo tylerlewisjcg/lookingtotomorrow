@@ -4,6 +4,7 @@ import Navbar from "./../Navbar/Navbar";
 import CareerHistoryDisplayChild from "./CareerHistoryDisplayChild";
 import CareerForm from "./CareerForm";
 import { getWorkHistory } from "./../../ducks/workHistoryReducer";
+import FileUpload from './../Home/FileUpload';
 
 class CareerHistory extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ class CareerHistory extends Component {
           ) : (
             <CareerForm updateState={this.updateState} />
           )}
+            <div className="container">
+            <FileUpload/>
+            </div>
           <div className="container">{this.renderWorkHistoryItems()}</div>
         </div>
       </div>

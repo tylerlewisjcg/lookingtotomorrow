@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import EducationForm from "./EducationForm";
 import EducationDisplayChild from "./EducationDisplayChild";
 import { getEducationHistory } from "./../../ducks/educationReducer";
+import FileUpload from './../Home/FileUpload';
 
 class Education extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ class Education extends Component {
           ) : (
             <EducationForm updateState={this.updateState} />
           )}
+          <div className="container">
+            <FileUpload/>
+            </div>
           <div className="container">{this.renderEducationHistory()}</div>
         </div>
       </div>

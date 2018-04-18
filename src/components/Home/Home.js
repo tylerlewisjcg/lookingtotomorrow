@@ -44,7 +44,6 @@ class Home extends Component {
           <div className="row">
             <div className="col-md-4">
               <CareerSnapshot />
-              <FileUpload/>
             </div>
             <div className="col-md-4">
               <RecentlyCompleted />

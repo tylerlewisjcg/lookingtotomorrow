@@ -11,6 +11,7 @@ AWS.config.update({
 const S3 = new AWS.S3()
 
 function uploadPhoto(req, res) {
+    console.log(req)
     console.log('photo in back', req.body.filename, process.env.AWS_ACCESSKEY)
     let photo = req.body,
         buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ""), 'base64'),
