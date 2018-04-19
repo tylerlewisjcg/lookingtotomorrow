@@ -23,7 +23,8 @@ const {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   SUCCESS_REDIRECT,
-  FAILURE_REDIRECT
+  FAILURE_REDIRECT,
+  REDIRECT_URL
 } = process.env;
 console.log(process.env)
 
