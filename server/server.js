@@ -22,10 +22,13 @@ const {
   GOOGLE_CALENDAR_API_KEY,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
+  SUCCESS_REDIRECT,
+  FAILURE_REDIRECT
 } = process.env;
+console.log(process.env)
 
 const app = express();
-
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(cors())
 
 
@@ -96,8 +99,8 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#",
-    failureRedirect: "http://localhost:3000/#"
+    successRedirect: SUCCESS_REDIRECT,
+    failureRedirect: FAILURE_REDIRECT
   })
 );
 
