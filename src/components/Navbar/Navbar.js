@@ -80,7 +80,7 @@ class Navbar extends Component {
                 
                 <a
                   className="nav-link"
-                  href={process.env.LOGOUT_URL}
+                  href="http://localhost:3232/auth/logout"
                 >
                   Logout
                 </a>

@@ -27,7 +27,7 @@ const {
 const app = express();
 
 app.use(cors())
-app.use( express.static( `${__dirname}/../build` ) );
+
 
 app.use(bodyParser.json( {limit: '50MB'}))
 
@@ -96,8 +96,8 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: process.env.REDIRECT_URL,
-    failureRedirect: process.env.REDIRECT_URL
+    successRedirect: "http://localhost:3000/#",
+    failureRedirect: "http://localhost:3000/#"
   })
 );
 
@@ -470,6 +470,3 @@ app.post("/api/add_uploads", (req, res) => {
 
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-});
