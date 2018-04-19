@@ -23,13 +23,13 @@ class Home extends Component {
   }
 
 
-  postToCalendar(){
-    console.log('button worked')
-    axios.post("/api/add_event_to_calendar")
-    .then(response=> {
-      console.log(response)
-    })
-  }
+  // postToCalendar(){
+  //   console.log('button worked')
+  //   axios.post("/api/add_event_to_calendar")
+  //   .then(response=> {
+  //     console.log(response)
+  //   })
+  // }
 
 
   render() {
@@ -46,11 +46,11 @@ class Home extends Component {
               <a className="btn btn-primary btn-lg" href="#" role="button">
                 Learn more &raquo;
               </a>
-              <button onClick={()=> {
+              {/* <button onClick={()=> {
                 return this.postToCalendar()
               }}>
                 Post to calendar
-              </button>
+              </button> */}
             </p>
           </div>
         </div>
