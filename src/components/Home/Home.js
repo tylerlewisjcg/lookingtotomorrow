@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import RecentlyCompleted from "./RecentlyCompleted";
 import FileUpload from './FileUpload';
+import axios from 'axios';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +21,17 @@ class Home extends Component {
   componentDidMount() {
     this.props.getUserInfo();
   }
-  postToCalender(){
-    
+
+
+  postToCalendar(){
+    console.log('button worked')
+    axios.post("/api/add_event_to_calendar")
+    .then(response=> {
+      console.log(response)
+    })
   }
+
+
   render() {
     return (
       <div>
@@ -37,6 +46,11 @@ class Home extends Component {
               <a className="btn btn-primary btn-lg" href="#" role="button">
                 Learn more &raquo;
               </a>
+              <button onClick={()=> {
+                return this.postToCalendar()
+              }}>
+                Post to calendar
+              </button>
             </p>
           </div>
         </div>

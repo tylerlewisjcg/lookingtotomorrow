@@ -6,8 +6,11 @@ const express = require("express"),
   cors = require('cors'),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
-const google = require("googleapis"),
+
+  // const google = require("googleapis"),
+  // privatekey = require('./../privatekey.json'),
 S3 = require('./s3');
+const path = require('path');
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -22,7 +25,10 @@ const {
 } = process.env;
 
 const app = express();
+
 app.use(cors())
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(bodyParser.json( {limit: '50MB'}))
 
 S3(app)
@@ -54,7 +60,6 @@ passport.use(
       scope: "openid profile email "
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-      console.log("accessToken::::", accessToken, "refreshToken:::::", refreshToken, "extraParams::::", extraParams, "profile::::", profile )
       const db = app.get("db");
       db.users_DB.find_user([profile.id]).then(userResult => {
         if (!userResult[0]) {
@@ -91,8 +96,8 @@ app.get("/auth", passport.authenticate("auth0"));
 app.get(
   "/auth/callback",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#",
-    failureRedirect: "http://localhost:3000/#"
+    successRedirect: process.env.REDIRECT_URL,
+    failureRedirect: process.env.REDIRECT_URL
   })
 );
 
@@ -313,7 +318,6 @@ app.get("/api/get_skills", function(req, res) {
 });
 
 app.delete("/api/delete_skill/:id", (req, res) => {
-  console.log(req.params)
   app
     .get("db")
     .skills_DB.delete_skill([req.params.id, req.session.passport.user])
@@ -425,7 +429,7 @@ app.get("/api/get_motivations", (req, res) => {
 /// Logout Endpoint
 app.get("/auth/logout", (req, res) => {
   req.logOut();
-  res.redirect("http://localhost:3000/#");
+  res.redirect(process.env.REDIRECT_URL);
 });
 
 //// Recently Completed ////
@@ -464,59 +468,8 @@ app.post("/api/add_uploads", (req, res) => {
 
 
 
-
-
-
-
-
-/////////// Google Calendar/////////
-//how do i pass in the object with the details?
-
-//{
-//  "end": {
-//   "date": "2018-04-19"
-//  },
-//  "start": {
-//   "date": "2018-04-19"
-//  },
-//  "summary": "TEST EVENT 4/18/18 at 11:04 am",
-//  "description": "This is a test event to try to figure out how to call this API"
-// }
-
-////where do i put the access token i got from google?
-// how does the post url know who the primary user is? 
-// const calendar = google.calendar({version: 'v3'});
-// var event = {
-//   'summary': 'Tylers Practice Event',
-//   'description': 'testing',
-//   'start': {
-//     'date': '2018-05-19'
-//   },
-//   'end': {
-//     'date': '2018-05-19'
-//   },
-//   'reminders': {
-//     'useDefault': false
-//   },
-// };
-
-// calendar.events.insert({
-//   auth: 'TnE6TuESdcKN5Dai16a-bNnmRyQZRr4v',
-//   calendarId: 'primary',
-//   resource: event,
-// }, function(err, event) {
-//   if (err) {
-//     console.log('There was an error contacting the Calendar service: ' + err);
-//     return;
-//   }
-//   console.log('Event created: %s', event.htmlLink);
-// });
-
-
-
-
-
-
-
-
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});

@@ -104,7 +104,6 @@ class SkillsWorkingOn extends Component {
   }
 
   render() {
-    console.log('render props: ',this.props)
     return (
       <div className="working-skills--container mb-2">
         <div className="card border-primary">
@@ -269,7 +268,6 @@ class SkillsWorkingOn extends Component {
                 type="button btn-sm"
                 className="btn btn-secondary"
                 onClick={() => {
-                  console.log(this.props.skill.skill_id)
                   this.props.deleteSkillWorkingOn(
                     this.props.skill.skill_id
                   )
@@ -305,8 +303,6 @@ class SkillsWorkingOn extends Component {
                     </button>
                   </div>
                   <div className="modal-body">
-                  {console.log(this.props.skill)}
-                  {JSON.stringify(this.props)}
                     Are you sure you want to delete this skill that you have
                     been working so hard on?
                   </div>

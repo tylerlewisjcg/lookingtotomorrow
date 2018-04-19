@@ -66,7 +66,7 @@ class FileUpload extends Component {
             <div  hidden={!this.props.user.display_name}>
             <form >
             <div className="form-group">
-                <label for="formControlFile">Upload Resume</label>
+                <label htmlFor="formControlFile">Upload Resume</label>
                 <input className="form-control-file btn-secondary" id="formControlFile" type="file" onChange={this.handlePhoto}/>
                </div>
                 </form>

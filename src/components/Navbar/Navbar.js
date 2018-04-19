@@ -13,7 +13,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary" >
         <a className="navbar-brand" href="#">
           LookingToTomorrow
         </a>
@@ -28,7 +28,7 @@ class Navbar extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarText">
+        <div className="collapse navbar-collapse" id="navbarText" >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to="/" className="nav-link">
@@ -80,7 +80,7 @@ class Navbar extends Component {
                 
                 <a
                   className="nav-link"
-                  href="http://localhost:3232/auth/logout"
+                  href={process.env.LOGOUT_URL}
                 >
                   Logout
                 </a>

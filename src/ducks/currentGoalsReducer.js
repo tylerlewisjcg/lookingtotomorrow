@@ -20,7 +20,6 @@ const MARK_ACTION_ITEM_AS_COMPLETE = "MARK_ACTION_ITEM_AS_COMPLETE";
 
 export function getSkillsWorkingOn() {
   const skillData = axios.get("/api/get_skills").then(response => {
-    console.log(response.data)
     return response.data;
   });
   return {
@@ -64,7 +63,6 @@ export function addSkillWorkingOn(
   };
 }
 export function deleteSkillWorkingOn(id) {
-  console.log('Delete', id)
   const deleteData = axios.delete(`/api/delete_skill/${id}`).then(response => {
     return response.data;
   });
