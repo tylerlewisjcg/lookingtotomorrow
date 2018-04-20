@@ -8,7 +8,8 @@ class FileUpload extends Component {
     super();
 
     this.state = {
-      images: [],
+      careerImages: [],
+      eduImages: [],
       file: "",
       filename: "",
       filetype: ""
@@ -48,7 +49,7 @@ class FileUpload extends Component {
     };
     this.sendToback(stuffToSend).then(response => {
       console.log("Upload response", response.data);
-      this.uploadPhotoToDB(response);
+      this.uploadPhotoToDB(response)
     });
   }
 
@@ -58,9 +59,11 @@ class FileUpload extends Component {
     };
     if(this.props.component === 'work'){
     axios.post("/api/add_uploads", body).then(response => {
+      this.setState({careerImages: response.data})
     })}
     else if (this.props.component === "edu"){
       axios.post("/api/add_edu_uploads", body).then(response => {
+        this.setState({eduImages: response.data})
       })
     }
     else {
@@ -74,24 +77,40 @@ class FileUpload extends Component {
   render() {
     this.state.file && console.log(this.state.photo);
     return (
-      <div hidden={!this.props.user.display_name}>
-        <form>
-          <div className="form-group">
-            <label htmlFor="formControlFile">Upload Resume</label>
+      <div hidden={!this.props.user.display_name} className="container mr-5">
+        <form className="container">
+          <div className="form-group container mr-5">
+            <label className="btn-secondary" htmlFor="formControlFile">Upload Resume</label>
             <input
-              className="form-control-file btn-secondary"
-              id="formControlFile"
+              className="form-control-file btn-light"
               type="file"
+              defaultValue=""
               onChange={this.handlePhoto}
+              width="75px"
             />
-          </div>
-        </form>
-        <button className="secondary" onClick={this.sendPhoto}>
+             <button className="btn btn-secondary" onClick={this.sendPhoto}>
           Submit
         </button>
+          </div>
+        </form>
+       
         {this.state.file && (
-          <img src={this.state.file} alt="" className="file-preview" />
+          <img src={this.state.file} alt="" className="file-preview" height="75px" width="75px" />
         )}
+
+        <div>My Documents
+          <div>
+          {this.props.component === 'work' ? (this.state.careerImages.map(image => {
+            console.log(image)
+            return <span key={image.img_url} className="container mr-2"><img src={image.img_url}  height="75px" width="75px" /></span>
+          }))
+        :
+         ( this.state.eduImages.map(image => {
+          return <span key={image.img_url} className="container mr-2"><img src={image.img_url}  height="75px" width="75px" /> </span>
+        }))
+      }
+          </div>
+        </div>
       </div>
     );
   }
