@@ -48,7 +48,7 @@ class Education extends Component {
             <EducationForm updateState={this.updateState} />
           )}
           <div className="container">
-            <FileUpload/>
+            <FileUpload component={"edu"}/>
             </div>
           <div className="container">{this.renderEducationHistory()}</div>
         </div>

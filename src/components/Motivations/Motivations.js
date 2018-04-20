@@ -10,7 +10,8 @@ class Motivations extends Component {
       priorities: "",
       favorite: "",
       leastFavorite: "",
-      checkForExisting: 0
+      checkForExisting: 0,
+      confirmationToggled: false
     };
   }
   componentDidMount() {
@@ -73,7 +74,19 @@ class Motivations extends Component {
         checkForExisting: response.data.length
       });
     });
+    this.setState({
+      confirmationToggled: true
+    })
+    setTimeout(() => {
+      this.confirmationToggle()
+    }, 3000);
   }
+confirmationToggle(){
+  this.setState({
+    confirmationToggled: false
+  })
+}
+
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -84,7 +97,6 @@ class Motivations extends Component {
         <Navbar />
         <div className="container mt-3">
           <h1>My Motivations</h1>
-
           <form className="">
             <div className="form-group">
               <label htmlFor="why">Why am i at my current job?</label>
@@ -155,12 +167,13 @@ class Motivations extends Component {
             ) : (
               <button
                 type="button"
-                className="btn btn-primary"
+                className={this.state.confirmationToggled === false ? "btn btn-primary": "btn btn-success"}
                 onClick={() => {
                   this.handleFormEdit();
                 }}
               >
-                Update
+              {this.state.confirmationToggled === false ? 'Update': 'Update Successful'}
+              
               </button>
             )}
           </form>

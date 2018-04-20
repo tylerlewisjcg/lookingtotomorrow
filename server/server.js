@@ -3,14 +3,14 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   session = require("express-session"),
   massive = require("massive"),
-  cors = require('cors'),
+  cors = require("cors"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0");
 
-  // const google = require("googleapis"),
-  // privatekey = require('./../privatekey.json'),
-S3 = require('./s3');
-const path = require('path');
+// const google = require("googleapis"),
+// privatekey = require('./../privatekey.json'),
+S3 = require("./s3");
+const path = require("path");
 const {
   SERVER_PORT,
   SESSION_SECRET,
@@ -19,23 +19,18 @@ const {
   CLIENT_SECRET,
   CALLBACK_URL,
   CONNECTION_STRING,
-  GOOGLE_CALENDAR_API_KEY,
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
   SUCCESS_REDIRECT,
   FAILURE_REDIRECT,
   REDIRECT_URL
 } = process.env;
-console.log(process.env)
 
 const app = express();
-app.use( express.static( `${__dirname}/../build` ) );
-app.use(cors())
+app.use(express.static(`${__dirname}/../build`));
+app.use(cors());
 
+app.use(bodyParser.json({ limit: "50MB" }));
 
-app.use(bodyParser.json( {limit: '50MB'}))
-
-S3(app)
+S3(app);
 
 massive(CONNECTION_STRING)
   .then(db => {
@@ -51,6 +46,7 @@ app.use(
     secret: SESSION_SECRET
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -85,7 +81,6 @@ passport.serializeUser((id, done) => {
   done(null, id);
 });
 passport.deserializeUser((id, done) => {
-
   app
     .get("db")
     .users_DB.find_session_user([id])
@@ -445,8 +440,6 @@ app.get("/api/recently_completed", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
 //////// Upload endpoints ///////////
 app.get("/api/get_uploads", (req, res) => {
   app
@@ -456,21 +449,27 @@ app.get("/api/get_uploads", (req, res) => {
     .catch(err => console.log(err));
 });
 
-
 app.post("/api/add_uploads", (req, res) => {
   app
     .get("db")
-    .uploads_DB.create_upload([
-     req.body.img,
-      req.session.passport.user
-    ])
+    .uploads_DB.create_upload([req.body.img, req.session.passport.user])
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 });
 
+app.get("/api/get_edu_uploads", (req, res) => {
+  app
+    .get("db")
+    .uploads_edu_DB.get_users_edu_uploads([req.session.passport.user])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 
-
-
-
+app.post("/api/add_edu_uploads", (req, res) => {
+  app
+    .get("db")
+    .uploads_edu_DB.create_edu_upload([req.body.img, req.session.passport.user])
+    .then(response => res.status(200).send(response))
+    .catch(err => console.log(err));
+});
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
-

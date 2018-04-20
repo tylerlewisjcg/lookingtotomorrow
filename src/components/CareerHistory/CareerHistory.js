@@ -48,7 +48,7 @@ class CareerHistory extends Component {
             <CareerForm updateState={this.updateState} />
           )}
             <div className="container">
-            <FileUpload/>
+            <FileUpload component={"work"}/>
             </div>
           <div className="container">{this.renderWorkHistoryItems()}</div>
         </div>

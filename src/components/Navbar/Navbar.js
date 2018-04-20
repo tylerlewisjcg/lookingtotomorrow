@@ -11,6 +11,8 @@ class Navbar extends Component {
     this.props.getUserInfo();
   }
 
+
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary" >

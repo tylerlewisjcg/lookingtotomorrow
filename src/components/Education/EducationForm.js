@@ -17,6 +17,7 @@ class EducationForm extends Component {
     this.state = {};
   }
   handleEditEducationHistorySubmit() {
+    
     this.props.editEducationHistory(
       this.props.eduItem.education_id,
       this.props.institution,

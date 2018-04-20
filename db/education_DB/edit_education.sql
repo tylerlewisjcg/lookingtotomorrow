@@ -6,8 +6,8 @@ UPDATE education
         field_of_study = $6,
         accomplishments = $7
             WHERE education_id = $1;
-SELECT *
-from users
-JOIN education ON education.id = users.id
-WHERE users.id = $8
-ORDER BY education_id;
+-- SELECT *
+-- from users
+-- JOIN education ON education.id = users.id
+-- WHERE users.id = $8
+-- ORDER BY education_id;

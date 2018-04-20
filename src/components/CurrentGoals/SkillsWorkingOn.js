@@ -140,7 +140,6 @@ class SkillsWorkingOn extends Component {
                         : false
                     }
                   >
-                    {" "}
                     Action Item:
                   </span>
 
