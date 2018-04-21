@@ -11,25 +11,17 @@ class Education extends Component {
     super(props);
     this.state = {
       addNewButtonIsPressed: false,
-      displayFileUpload: false
     };
     this.updateState = this.updateState.bind(this);
   }
   componentDidMount() {
     this.props.getEducationHistory();
-    // this.getEduUploads()
+ 
   }
-  // getEduUploads(){
-  //   axios.get("/api/get_edu_uploads").then(result => {
-      
-  //   })
-  // }
+
   updateState() {
     this.setState({ addNewButtonIsPressed: !this.state.addNewButtonIsPressed });
     this.props.getEducationHistory();
-  }
-  updateState2() {
-    this.setState({ displayFileUpload: !this.state.displayFileUpload });
   }
 
 
@@ -59,14 +51,7 @@ class Education extends Component {
             <EducationForm updateState={this.updateState} />
           )}
           <div className="container">
-          <button
-              type="button"
-              className="btn btn-light mb-2"
-              onClick={() => this.updateState2()}
-            >
-              <i className="fas fa-plus mr-2" />
-              Add Diploma/Certification
-            </button>
+         <FileUpload component={"edu"}/>
             </div>
           <div className="container">{this.renderEducationHistory()}</div>
         </div>

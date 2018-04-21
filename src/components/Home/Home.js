@@ -36,7 +36,7 @@ class Home extends Component {
     return (
       <div>
         <Navbar />
-        <div className="jumbotron" background-image="https://s3-us-west-1.amazonaws.com/lookingtotomorrow/mountain-sunrise-sun-sky-cloud-tree-rock-forest.jpg">
+        <div className="jumbotron" >
           <div className="container">
             <h1 className="display-3">Welcome</h1>
             <p>

@@ -10,7 +10,7 @@ class CurrentSkills extends Component {
 
   render() {
     return (
-      <span className="badge badge-pill badge-light">
+      <span id="skills-pills" className="badge badge-pill badge-light">
         {this.props.skill.current_skill}
         <button
           type="button"

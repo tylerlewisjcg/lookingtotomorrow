@@ -12,18 +12,43 @@ class FileUpload extends Component {
       eduImages: [],
       file: "",
       filename: "",
-      filetype: ""
+      filetype: "",
+      displayFileUpload: false
     };
     this.handlePhoto = this.handlePhoto.bind(this);
     this.sendPhoto = this.sendPhoto.bind(this);
   }
 
+
+
+
+  
+  updateState() {
+    this.setState({ displayFileUpload: !this.state.displayFileUpload });
+  }
+
+
   componentDidMount() {
     this.props.getUserInfo();
+    this.getUploads();
   }
   sendToback(photo) {
     return axios.post("/api/photoUpload", photo);
   }
+
+getUploads(){
+  if(this.props.component === 'work'){
+    axios.get("/api/get_uploads").then(result => {
+      this.setState({careerImages: result.data})
+    })
+  }
+  else if(this.props.component === 'edu'){
+    axios.get('/api/get_edu_uploads').then(result =>{
+      this.setState({eduImages: result.data})
+    })
+  }
+}
+
 
   handlePhoto(event) {
     const reader = new FileReader(),
@@ -78,8 +103,16 @@ class FileUpload extends Component {
     this.state.file && console.log(this.state.photo);
     return (
       <div hidden={!this.props.user.display_name} className="container mr-5">
+      <button
+      type="button"
+      className="btn btn-light mb-2"
+      onClick={() => this.updateState()}
+    >
+      <i className="fas fa-plus mr-2" />
+      {this.props.component === 'work'? "Add Resume": "Add Diploma/Certification"}
+    </button>
 
-        <form>
+        <form hidden={this.state.displayFileUpload === false}>
           <div className="input-group">
             <input
               className="form-control-file btn-light "
