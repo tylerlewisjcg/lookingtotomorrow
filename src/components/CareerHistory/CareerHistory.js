@@ -50,7 +50,7 @@ class CareerHistory extends Component {
             <div className="container">
             <FileUpload component={"work"}/>
             </div>
-          <div className="container">{this.renderWorkHistoryItems()}</div>
+          <div className="container mt-2">{this.renderWorkHistoryItems()}</div>
         </div>
       </div>
     );

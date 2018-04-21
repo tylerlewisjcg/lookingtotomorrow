@@ -111,7 +111,7 @@ getUploads(){
       <i className="fas fa-plus mr-2" />
       {this.props.component === 'work'? "Add Resume": "Add Diploma/Certification"}
     </button>
-
+<span>
         <form hidden={this.state.displayFileUpload === false}>
           <div className="input-group">
             <input
@@ -120,7 +120,7 @@ getUploads(){
               onChange={this.handlePhoto}
              
             />
-            <div>
+            <div className="container">
              <button className="btn btn-default"onClick={this.sendPhoto}>
           Submit
         </button>
@@ -131,8 +131,8 @@ getUploads(){
         {this.state.file && (
           <img src={this.state.file} alt="" className="file-preview img-thumbnail" height="150px" width="150px" />
         )}
-
-        <div className="container float-right">My Documents
+</span>
+        <span className="container"><h5>My Documents</h5>
           <div className="container">
           {this.props.component === 'work' ? (this.state.careerImages.map(image => {
             return <span key={image.img_url} className="container mr-2 w-25"><img src={image.img_url} className="img-thumbnail img-fluid" max-height="auto" width="10%"/></span>
@@ -143,7 +143,7 @@ getUploads(){
         }))
       }
           </div>
-        </div>
+        </span>
       </div>
     );
   }

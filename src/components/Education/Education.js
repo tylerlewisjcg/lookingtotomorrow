@@ -53,7 +53,7 @@ class Education extends Component {
           <div className="container">
          <FileUpload component={"edu"}/>
             </div>
-          <div className="container">{this.renderEducationHistory()}</div>
+          <div className="container mt-2">{this.renderEducationHistory()}</div>
         </div>
       </div>
     );
