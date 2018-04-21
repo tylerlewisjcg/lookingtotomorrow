@@ -78,35 +78,35 @@ class FileUpload extends Component {
     this.state.file && console.log(this.state.photo);
     return (
       <div hidden={!this.props.user.display_name} className="container mr-5">
-        <form className="container">
-          <div className="form-group container mr-5">
-            <label className="btn-secondary" htmlFor="formControlFile">Upload Resume</label>
+
+        <form>
+          <div className="input-group">
             <input
-              className="form-control-file btn-light"
+              className="form-control-file btn-light "
               type="file"
-              defaultValue=""
               onChange={this.handlePhoto}
-              width="75px"
+             
             />
-             <button className="btn btn-secondary" onClick={this.sendPhoto}>
+            <div>
+             <button className="btn btn-default"onClick={this.sendPhoto}>
           Submit
         </button>
+        </div>
           </div>
         </form>
        
         {this.state.file && (
-          <img src={this.state.file} alt="" className="file-preview" height="75px" width="75px" />
+          <img src={this.state.file} alt="" className="file-preview img-thumbnail" height="150px" width="150px" />
         )}
 
-        <div>My Documents
-          <div>
+        <div className="container float-right">My Documents
+          <div className="container">
           {this.props.component === 'work' ? (this.state.careerImages.map(image => {
-            console.log(image)
-            return <span key={image.img_url} className="container mr-2"><img src={image.img_url}  height="75px" width="75px" /></span>
+            return <span key={image.img_url} className="container mr-2 w-25"><img src={image.img_url} className="img-thumbnail img-fluid" max-height="auto" width="10%"/></span>
           }))
         :
          ( this.state.eduImages.map(image => {
-          return <span key={image.img_url} className="container mr-2"><img src={image.img_url}  height="75px" width="75px" /> </span>
+          return <span key={image.img_url} className="container mr-2 w-25"><img src={image.img_url} className="img-thumbnail img-fluid" max-height="auto" width="10%"/> </span>
         }))
       }
           </div>

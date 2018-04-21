@@ -79,7 +79,7 @@ class Motivations extends Component {
     })
     setTimeout(() => {
       this.confirmationToggle()
-    }, 3000);
+    }, 1500);
   }
 confirmationToggle(){
   this.setState({
