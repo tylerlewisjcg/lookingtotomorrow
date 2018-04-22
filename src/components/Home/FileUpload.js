@@ -114,15 +114,11 @@ class FileUpload extends Component {
               <input
                 className="form-control-file btn-light"
                 type="file"
-                style={{width: "25%", height: "100px",
-                }}
                 onChange={this.handlePhoto}
               />
-              <div className="container">
                 <button className="btn-default mt-1" onClick={this.sendPhoto}>
                   Submit
                 </button>
-              </div>
             </div>
           </form>
 
