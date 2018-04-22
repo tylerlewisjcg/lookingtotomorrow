@@ -24,12 +24,12 @@ class ActionItems extends Component {
     return (
       <tr>
         <td>{this.props.item.action_item_description}</td>
-        <td>{moment(this.props.item.start_date).format("MMM DD, YYYY")}</td>
-        <td>{moment(this.props.item.due_date).format("MMM DD, YYYY")}</td>
+        <td>{moment.utc(this.props.item.start_date).format("MMM DD, YYYY")}</td>
+        <td>{moment.utc(this.props.item.due_date).format("MMM DD, YYYY")}</td>
 
         <td>
           {!!this.props.item.completion_date ? (
-            <span>{`Completed On: ${moment(
+            <span>{`Completed On: ${moment.utc(
               this.props.item.completion_date
             ).format("MMM DD, YYYY")}`}</span>
           ) : (

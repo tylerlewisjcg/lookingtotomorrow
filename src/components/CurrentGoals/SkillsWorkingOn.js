@@ -123,11 +123,11 @@ handleMarkAsComplete(){
             <h3 className="card-title">{this.props.skill.skill_name}</h3>
 
             <h5 className="card-subtitle mb-2 text-muted">
-              <p>{`Start Date: ${moment(this.props.skill.start_date).format(
+              <p>{`Start Date: ${moment.utc(this.props.skill.start_date).format(
                 "MMM DD, YYYY"
               )}`}</p>
 
-              <p>{`Due Date: ${moment(this.props.skill.due_date).format(
+              <p>{`Due Date: ${moment.utc(this.props.skill.due_date).format(
                 "MMM DD, YYYY"
               )}`}</p>
             </h5>
