@@ -16,9 +16,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav id="mainNav" className="navbar navbar-expand-lg navbar-dark bg-primary" >
-       <Link to="/"> <a className="navbar-brand" href="">
+        <a className="navbar-brand" href="#">
           LookingToTomorrow
-        </a></Link>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -74,7 +74,7 @@ class Navbar extends Component {
                 src={this.props.user.display_name ? this.props.user.img : ""}
                 width="35px"
                 height="35px"
-                alt="profile display"
+                alt="profile"
               />
             </a>
           </span>
