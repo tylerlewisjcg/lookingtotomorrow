@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getWorkHistory } from "./../../ducks/workHistoryReducer";
 import _ from 'lodash';
+import moment from 'moment';
 class CareerSnapshot extends Component {
   constructor(props) {
     super(props);
@@ -10,18 +11,31 @@ class CareerSnapshot extends Component {
   componentDidMount() {
     this.props.getWorkHistory()
   }
+
+  
   render() { 
     let currentJob = _.filter(this.props.workHistoryItems, {'end_date': null});
 
+ let notableAchievements = (currentJob) => {
+    let splitArray= currentJob[0].notable_achievements.split(",");
+    console.log(splitArray);
 
-    return ( <div className="mb-4">
+   return splitArray.map(achievement=>{
+      console.log(achievement);
+    return <li className="mt-1">{achievement}</li>
+    })
+} 
+
+    return ( <div className="container mb-4">
       <h2>Career Snapshot</h2>
       
-{this.props.workHistoryItems.length !== 0?(<div> <p>{`Currently Working At: ${currentJob[0].company}`}</p>
+{this.props.workHistoryItems.length !== 0?(<div className="container"> <p>{`Currently Working At ${currentJob[0].company}`}</p>
+<p>{`Since ${moment.utc(currentJob[0].start_date).format("MMM DD, YYYY")} (${moment.utc(currentJob[0].start_date).fromNow(true)})`}</p>
 <p>{`Title: ${currentJob[0].job_title}`}</p>
-<p>{`Since ${currentJob[0].start_date}`} years or time from moment.js, take the date started and do a time from method from moment</p>
-<p>{`Current Salary: ${currentJob[0].salary}`}</p>
-<p>{`Notable Accomplishments`}need to display Accomplishments, but slice them at a comma and then join into an array and map over the array and display as a bullet point list</p>
+<p>{`Current Salary: $${currentJob[0].salary}`}</p>
+<p>Notable Accomplishments:</p>
+<div>{console.log("what should be displaying", notableAchievements(currentJob))}</div>
+<ul>{notableAchievements(currentJob)}</ul>
 
 </div>) : (<div></div>) }
    
