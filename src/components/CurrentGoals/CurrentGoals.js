@@ -3,7 +3,6 @@ import Navbar from "./../Navbar/Navbar";
 import SkillsWorkingOn from "./SkillsWorkingOn";
 import CurrentSkills from "./CurrentSkills";
 import { connect } from "react-redux";
-import moment from "moment";
 import {
   getCurrentSkills,
   addCurrentSkill,

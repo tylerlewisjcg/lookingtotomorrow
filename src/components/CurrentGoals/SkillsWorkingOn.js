@@ -39,7 +39,9 @@ class SkillsWorkingOn extends Component {
   componentDidMount() {
     this.getActionItems();
   }
-
+onLoad(){
+  this.getActionItems()
+}
   getActionItems() {
     axios
 
@@ -54,7 +56,7 @@ class SkillsWorkingOn extends Component {
     let filtered = [];
 
     this.state.actionItems.map(item => {
-      filtered.push(item);
+     return filtered.push(item);
     });
 
     return filtered.map(item => {
@@ -206,8 +208,8 @@ class SkillsWorkingOn extends Component {
                   Cancel
                 </button>
               </form>
-
-              <div className="table-responsive">
+{!this.state.actionItems.length === 0 ?
+              (<div className="table-responsive">
                 <table className="table table-striped">
                   <thead>
                     <tr>
@@ -235,7 +237,9 @@ class SkillsWorkingOn extends Component {
 
                   <tbody>{this.renderActionItems()}</tbody>
                 </table>
-              </div>
+    </div>):
+  ("")
+  }
             </div>
 
             <a className="card-link">

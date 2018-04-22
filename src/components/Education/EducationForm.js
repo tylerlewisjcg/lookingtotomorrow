@@ -120,7 +120,7 @@ class EducationForm extends Component {
               />
 
               <label htmlFor="accomplishments">
-                Notable Achievements/Extracurricular
+                Notable Achievements
               </label>
               <input
                 type="text"

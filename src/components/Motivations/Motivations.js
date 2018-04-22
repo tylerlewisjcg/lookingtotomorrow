@@ -16,7 +16,7 @@ class Motivations extends Component {
   }
   componentDidMount() {
     axios.get("/api/get_motivations").then(response => {
-      if (response.data.length == 0) {
+      if (response.data.length === 0) {
         this.setState({
           why: "",
           interests: "",

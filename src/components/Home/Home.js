@@ -2,16 +2,9 @@ import React, { Component } from "react";
 import Navbar from "./../Navbar/Navbar";
 import AdditionalResources from "./AdditionalResources";
 import CareerSnapshot from "./CareerSnapshot";
-import CareerHistory from "./../CareerHistory/CareerHistory";
-import CurrentGoals from "./../CurrentGoals/CurrentGoals";
-import Education from "./../Education/Education";
-import Motivations from "./../Motivations/Motivations";
 import { getUserInfo } from "./../../ducks/userReducer";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import RecentlyCompleted from "./RecentlyCompleted";
-import FileUpload from './FileUpload';
-import axios from 'axios';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -34,16 +27,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Navbar />
         <div className="jumbotron" >
-          <div className="container">
+          <div className="container-fluid">
             <h1 className="display-3">Welcome</h1>
             <p>
               This paragraph will have some introduction to my site or something
             </p>
             <p>
-              <a className="btn btn-primary btn-lg" href="#" role="button">
+              <a className="btn btn-primary btn-lg" href="" role="button">
                 Learn more &raquo;
               </a>
               {/* <button onClick={()=> {

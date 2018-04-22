@@ -32,8 +32,11 @@ class CareerHistory extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container mt-3">
+        <div className="container mt-1">
           <h1>Career History</h1>
+          <div className="container">
+            <FileUpload component={"work"}/>
+            </div>
 
           {!this.state.addNewButtonIsPressed ? (
             <button
@@ -47,10 +50,8 @@ class CareerHistory extends Component {
           ) : (
             <CareerForm updateState={this.updateState} />
           )}
-            <div className="container">
-            <FileUpload component={"work"}/>
-            </div>
-          <div className="container mt-2">{this.renderWorkHistoryItems()}</div>
+           
+          <div className="container mt-1">{this.renderWorkHistoryItems()}</div>
         </div>
       </div>
     );

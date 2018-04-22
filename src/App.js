@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import axios from "axios";
 import Home from './components/Home/Home';
 import { Switch, Route } from "react-router-dom";
 import CareerHistory from './components/CareerHistory/CareerHistory';
@@ -11,6 +9,7 @@ import Motivations from './components/Motivations/Motivations';
 class App extends Component {
   render() {
     return (
+      
         <Route
           path="/"
           render={() => (
@@ -24,6 +23,7 @@ class App extends Component {
           
           )}
         />
+     
     );
   }
 }

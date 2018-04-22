@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { HashRouter } from "react-router-dom";

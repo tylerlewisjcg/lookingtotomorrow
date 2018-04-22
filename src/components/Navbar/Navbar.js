@@ -16,9 +16,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav id="mainNav" className="navbar navbar-expand-lg navbar-dark bg-primary" >
-        <a className="navbar-brand" href="#">
+       <Link to="/"> <a className="navbar-brand" href="">
           LookingToTomorrow
-        </a>
+        </a></Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -58,6 +58,8 @@ class Navbar extends Component {
               </Link>
             </li>
           </ul>
+
+          <div className="d-flex align-items-center">
           <span className="navbar-text">
             
             <a className="nav-item">
@@ -72,6 +74,7 @@ class Navbar extends Component {
                 src={this.props.user.display_name ? this.props.user.img : ""}
                 width="35px"
                 height="35px"
+                alt="profile display"
               />
             </a>
           </span>
@@ -96,6 +99,7 @@ class Navbar extends Component {
               </span>
             )}
           </span>
+          </div>
         </div>
       </nav>
     );

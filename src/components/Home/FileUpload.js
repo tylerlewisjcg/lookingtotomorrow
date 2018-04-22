@@ -19,14 +19,9 @@ class FileUpload extends Component {
     this.sendPhoto = this.sendPhoto.bind(this);
   }
 
-
-
-
-  
   updateState() {
     this.setState({ displayFileUpload: !this.state.displayFileUpload });
   }
-
 
   componentDidMount() {
     this.props.getUserInfo();
@@ -36,19 +31,17 @@ class FileUpload extends Component {
     return axios.post("/api/photoUpload", photo);
   }
 
-getUploads(){
-  if(this.props.component === 'work'){
-    axios.get("/api/get_uploads").then(result => {
-      this.setState({careerImages: result.data})
-    })
+  getUploads() {
+    if (this.props.component === "work") {
+      axios.get("/api/get_uploads").then(result => {
+        this.setState({ careerImages: result.data });
+      });
+    } else if (this.props.component === "edu") {
+      axios.get("/api/get_edu_uploads").then(result => {
+        this.setState({ eduImages: result.data });
+      });
+    }
   }
-  else if(this.props.component === 'edu'){
-    axios.get('/api/get_edu_uploads').then(result =>{
-      this.setState({eduImages: result.data})
-    })
-  }
-}
-
 
   handlePhoto(event) {
     const reader = new FileReader(),
@@ -74,74 +67,109 @@ getUploads(){
     };
     this.sendToback(stuffToSend).then(response => {
       console.log("Upload response", response.data);
-      this.uploadPhotoToDB(response)
+      this.uploadPhotoToDB(response);
     });
+    this.updateState();
   }
 
   uploadPhotoToDB(response) {
     let body = {
       img: response.data.Location
     };
-    if(this.props.component === 'work'){
-    axios.post("/api/add_uploads", body).then(response => {
-      this.setState({careerImages: response.data})
-    })}
-    else if (this.props.component === "edu"){
+    if (this.props.component === "work") {
+      axios.post("/api/add_uploads", body).then(response => {
+        this.setState({ careerImages: response.data });
+      });
+    } else if (this.props.component === "edu") {
       axios.post("/api/add_edu_uploads", body).then(response => {
-        this.setState({eduImages: response.data})
-      })
+        this.setState({ eduImages: response.data });
+      });
+    } else {
+      console.log("props not passed correctly");
     }
-    else {
-      console.log('props not passed correctly')
-    }
-    this.setState({file: "",
-    filename: "",
-    filetype: ""})
+    this.setState({
+      file: "",
+      filename: "",
+      filetype: ""
+    });
   }
 
   render() {
     this.state.file && console.log(this.state.photo);
     return (
       <div hidden={!this.props.user.display_name} className="container mr-5">
-      <button
-      type="button"
-      className="btn btn-light mb-2"
-      onClick={() => this.updateState()}
-    >
-      <i className="fas fa-plus mr-2" />
-      {this.props.component === 'work'? "Add Resume": "Add Diploma/Certification"}
-    </button>
-<span>
-        <form hidden={this.state.displayFileUpload === false}>
-          <div className="input-group">
-            <input
-              className="form-control-file btn-light "
-              type="file"
-              onChange={this.handlePhoto}
-             
-            />
-            <div className="container">
-             <button className="btn btn-default"onClick={this.sendPhoto}>
-          Submit
+        <button
+          type="button"
+          className="btn btn-light mb-2"
+          onClick={() => this.updateState()}
+        >
+          <i className="fas fa-plus mr-2" />
+          {this.props.component === "work"
+            ? "Add Career Documents"
+            : "Add Education and Training Documents"}
         </button>
-        </div>
-          </div>
-        </form>
-       
-        {this.state.file && (
-          <img src={this.state.file} alt="" className="file-preview img-thumbnail" height="150px" width="150px" />
-        )}
-</span>
-        <span className="container"><h5>My Documents</h5>
+        <span>
+          <form hidden={this.state.displayFileUpload === false}>
+            <div className="input-group-append">
+              <input
+                className="form-control-file btn-light"
+                type="file"
+                defaultValue="Drag Document Here"
+                style={{width: "25%", height: "100px",
+                }}
+                onChange={this.handlePhoto}
+              />
+              <div className="container">
+                <button className="btn-default mt-1" onClick={this.sendPhoto}>
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+
+          {this.state.file && (
+            <img
+              src={this.state.file}
+              alt="file preview"
+              className="file-preview img-thumbnail"
+              height="150px"
+              width="150px"
+            />
+          )}
+        </span>
+        <span className="container">
+          <h5>My Documents</h5>
           <div className="container">
-          {this.props.component === 'work' ? (this.state.careerImages.map(image => {
-            return <span key={image.img_url} className="container mr-2 w-25"><img src={image.img_url} className="img-thumbnail img-fluid" max-height="auto" width="10%"/></span>
-          }))
-        :
-         ( this.state.eduImages.map(image => {
-          return <span key={image.img_url} className="container mr-2 w-25"><img src={image.img_url} className="img-thumbnail img-fluid" max-height="auto" width="10%"/> </span>
-        }))
-      }
+            {this.props.component === "work"
+              ? this.state.careerImages.map(image => {
+                  return (
+                    <span key={image.img_url} className="container mr-2 w-25">
+                     <a href={image.img_url}> <img
+                      id="thumbnail1"
+                        src={image.img_url}
+                        className="img-thumbnail img-fluid"
+                        max-height="auto"
+                        width="15%"
+                        alt="upload thumbnail"
+                       
+                    /></a>
+                    </span>
+                  );
+                })
+              : this.state.eduImages.map(image => {
+                  return (
+                    <span key={image.img_url} className="container mr-2 w-25">
+                       <a href={image.img_url}><img
+                        src={image.img_url}
+                        id="thumbnail2"
+                        className="img-thumbnail img-fluid"
+                        max-height="auto"
+                        width="15%"
+                        alt="upload thumbnail"
+                      /></a>
+                    </span>
+                  );
+                })}
           </div>
         </span>
       </div>

@@ -36,10 +36,13 @@ class Education extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container mt-3">
+        <div className="container mt-1">
           <h1>Education and Training</h1>
+          <div className="container">
+         <FileUpload component={"edu"}/>
+            </div>
           {!this.state.addNewButtonIsPressed ? (
-            <button
+           <div className="container"> <button
               type="button"
               className="btn btn-light mb-2"
               onClick={() => this.updateState()}
@@ -47,13 +50,12 @@ class Education extends Component {
               <i className="fas fa-plus mr-2" />
               Add New Education/Training
             </button>
+            </div>
           ) : (
             <EducationForm updateState={this.updateState} />
           )}
-          <div className="container">
-         <FileUpload component={"edu"}/>
-            </div>
-          <div className="container mt-2">{this.renderEducationHistory()}</div>
+          
+          <div className="container mt-1">{this.renderEducationHistory()}</div>
         </div>
       </div>
     );
