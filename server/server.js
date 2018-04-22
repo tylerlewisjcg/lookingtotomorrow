@@ -5,7 +5,8 @@ const express = require("express"),
   massive = require("massive"),
   cors = require("cors"),
   passport = require("passport"),
-  Auth0Strategy = require("passport-auth0");
+  Auth0Strategy = require("passport-auth0"),
+  nodemailer = require('nodemailer');
 
 // const google = require("googleapis"),
 // privatekey = require('./../privatekey.json'),
@@ -473,3 +474,46 @@ app.post("/api/add_edu_uploads", (req, res) => {
     .catch(err => console.log(err));
 });
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+// You have to enable less secure apps in google at this URL: http://myaccount.google.com/lesssecureapps
+
+
+const {GMAIL_USER,
+    GMAIL_PASS
+} = process.env
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: GMAIL_USER,
+        pass: GMAIL_PASS
+    }
+})
+
+const mailOptions = {
+    from: 'tylerlewisjcg@gmail.com',
+    to: 'tylerlewisjcg@gmail.com',
+    subject: 'Hello World',
+    html: '<h1>Hello World</h1>'
+}
+
+app.get('/api/sendmail', function(req, res){
+    transporter.sendMail(mailOptions, function(err, info){
+        if(err) console.log(err)
+        else console.log(info)
+    })
+    res.sendStatus(200)
+    
+})
