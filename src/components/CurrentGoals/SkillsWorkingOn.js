@@ -208,8 +208,8 @@ onLoad(){
                   Cancel
                 </button>
               </form>
-{!this.state.actionItems.length === 0 ?
-              (<div className="table-responsive">
+
+              <div className="table-responsive">
                 <table className="table table-striped">
                   <thead>
                     <tr>
@@ -237,9 +237,7 @@ onLoad(){
 
                   <tbody>{this.renderActionItems()}</tbody>
                 </table>
-    </div>):
-  ("")
-  }
+    </div>
             </div>
 
             <a className="card-link">

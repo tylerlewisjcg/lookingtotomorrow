@@ -114,7 +114,6 @@ class FileUpload extends Component {
               <input
                 className="form-control-file btn-light"
                 type="file"
-                defaultValue="Drag Document Here"
                 style={{width: "25%", height: "100px",
                 }}
                 onChange={this.handlePhoto}
