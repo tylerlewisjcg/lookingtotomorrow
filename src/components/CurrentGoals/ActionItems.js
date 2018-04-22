@@ -9,7 +9,8 @@ import moment from "moment";
 class ActionItems extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
   handleDeleteClick() {
     this.props.getActionItems();

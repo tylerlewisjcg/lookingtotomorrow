@@ -10,7 +10,8 @@ import {
   deleteSkillWorkingOn,
   markAsComplete,
   getActionItems,
-  addActionItem
+  addActionItem,
+  addCurrentSkill
 } from "./../../ducks/currentGoalsReducer";
 
 import moment from "moment";
@@ -39,8 +40,8 @@ class SkillsWorkingOn extends Component {
   componentDidMount() {
     this.getActionItems();
   }
-onLoad(){
-  this.getActionItems()
+componentDidUpdate(){
+  this.getActionItems();
 }
   getActionItems() {
     axios
@@ -104,7 +105,16 @@ onLoad(){
   handleActionItemInput(e) {
     this.setState({ actionItemDescription: e.target.value });
   }
+handleMarkAsComplete(){
+  const completeDate = new Date();
 
+  this.props.markAsComplete(
+    completeDate,
+
+    this.props.skill.skill_id
+  );
+  this.props.addCurrentSkill(this.props.skill.skill_name);
+}
   render() {
     return (
       <div className="working-skills--container mb-2">
@@ -250,13 +260,7 @@ onLoad(){
                   type="button"
                   className="btn btn-light"
                   onClick={() => {
-                    const completeDate = new Date();
-
-                    this.props.markAsComplete(
-                      completeDate,
-
-                      this.props.skill.skill_id
-                    );
+                   this.handleMarkAsComplete();
                   }}
                 >
                   <i className="fas fa-check" /> Mark As Complete
@@ -353,5 +357,6 @@ export default connect(mapStateToProps, {
 
   getActionItems,
 
-  addActionItem
+  addActionItem,
+  addCurrentSkill
 })(SkillsWorkingOn);

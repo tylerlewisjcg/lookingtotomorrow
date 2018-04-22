@@ -1,14 +1,21 @@
 .jumbotron {
-    background-image: url("https://s3-us-west-1.amazonaws.com/lookingtotomorrow/mountain-sunrise-sun-sky-cloud-tree-rock-forest.jpg");
-  color: white;
-//   background-image: url("http://i.imgur.com/5ahTckK.jpg?1");   branches
-//background-image: url("https://s3-us-west-1.amazonaws.com/lookingtotomorrow/thumb-1920-568653.jpg");  forest
-// background-image: url("https://www.publicdomainpictures.net/pictures/90000/velka/acadia-national-park.jpg"); lighter forest
-// background-image: url("https://www.publicdomainpictures.net/pictures/40000/velka/blue-abstract-background.jpg"); blue texture
+   
+     ///sky///
+background-image: url("https://s3-us-west-1.amazonaws.com/lookingtotomorrow/mountain-sunrise-sun-sky-cloud-tree-rock-forest.jpg");
+     /// branches///
+// background-image: url("http://i.imgur.com/5ahTckK.jpg?1");
+        ///forest///
+// background-image: url("https://s3-us-west-1.amazonaws.com/lookingtotomorrow/thumb-1920-568653.jpg");
+        /// lighter forest///
+// background-image: url("https://www.publicdomainpictures.net/pictures/90000/velka/acadia-national-park.jpg"); 
+        /// blue texture///
+// background-image: url("https://www.publicdomainpictures.net/pictures/40000/velka/blue-abstract-background.jpg"); 
 
-// background-image: url("http://studioghiblimovies.com/wp-content/uploads/2014/12/03-Only-Yesterday.jpg"); painting 
+        /// trees/painting///
+// background-image: url("http://studioghiblimovies.com/wp-content/uploads/2014/12/03-Only-Yesterday.jpg");
 
 background-attachment: fixed;
+color: white;
 }
 #mainNav{
     background: linear-gradient(to right,#007BFF , rgb(0, 180, 255));
