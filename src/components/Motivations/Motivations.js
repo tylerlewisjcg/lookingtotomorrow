@@ -95,7 +95,7 @@ confirmationToggle(){
     return (
       <div>
         <Navbar />
-        <div className="container mt-3">
+        <div className="container mt-3 mb-5">
           <h1>My Motivations</h1>
           <form className="">
             <div className="form-group">
@@ -157,7 +157,7 @@ confirmationToggle(){
             {this.state.checkForExisting === 0 ? (
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary mb-5"
                 onClick={() => {
                   this.handleFormPost();
                 }}

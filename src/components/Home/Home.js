@@ -56,7 +56,7 @@ class Home extends Component {
             </p>
           </div>
         </div>
-        <div className="container">
+        <div className="container mb-5">
           <div className="row">
             <div className="col-md-4">
               <CareerSnapshot />

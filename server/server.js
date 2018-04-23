@@ -6,9 +6,6 @@ const express = require("express"),
   cors = require("cors"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0"),
-//   nodemailer = require('nodemailer');
-// const google = require("googleapis"),
-// privatekey = require('./../privatekey.json'),
 S3 = require("./s3");
 const path = require("path");
 const {

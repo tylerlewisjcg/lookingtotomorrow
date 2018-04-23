@@ -34,7 +34,7 @@ class CareerHistory extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container mt-1">
+        <div className="container mt-1 mb-5">
           <h1>Career History</h1>
           <div className="container">
             <FileUpload component={"work"}/>

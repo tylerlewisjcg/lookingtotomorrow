@@ -85,7 +85,7 @@ class CurrentGoals extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container mt-3">
+        <div className="container mt-3 mb-5">
           <h1>Current Goals</h1>
           <div className="current_skills">
             <h2>Skills I Have</h2>
