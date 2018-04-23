@@ -30,15 +30,15 @@ class CareerSnapshot extends Component {
         {currentJob.length !== 0 ? (
           <div className="container">
             {" "}
-            <p>{`Currently Working At ${currentJob[0].company}`}</p>
-            <p>{`Since ${moment
+            <p><strong>{`Currently Company: `}</strong><span>{currentJob[0].company}</span></p>
+            <p><strong>{`Since`}</strong> {`${moment
               .utc(currentJob[0].start_date)
               .format("MMM DD, YYYY")} (${moment
               .utc(currentJob[0].start_date)
               .fromNow(true)})`}</p>
-            <p>{`Title: ${currentJob[0].job_title}`}</p>
-            <p>{`Current Salary: $${currentJob[0].salary}`}</p>
-            <p>Notable Accomplishments:</p>
+            <p><strong>{`Title: `}</strong><span>{currentJob[0].job_title}</span></p>
+            <p><strong>{`Current Salary: $`}<span></span>{currentJob[0].salary}</strong></p>
+            <p><strong>Notable Accomplishments:</strong></p>
             <ul>{notableAchievements(currentJob)}</ul>
           </div>
         ) : (
