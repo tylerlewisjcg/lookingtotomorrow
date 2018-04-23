@@ -27,10 +27,9 @@ class EducationDisplayChild extends Component {
                 {moment(this.props.eduItem.start_date).format("MMM DD, YYYY")}
               </p>
               <p className="card-subtitle text-muted">
-                {`End Date: `}
-                {!!this.props.eduItem.end_date
+                {`End Date: ${!!this.props.eduItem.end_date
                   ? moment(this.props.eduItem.end_date).format("MMM DD, YYYY ")
-                  : ""}
+                  : "Current"}`}
               </p>
               <p>
                 Certification/Degree Type:{" "}

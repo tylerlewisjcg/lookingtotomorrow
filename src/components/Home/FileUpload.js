@@ -112,7 +112,6 @@ class FileUpload extends Component {
           <form hidden={this.state.displayFileUpload === false}>
             <div className="input-group-append">
               <input
-                className="form-control-file btn-light"
                 type="file"
                 onChange={this.handlePhoto}
               />
