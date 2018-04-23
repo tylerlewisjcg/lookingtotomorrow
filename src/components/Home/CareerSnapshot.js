@@ -18,23 +18,20 @@ class CareerSnapshot extends Component {
 
  let notableAchievements = (currentJob) => {
     let splitArray= currentJob[0].notable_achievements.split(",");
-    console.log(splitArray);
 
    return splitArray.map(achievement=>{
-      console.log(achievement);
     return <li className="mt-1">{achievement}</li>
     })
 } 
 
     return ( <div className="container mb-4">
       <h2>Career Snapshot</h2>
-      {console.log(currentJob)}
+
 {currentJob.length !== 0?(<div className="container"> <p>{`Currently Working At ${currentJob[0].company}`}</p>
 <p>{`Since ${moment.utc(currentJob[0].start_date).format("MMM DD, YYYY")} (${moment.utc(currentJob[0].start_date).fromNow(true)})`}</p>
 <p>{`Title: ${currentJob[0].job_title}`}</p>
  <p>{`Current Salary: $${currentJob[0].salary}`}</p>
  <p>Notable Accomplishments:</p>
- <div>{console.log("what should be displaying", notableAchievements(currentJob))}</div>
 <ul>{notableAchievements(currentJob)}</ul>
 
 </div>) : (<div></div>) }

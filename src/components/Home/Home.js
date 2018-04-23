@@ -38,14 +38,16 @@ class Home extends Component {
         <Navbar />
         <div className="jumbotron" >
           <div className="container-fluid">
-            <h1 className="display-3">Welcome</h1>
+            <h1 className="display-3">Professional Development</h1>
+            <h4>
+              Welcome to LookingToTomorrow where you can track your professional goals and skills. 
+            </h4>
             <p>
-              This paragraph will have some introduction to my site or something
-            </p>
-            <p>
-              <a className="btn btn-primary btn-lg" href="#" role="button">
-                Learn more &raquo;
+              <a className="btn btn-primary btn-lg" href={process.env.REACT_APP_LOGIN} role="button">
+                Sign up or Login now! &raquo;
               </a>
+
+
               {/* <button onClick={()=> {
                 return this.postToCalendar()
               }}>
