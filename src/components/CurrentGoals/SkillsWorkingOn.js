@@ -40,9 +40,9 @@ class SkillsWorkingOn extends Component {
   componentDidMount() {
     this.getActionItems();
   }
-componentDidUpdate(){
-  this.getActionItems();
-}
+  componentDidUpdate() {
+    this.getActionItems();
+  }
   getActionItems() {
     axios
 
@@ -57,7 +57,7 @@ componentDidUpdate(){
     let filtered = [];
 
     this.state.actionItems.map(item => {
-     return filtered.push(item);
+      return filtered.push(item);
     });
 
     return filtered.map(item => {
@@ -105,16 +105,16 @@ componentDidUpdate(){
   handleActionItemInput(e) {
     this.setState({ actionItemDescription: e.target.value });
   }
-handleMarkAsComplete(){
-  const completeDate = new Date();
+  handleMarkAsComplete() {
+    const completeDate = new Date();
 
-  this.props.markAsComplete(
-    completeDate,
+    this.props.markAsComplete(
+      completeDate,
 
-    this.props.skill.skill_id
-  );
-  this.props.addCurrentSkill(this.props.skill.skill_name);
-}
+      this.props.skill.skill_id
+    );
+    this.props.addCurrentSkill(this.props.skill.skill_name);
+  }
   render() {
     return (
       <div className="working-skills--container mb-2">
@@ -123,13 +123,13 @@ handleMarkAsComplete(){
             <h3 className="card-title">{this.props.skill.skill_name}</h3>
 
             <h5 className="card-subtitle mb-2 text-muted">
-              <p>{`Start Date: ${moment.utc(this.props.skill.start_date).format(
-                "MMM DD, YYYY"
-              )}`}</p>
+              <p>{`Start Date: ${moment
+                .utc(this.props.skill.start_date)
+                .format("MMM DD, YYYY")}`}</p>
 
-              <p>{`Due Date: ${moment.utc(this.props.skill.due_date).format(
-                "MMM DD, YYYY"
-              )}`}</p>
+              <p>{`Due Date: ${moment
+                .utc(this.props.skill.due_date)
+                .format("MMM DD, YYYY")}`}</p>
             </h5>
 
             <div className="card-text">
@@ -247,7 +247,7 @@ handleMarkAsComplete(){
 
                   <tbody>{this.renderActionItems()}</tbody>
                 </table>
-    </div>
+              </div>
             </div>
 
             <a className="card-link">
@@ -260,7 +260,7 @@ handleMarkAsComplete(){
                   type="button"
                   className="btn btn-light"
                   onClick={() => {
-                   this.handleMarkAsComplete();
+                    this.handleMarkAsComplete();
                   }}
                 >
                   <i className="fas fa-check" /> Mark As Complete
@@ -273,9 +273,7 @@ handleMarkAsComplete(){
                 type="button btn-sm"
                 className="btn btn-secondary"
                 onClick={() => {
-                  this.props.deleteSkillWorkingOn(
-                    this.props.skill.skill_id
-                  )
+                  this.props.deleteSkillWorkingOn(this.props.skill.skill_id);
                 }}
                 // data-toggle="modal"
                 // data-target="#deleteConfirmModal2"
@@ -325,9 +323,9 @@ handleMarkAsComplete(){
                       data-dismiss="modal"
                       // onClick={() => {
                       //   console.log(this.props.skill.skill_id)
-                        // this.props.deleteSkillWorkingOn(
-                        //   this.props.skill.skill_id
-                        //)
+                      // this.props.deleteSkillWorkingOn(
+                      //   this.props.skill.skill_id
+                      //)
                       // }
                       // }
                     >

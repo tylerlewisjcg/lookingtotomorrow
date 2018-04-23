@@ -6,7 +6,7 @@ const express = require("express"),
   cors = require("cors"),
   passport = require("passport"),
   Auth0Strategy = require("passport-auth0"),
-S3 = require("./s3");
+  S3 = require("./s3");
 const path = require("path");
 const {
   SERVER_PORT,
@@ -470,16 +470,6 @@ app.post("/api/add_edu_uploads", (req, res) => {
     .catch(err => console.log(err));
 });
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
-
-
-
-
-
-
-
-
-
-
 
 /////NodeMailer/////
 

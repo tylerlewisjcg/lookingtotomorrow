@@ -11,11 +11,12 @@ class Navbar extends Component {
     this.props.getUserInfo();
   }
 
-
-
   render() {
     return (
-      <nav id="mainNav" className="navbar navbar-expand-lg navbar-dark bg-primary" >
+      <nav
+        id="mainNav"
+        className="navbar navbar-expand-lg navbar-dark bg-primary"
+      >
         <a className="navbar-brand" href="/">
           LookingToTomorrow
         </a>
@@ -30,7 +31,7 @@ class Navbar extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarText" >
+        <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to="/" className="nav-link">
@@ -60,45 +61,40 @@ class Navbar extends Component {
           </ul>
 
           <div className="d-flex align-items-center">
-          <span className="navbar-text">
-            
-            <a className="nav-item">
-              {this.props.user.display_name ? this.props.user.display_name : ""}
-            </a>
-          </span>
-          <span className="navbar-text ml-2">
-            
-            <a className="nav-item">
-              <img
-                hidden={!this.props.user.display_name}
-                src={this.props.user.display_name ? this.props.user.img : ""}
-                width="35px"
-                height="35px"
-                alt="your face is displaying right here"
-              />
-            </a>
-          </span>
+            <span className="navbar-text">
+              <a className="nav-item">
+                {this.props.user.display_name
+                  ? this.props.user.display_name
+                  : ""}
+              </a>
+            </span>
+            <span className="navbar-text ml-2">
+              <a className="nav-item">
+                <img
+                  hidden={!this.props.user.display_name}
+                  src={this.props.user.display_name ? this.props.user.img : ""}
+                  width="35px"
+                  height="35px"
+                  alt="your face is displaying right here"
+                />
+              </a>
+            </span>
 
-          <span className="navbar-text">
-            {this.props.user.display_name ? (
-              <span className="nav-item">
-                
-                <a
-                  className="nav-link"
-                  href={process.env.REACT_APP_LOGOUT}
-                >
-                  Logout
-                </a>
-              </span>
-            ) : (
-              <span className="nav-item">
-                
-                <a className="nav-link" href={process.env.REACT_APP_LOGIN}>
-                  Login
-                </a>
-              </span>
-            )}
-          </span>
+            <span className="navbar-text">
+              {this.props.user.display_name ? (
+                <span className="nav-item">
+                  <a className="nav-link" href={process.env.REACT_APP_LOGOUT}>
+                    Logout
+                  </a>
+                </span>
+              ) : (
+                <span className="nav-item">
+                  <a className="nav-link" href={process.env.REACT_APP_LOGIN}>
+                    Login
+                  </a>
+                </span>
+              )}
+            </span>
           </div>
         </div>
       </nav>

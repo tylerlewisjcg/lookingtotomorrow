@@ -17,7 +17,6 @@ class EducationForm extends Component {
     this.state = {};
   }
   handleEditEducationHistorySubmit() {
-    
     this.props.editEducationHistory(
       this.props.eduItem.education_id,
       this.props.institution,
@@ -119,9 +118,7 @@ class EducationForm extends Component {
                 onChange={e => this.props.handleFieldOfStudyChange(e)}
               />
 
-              <label htmlFor="accomplishments">
-                Notable Achievements
-              </label>
+              <label htmlFor="accomplishments">Notable Achievements</label>
               <input
                 type="text"
                 className="form-control mb-2"

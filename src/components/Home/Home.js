@@ -10,8 +10,8 @@ import { getUserInfo } from "./../../ducks/userReducer";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import RecentlyCompleted from "./RecentlyCompleted";
-import FileUpload from './FileUpload';
-import axios from 'axios';
+import FileUpload from "./FileUpload";
+import axios from "axios";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,6 @@ class Home extends Component {
     this.props.getUserInfo();
   }
 
-
   // postToCalendar(){
   //   console.log('button worked')
   //   axios.post("/api/add_event_to_calendar")
@@ -31,22 +30,26 @@ class Home extends Component {
   //   })
   // }
 
-
   render() {
     return (
-      <div >
+      <div>
         <Navbar />
-        <div className="jumbotron" >
+        <div className="jumbotron">
           <div className="container-fluid">
             <h1 className="display-3">Career Planning</h1>
             <h6 className="mt-4">
-              Welcome to LookingToTomorrow where you can track your professional goals and skills. 
+              Welcome to LookingToTomorrow where you can track your professional
+              goals and skills.
             </h6>
+            {/* unsure how to get sign up/login button to go away if user is logged in and display Hello Username */}
             <p>
-              <a className="btn btn-primary btn-lg mt-5" href={process.env.REACT_APP_LOGIN} role="button">
+              <a
+                className="btn btn-primary btn-lg mt-5"
+                href={process.env.REACT_APP_LOGIN}
+                role="button"
+              >
                 Sign up or Login now! &raquo;
               </a>
-
 
               {/* <button onClick={()=> {
                 return this.postToCalendar()
@@ -67,7 +70,6 @@ class Home extends Component {
             <div className="col-md-4">
               <AdditionalResources />
             </div>
-          
           </div>
         </div>
       </div>

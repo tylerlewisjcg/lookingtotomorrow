@@ -104,20 +104,15 @@ class FileUpload extends Component {
           onClick={() => this.updateState()}
         >
           <i className="fas fa-plus mr-2" />
-          {this.props.component === "work"
-            ? "Add Career Documents"
-            : "Add Education and Training Documents"}
+          {this.props.component === "work" ? "Add Document" : "Add Document"}
         </button>
         <span>
           <form hidden={this.state.displayFileUpload === false}>
             <div className="input-group-append">
-              <input
-                type="file"
-                onChange={this.handlePhoto}
-              />
-                <button className="btn-default mt-1" onClick={this.sendPhoto}>
-                  Submit
-                </button>
+              <input type="file" onChange={this.handlePhoto} />
+              <button className="btn-default mt-1" onClick={this.sendPhoto}>
+                Submit
+              </button>
             </div>
           </form>
 
@@ -138,29 +133,33 @@ class FileUpload extends Component {
               ? this.state.careerImages.map(image => {
                   return (
                     <span key={image.img_url} className="container mr-2 w-25">
-                     <a href={image.img_url}> <img
-                      id="thumbnail1"
-                        src={image.img_url}
-                        className="img-thumbnail img-fluid"
-                        max-height="auto"
-                        width="15%"
-                        alt="upload thumbnail"
-                       
-                    /></a>
+                      <a href={image.img_url}>
+                        {" "}
+                        <img
+                          id="thumbnail1"
+                          src={image.img_url}
+                          className="img-thumbnail img-fluid"
+                          max-height="auto"
+                          width="15%"
+                          alt="upload thumbnail"
+                        />
+                      </a>
                     </span>
                   );
                 })
               : this.state.eduImages.map(image => {
                   return (
                     <span key={image.img_url} className="container mr-2 w-25">
-                       <a href={image.img_url}><img
-                        src={image.img_url}
-                        id="thumbnail2"
-                        className="img-thumbnail img-fluid"
-                        max-height="auto"
-                        width="15%"
-                        alt="upload thumbnail"
-                      /></a>
+                      <a href={image.img_url}>
+                        <img
+                          src={image.img_url}
+                          id="thumbnail2"
+                          className="img-thumbnail img-fluid"
+                          max-height="auto"
+                          width="15%"
+                          alt="upload thumbnail"
+                        />
+                      </a>
                     </span>
                   );
                 })}

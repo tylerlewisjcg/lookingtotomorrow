@@ -4,7 +4,7 @@ import Navbar from "./../Navbar/Navbar";
 import CareerHistoryDisplayChild from "./CareerHistoryDisplayChild";
 import CareerForm from "./CareerForm";
 import { getWorkHistory } from "./../../ducks/workHistoryReducer";
-import FileUpload from './../Home/FileUpload';
+import FileUpload from "./../Home/FileUpload";
 
 class CareerHistory extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class CareerHistory extends Component {
   componentDidMount() {
     this.props.getWorkHistory();
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.props.getWorkHistory();
   }
   updateState() {
@@ -37,8 +37,8 @@ class CareerHistory extends Component {
         <div className="container mt-1 mb-5">
           <h1>Career History</h1>
           <div className="container">
-            <FileUpload component={"work"}/>
-            </div>
+            <FileUpload component={"work"} />
+          </div>
 
           {!this.state.addNewButtonIsPressed ? (
             <button
@@ -52,7 +52,7 @@ class CareerHistory extends Component {
           ) : (
             <CareerForm updateState={this.updateState} />
           )}
-           
+
           <div className="container mt-1">{this.renderWorkHistoryItems()}</div>
         </div>
       </div>

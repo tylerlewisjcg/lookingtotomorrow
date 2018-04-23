@@ -76,17 +76,16 @@ class Motivations extends Component {
     });
     this.setState({
       confirmationToggled: true
-    })
+    });
     setTimeout(() => {
-      this.confirmationToggle()
+      this.confirmationToggle();
     }, 1500);
   }
-confirmationToggle(){
-  this.setState({
-    confirmationToggled: false
-  })
-}
-
+  confirmationToggle() {
+    this.setState({
+      confirmationToggled: false
+    });
+  }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -167,13 +166,18 @@ confirmationToggle(){
             ) : (
               <button
                 type="button"
-                className={this.state.confirmationToggled === false ? "btn btn-primary": "btn btn-success"}
+                className={
+                  this.state.confirmationToggled === false
+                    ? "btn btn-primary"
+                    : "btn btn-success"
+                }
                 onClick={() => {
                   this.handleFormEdit();
                 }}
               >
-              {this.state.confirmationToggled === false ? 'Update': 'Update Successful'}
-              
+                {this.state.confirmationToggled === false
+                  ? "Update"
+                  : "Update Successful"}
               </button>
             )}
           </form>

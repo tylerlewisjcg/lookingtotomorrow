@@ -22,9 +22,15 @@ class RecentlyCompleted extends Component {
     return this.state.recentlyCompleted.map(completedItem => {
       return (
         <div key={completedItem.action_item_id}>
-          <span className="mr-2 font-weight-bold">{completedItem.action_item_description}</span>
+          <span className="mr-2 font-weight-bold">
+            {completedItem.action_item_description}
+          </span>
           <span>
-            {completedItem.completion_date? `Completed on: ${moment(completedItem.completion_date).format("MMM DD, YYYY")}`: ""}
+            {completedItem.completion_date
+              ? `Completed on: ${moment(completedItem.completion_date).format(
+                  "MMM DD, YYYY"
+                )}`
+              : ""}
           </span>{" "}
         </div>
       );
