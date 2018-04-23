@@ -46,7 +46,7 @@ class EducationDisplayChild extends Component {
               </p>
               <button
                 type="button"
-                className="btn btn-light mr-4"
+                className="btn btn-secondary mr-4"
                 onClick={() => this.updateState()}
               >
                 <i className="far fa-edit mr-2" />
@@ -54,7 +54,7 @@ class EducationDisplayChild extends Component {
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-light"
                 onClick={() =>
                   this.props.deleteEducationHistory(
                     this.props.eduItem.education_id

@@ -39,7 +39,7 @@ class CareerHistoryDisplayChild extends Component {
               <p>Notable Achievements: {this.props.job.notable_achievements}</p>
               <button
                 type="button"
-                className="btn btn-light mr-4"
+                className="btn btn-secondary mr-4"
                 onClick={() => this.updateState()}
               >
                 <i className="far fa-edit mr-2" />
@@ -47,7 +47,7 @@ class CareerHistoryDisplayChild extends Component {
               </button>
               <button
                 type="button btn-sm"
-                className="btn btn-secondary"
+                className="btn btn-light"
                 // data-toggle="modal"
                 // data-target="#deleteConfirmModal3"
                 onClick={() =>

@@ -34,7 +34,7 @@ class ActionItems extends Component {
           ) : (
             <button
               type="button"
-              className="btn btn-light"
+              className="btn btn-secondary"
               onClick={() => {
                 const completeDate = new Date();
 

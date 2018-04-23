@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUserInfo } from "./../../ducks/userReducer";
+import { truncate } from "fs";
 
 class FileUpload extends Component {
   constructor() {
@@ -101,11 +102,21 @@ class FileUpload extends Component {
          <h3>My Documents</h3>
         <button
           type="button"
+          hidden={this.state.displayFileUpload === true}
           className="btn btn-light mb-2"
           onClick={() => this.updateState()}
         >
           <i className="fas fa-plus mr-2" />
-          {this.props.component === "work" ? "Add Document" : "Add Document"}
+          Add Document
+        </button>
+        <button
+          type="button"
+          hidden={this.state.displayFileUpload === false}
+          className="btn btn-light mb-2"
+          onClick={() => this.updateState()}
+        >
+        <i className="fas fa-times mr-2" />
+          Cancel
         </button>
         <span>
           <form hidden={this.state.displayFileUpload === false}>

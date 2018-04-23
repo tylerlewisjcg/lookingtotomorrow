@@ -193,7 +193,7 @@ class SkillsWorkingOn extends Component {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-success mr-1"
+                  className="btn btn-secondary mr-1"
                   hidden={
                     !this.state.addActionItemButtonIsPressed === true
                       ? true
@@ -206,7 +206,7 @@ class SkillsWorkingOn extends Component {
 
                 <button
                   type="button"
-                  className="btn btn-danger"
+                  className="btn btn-light"
                   hidden={
                     !this.state.addActionItemButtonIsPressed === true
                       ? true
@@ -258,7 +258,7 @@ class SkillsWorkingOn extends Component {
               ) : (
                 <button
                   type="button"
-                  className="btn btn-light"
+                  className="btn btn-secondary"
                   onClick={() => {
                     this.handleMarkAsComplete();
                   }}
@@ -271,7 +271,7 @@ class SkillsWorkingOn extends Component {
             <a className="card-link">
               <button
                 type="button btn-sm"
-                className="btn btn-secondary"
+                className="btn btn-light"
                 onClick={() => {
                   this.props.deleteSkillWorkingOn(this.props.skill.skill_id);
                 }}

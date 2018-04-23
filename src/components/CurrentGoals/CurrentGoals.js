@@ -102,6 +102,7 @@ class CurrentGoals extends Component {
                 disabled={this.state.addSkillButtonIsPressed}
                 onClick={() => this.updateState()}
               >
+              <i className="fas fa-plus mr-2" />
                 Add Skill
               </button>
 
@@ -119,7 +120,7 @@ class CurrentGoals extends Component {
 
               <button
                 type="button"
-                className="btn btn-success mr-1"
+                className="btn btn-secondary mr-1"
                 hidden={
                   !this.state.addSkillButtonIsPressed === true ? true : false
                 }
@@ -130,7 +131,7 @@ class CurrentGoals extends Component {
 
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-light"
                 hidden={
                   !this.state.addSkillButtonIsPressed === true ? true : false
                 }
@@ -153,6 +154,7 @@ class CurrentGoals extends Component {
                 className="btn btn-primary mb-1"
                 onClick={() => this.addSkillWorkingOnButtonToggle()}
               >
+              <i className="fas fa-plus mr-2" />
                 Add Skill to Work on
               </button>
 
@@ -204,7 +206,7 @@ class CurrentGoals extends Component {
               </div>
               <button
                 type="button"
-                className="btn btn-success mr-1"
+                className="btn btn-secondary mr-1"
                 hidden={
                   !this.state.addSkillWorkingOnButtonIsPressed === true
                     ? true
@@ -216,7 +218,7 @@ class CurrentGoals extends Component {
               </button>
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-light"
                 hidden={
                   !this.state.addSkillWorkingOnButtonIsPressed === true
                     ? true
