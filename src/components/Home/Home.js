@@ -38,12 +38,12 @@ class Home extends Component {
         <Navbar />
         <div className="jumbotron" >
           <div className="container-fluid">
-            <h1 className="display-3">Professional Development</h1>
-            <h4>
+            <h1 className="display-3">Career Planning</h1>
+            <h6 className="mt-4">
               Welcome to LookingToTomorrow where you can track your professional goals and skills. 
-            </h4>
+            </h6>
             <p>
-              <a className="btn btn-primary btn-lg" href={process.env.REACT_APP_LOGIN} role="button">
+              <a className="btn btn-primary btn-lg mt-5" href={process.env.REACT_APP_LOGIN} role="button">
                 Sign up or Login now! &raquo;
               </a>
 

@@ -138,7 +138,7 @@ handleMarkAsComplete(){
                 <button
                   type="button"
                   disabled={this.state.addActionItemButtonIsPressed}
-                  className="btn btn-light"
+                  className="btn btn-light mb-1"
                   onClick={() => this.toggleAddActionItemButton()}
                 >
                   <i className="fas fa-plus" /> Add New
