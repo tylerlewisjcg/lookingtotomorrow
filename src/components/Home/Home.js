@@ -15,11 +15,21 @@ import axios from "axios";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+     userData: {}
+    };
   }
 
   componentDidMount() {
-    this.props.getUserInfo();
+    const userData = axios.get("/auth/me").then(res => {
+      this.setState({userData: res.data})
+    }).catch(err => console.log(err))
+   
+  }
+  componentDidUpdate(){
+    const userData = axios.get("/auth/me").then(res => {
+      this.setState({userData: res.data})
+    }).catch(err => console.log(err))
   }
 
   // postToCalendar(){
@@ -33,7 +43,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar  />
         <div className="jumbotron">
           <div className="container-fluid">
             <h1 className="display-3">Career Planning</h1>
@@ -41,8 +51,8 @@ class Home extends Component {
               Welcome to LookingToTomorrow where you can track your professional
               goals and skills.
             </h6>
-            {/* unsure how to get sign up/login button to go away if user is logged in and display Hello Username */}
-            <p>
+           {!!this.state.userData.display_name? (<h4 className="mt-4">Welcome {this.state.userData.display_name}!</h4>
+           ):( <p>
               <a
                 className="btn btn-primary btn-lg mt-5"
                 href={process.env.REACT_APP_LOGIN}
@@ -56,7 +66,7 @@ class Home extends Component {
               }}>
                 Post to calendar
               </button> */}
-            </p>
+    </p>)}
           </div>
         </div>
         <div className="container mb-5">

@@ -98,6 +98,7 @@ class FileUpload extends Component {
     this.state.file && console.log(this.state.photo);
     return (
       <div hidden={!this.props.user.display_name} className="container mr-5">
+         <h3>My Documents</h3>
         <button
           type="button"
           className="btn btn-light mb-2"
@@ -127,7 +128,6 @@ class FileUpload extends Component {
           )}
         </span>
         <span className="container">
-          <h5>My Documents</h5>
           <div className="container">
             {this.props.component === "work"
               ? this.state.careerImages.map(image => {

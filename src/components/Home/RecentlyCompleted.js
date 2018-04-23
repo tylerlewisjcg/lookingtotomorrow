@@ -27,7 +27,7 @@ class RecentlyCompleted extends Component {
           </span>
           <span>
             {completedItem.completion_date
-              ? `Completed on: ${moment(completedItem.completion_date).format(
+              ? `Completed on: ${moment.utc(completedItem.completion_date).format(
                   "MMM DD, YYYY"
                 )}`
               : ""}

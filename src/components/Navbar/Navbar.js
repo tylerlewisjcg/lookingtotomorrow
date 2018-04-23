@@ -18,7 +18,7 @@ class Navbar extends Component {
         className="navbar navbar-expand-lg navbar-dark bg-primary"
       >
         <a className="navbar-brand" href="/">
-          LookingToTomorrow
+          Looking To Tomorrow
         </a>
         <button
           className="navbar-toggler"
@@ -80,7 +80,7 @@ class Navbar extends Component {
               </a>
             </span>
 
-            <span className="navbar-text">
+            <span className="navbar-text mr-5">
               {this.props.user.display_name ? (
                 <span className="nav-item">
                   <a className="nav-link" href={process.env.REACT_APP_LOGOUT}>

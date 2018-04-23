@@ -42,9 +42,10 @@ class Education extends Component {
           <div className="container">
             <FileUpload component={"edu"} />
           </div>
+          <div className="container">
+          <h3>My Education History</h3>
           {!this.state.addNewButtonIsPressed ? (
             <div className="container">
-              {" "}
               <button
                 type="button"
                 className="btn btn-light mb-2"
@@ -57,7 +58,7 @@ class Education extends Component {
           ) : (
             <EducationForm updateState={this.updateState} />
           )}
-
+ </div>
           <div className="container mt-1">{this.renderEducationHistory()}</div>
         </div>
       </div>

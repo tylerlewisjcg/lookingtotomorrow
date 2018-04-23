@@ -39,8 +39,10 @@ class CareerHistory extends Component {
           <div className="container">
             <FileUpload component={"work"} />
           </div>
-
+        <div className="container">
+        <h3>My Career History</h3>
           {!this.state.addNewButtonIsPressed ? (
+            <div className="container">
             <button
               type="button"
               className="btn btn-light mb-2"
@@ -49,10 +51,11 @@ class CareerHistory extends Component {
               <i className="fas fa-plus mr-2" />
               Add New Work History
             </button>
+            </div>
           ) : (
             <CareerForm updateState={this.updateState} />
           )}
-
+            </div>
           <div className="container mt-1">{this.renderWorkHistoryItems()}</div>
         </div>
       </div>
