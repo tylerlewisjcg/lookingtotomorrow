@@ -19,7 +19,7 @@ class CareerSnapshot extends Component {
       let splitArray = currentJob[0].notable_achievements.split(",");
 
       return splitArray.map(achievement => {
-        return <li className="mt-1">{achievement}</li>;
+        return <li className="mt-1" key={achievement}>{achievement}</li>;
       });
     };
 
