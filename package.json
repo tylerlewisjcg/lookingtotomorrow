@@ -11,14 +11,18 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.0",
+    "busboy": "^0.2.14",
     "cors": "^2.8.4",
+    "cypress": "^2.1.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "font-awesome": "^4.7.0",
     "googleapis": "^28.1.0",
+    "jest": "^22.4.3",
     "lodash": "^4.17.5",
     "massive": "^4.7.1",
+    "material-ui": "^0.20.0",
     "moment": "^2.22.0",
     "node-sass-chokidar": "^1.2.1",
     "nodemailer": "^4.6.4",
@@ -36,7 +40,8 @@
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
-    "redux-promise-middleware": "^5.0.0"
+    "redux-promise-middleware": "^5.0.0",
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ --include-path ./node_modules src/styles/ -o src/",

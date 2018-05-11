@@ -27,8 +27,6 @@ app.use(cors());
 
 app.use(bodyParser.json({ limit: "50MB" }));
 
-S3(app);
-
 massive(CONNECTION_STRING)
   .then(db => {
     app.set("db", db);
@@ -185,6 +183,7 @@ app.post("/api/add_work_history", (req, res) => {
 // Education Endpoints
 
 app.get("/api/get_education_history", function(req, res) {
+  console.log(req.session)
   app
     .get("db")
     .education_DB.select_users_education([req.session.passport.user])
@@ -469,6 +468,15 @@ app.post("/api/add_edu_uploads", (req, res) => {
     .then(response => res.status(200).send(response))
     .catch(err => console.log(err));
 });
+
+
+app.post('/api/photoUpload', S3.uploadPhoto)
+
+
+
+
+
+
 app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
 
 /////NodeMailer/////
